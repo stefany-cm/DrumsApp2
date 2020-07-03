@@ -1,3 +1,4 @@
+import 'package:drumsapp2/src/bloc/provider.dart';
 import 'package:drumsapp2/src/pages/home_page.dart';
 import 'package:drumsapp2/src/utils/theme_utils.dart';
 import 'package:flutter/material.dart';
@@ -12,10 +13,10 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return Provider(
+        child: MaterialApp(
       theme: customTheme(context),
       title: 'DrumsApp',
       debugShowCheckedModeBanner: false,
@@ -28,6 +29,6 @@ class MyApp extends StatelessWidget {
       //   'homeMenu': (BuildContext context) => WelcomeMenuPage(),
       //   'signUp': (BuildContext context) => SignUpPage(),
       // },
-    );
+    ));
   }
 }
