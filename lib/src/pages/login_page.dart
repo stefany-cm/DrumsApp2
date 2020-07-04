@@ -1,6 +1,7 @@
 import 'package:drumsapp2/src/bloc/provider.dart';
 import 'package:drumsapp2/src/pages/signUp_page.dart';
 import 'package:drumsapp2/src/pages/welcome_page.dart';
+import 'package:drumsapp2/src/services/provider.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/utils/textStyle_utils.dart';
 import 'package:drumsapp2/src/widgets/buttons.dart';
@@ -26,7 +27,6 @@ class LoginPage extends StatelessWidget {
   }
 
   Widget _loginForm(BuildContext context) {
-
     final bloc = Provider.of(context);
     final size = MediaQuery.of(context).size;
 
@@ -53,7 +53,9 @@ class LoginPage extends StatelessWidget {
             passwordInput(bloc),
             _forgetPassword(context),
             SizedBox(height: 30.0),
-            customRaisedButton('Iniciar sesion', blue2Color, Colors.black, context, WelcomePage()),
+            // customRaisedButton('Iniciar sesion', blue2Color, Colors.black,
+            //     context, WelcomePage()),
+            authCustomRaisedButton(bloc),
             SizedBox(height: 80.0),
             _noAccountYet(context)
           ],
@@ -73,7 +75,10 @@ class LoginPage extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Text('¿Aún no tiene una cuenta?', style: textStyleShortBlack,),
+        Text(
+          '¿Aún no tiene una cuenta?',
+          style: textStyleShortBlack,
+        ),
         textButton('Registrarse', blue2Color, context, SignUpPage()),
       ],
     );
