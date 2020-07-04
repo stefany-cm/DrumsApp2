@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:rxdart/rxdart.dart';
 import 'package:drumsapp2/src/bloc/validators.dart';
-import 'package:flutter/foundation.dart';
 
 class LoginBloc with Validators {
   final _mailController = BehaviorSubject<String>();

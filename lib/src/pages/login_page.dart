@@ -1,7 +1,6 @@
 import 'package:drumsapp2/src/bloc/provider.dart';
 import 'package:drumsapp2/src/pages/signUp_page.dart';
 import 'package:drumsapp2/src/pages/welcome_page.dart';
-import 'package:drumsapp2/src/services/provider.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/utils/textStyle_utils.dart';
 import 'package:drumsapp2/src/widgets/buttons.dart';

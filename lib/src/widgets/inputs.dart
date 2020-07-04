@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:drumsapp2/src/bloc/login_bloc.dart';
-import 'package:drumsapp2/src/pages/welcome_page.dart';
 import 'package:drumsapp2/src/services/provider.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/utils/textStyle_utils.dart';
