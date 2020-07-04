@@ -14,8 +14,8 @@ Widget mailInput(LoginBloc bloc) {
             icon: Icon(Icons.alternate_email),
             labelText: 'Correo electrónico',
             hintText: 'ejemplo@correo.com',
-            counterText: snapshot.data, // Da error
-            //errorText: 'No es un email valido'
+            counterText: snapshot.data,
+            errorText: snapshot.error
           ),
           onChanged: (value) => bloc.changeMail(value),
         ),
@@ -34,9 +34,10 @@ Widget passwordInput(LoginBloc bloc) {
             obscureText: true,
             decoration: InputDecoration(
               icon: Icon(Icons.lock_outline),
-              suffixIcon: Icon(Icons.visibility_off), //Cambiar a statefulwidget
+              //suffixIcon: Icon(Icons.visibility_off), //Cambiar a statefulwidget
               labelText: 'Contraseña',
-              counterText: snapshot.data //da error
+              counterText: snapshot.data,
+              errorText: snapshot.error
             ),
             onChanged: bloc.changePassword,
           )
