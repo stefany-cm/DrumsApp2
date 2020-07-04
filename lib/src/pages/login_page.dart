@@ -1,3 +1,4 @@
+import 'package:drumsapp2/src/bloc/provider.dart';
 import 'package:drumsapp2/src/pages/signUp_page.dart';
 import 'package:drumsapp2/src/pages/welcome_page.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
@@ -24,6 +25,8 @@ class LoginPage extends StatelessWidget {
   }
 
   Widget _loginForm(BuildContext context) {
+
+    final bloc = Provider.of(context);
     final size = MediaQuery.of(context).size;
 
     return SingleChildScrollView(
@@ -44,9 +47,9 @@ class LoginPage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             SizedBox(height: 5.0),
-            mailInput(),
+            mailInput(bloc),
             SizedBox(height: 20.0),
-            passwordInput(),
+            passwordInput(bloc),
             _forgetPassword(context),
             SizedBox(height: 30.0),
             customRaisedButton('Iniciar sesion', blue2Color, Colors.black, context, WelcomePage()),
