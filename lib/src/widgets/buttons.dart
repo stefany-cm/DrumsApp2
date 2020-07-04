@@ -1,6 +1,8 @@
+import 'package:drumsapp2/src/bloc/provider.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/utils/textStyle_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:drumsapp2/src/services/provider.dart';
 
 Widget customRaisedButton(String text, Color colorB, Color colorT,
     BuildContext context, dynamic route) {
@@ -61,7 +63,8 @@ Widget backIconButton(BuildContext context) {
   );
 }
 
-Widget textButton(String text, Color colorT, BuildContext context, dynamic route) {
+Widget textButton(
+    String text, Color colorT, BuildContext context, dynamic route) {
   return FlatButton(
       child: Container(
           padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 0.0),
