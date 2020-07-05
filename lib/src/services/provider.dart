@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 class Servicion {
   //final String _url = "http://192.168.138.129:3000"; //JP
-  final String _url = "http://192.168.1.9:3000"; //St
+  final String _url = "http://192.168.138.129:3000"; //St
 
   Future createUser() async {
     print('entrando aca 1  ' + _url);

@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:drumsapp2/src/bloc/validators.dart';
 import 'package:rxdart/rxdart.dart';
 
-class Sign_upBloc with Validators {
+class SignUpBloc with Validators {
   final _emailController = BehaviorSubject<String>();
   final _passwordController = BehaviorSubject<String>();
   final _confirpasswordController = BehaviorSubject<String>();
