@@ -1,14 +1,12 @@
-import 'dart:convert';
-
+import 'package:drumsapp2/src/bloc/signUp_bloc.dart';
 import 'package:drumsapp2/src/bloc/login_bloc.dart';
-import 'package:drumsapp2/src/pages/welcome_page.dart';
 import 'package:drumsapp2/src/services/provider.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/utils/textStyle_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-Widget mailInput(LoginBloc bloc) {
+Widget mailInput(dynamic bloc) {
   return StreamBuilder(
     stream: bloc.mailStream,
     builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -29,7 +27,7 @@ Widget mailInput(LoginBloc bloc) {
   );
 }
 
-Widget passwordInput(LoginBloc bloc) {
+Widget passwordInput(dynamic bloc) {
   return StreamBuilder(
     stream: bloc.passwordStream,
     builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -49,7 +47,27 @@ Widget passwordInput(LoginBloc bloc) {
   );
 }
 
-Widget authCustomRaisedButton(LoginBloc bloc) {
+Widget passwordConfimationInput(dynamic bloc) {
+  return StreamBuilder(
+    stream: bloc.confirmPasswordStream,
+    builder: (BuildContext context, AsyncSnapshot snapshot) {
+      return Container(
+          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          child: TextFormField(
+            obscureText: true,
+            decoration: InputDecoration(
+                icon: Icon(Icons.check_circle_outline),
+                //suffixIcon: Icon(Icons.visibility_off), //Cambiar a statefulwidget
+                labelText: 'Confirmar contraseña',
+                counterText: snapshot.data,
+                errorText: snapshot.error),
+            onChanged: bloc.changeConfirmPassword,
+          ));
+    },
+  );
+}
+
+Widget authCustomRaisedButton(dynamic bloc, String text) {
   return StreamBuilder(
       stream: bloc.passwordStream,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -57,7 +75,7 @@ Widget authCustomRaisedButton(LoginBloc bloc) {
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
             child: Text(
-              "Iniciar sesion",
+              text,
               style: textStyleButton,
             ),
           ),
@@ -76,7 +94,7 @@ Widget authCustomRaisedButton(LoginBloc bloc) {
 // customRaisedButton('Iniciar sesion', blue2Color, Colors.black,
 //                 context, WelcomePage()),
 
-_auth(LoginBloc bloc, BuildContext context) async {
+_auth(dynamic bloc, BuildContext context) async {
   final servLogin = new Servicion();
   Map<String, dynamic> rest = await servLogin.auth(bloc.mail, bloc.password);
 
