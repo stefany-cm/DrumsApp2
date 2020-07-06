@@ -1,6 +1,8 @@
 import 'package:drumsapp2/src/bloc/signUp_bloc.dart';
-import 'package:drumsapp2/src/bloc/login_bloc.dart';
-import 'package:drumsapp2/src/services/provider.dart';
+import 'package:drumsapp2/src/pages/signUp_basic_page.dart';
+
+// import 'package:drumsapp2/src/bloc/login_bloc.dart';
+// import 'package:drumsapp2/src/services/provider.dart';
 import 'package:drumsapp2/src/services/user_provider.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/utils/textStyle_utils.dart';
@@ -87,7 +89,7 @@ Widget authCustomRaisedButton(dynamic bloc, String text) {
           color: blue2Color,
           textColor: Colors.black,
           // onPressed: _login1(bloc, context),
-          onPressed: snapshot.hasData ? () => _auth(bloc, context) : null,
+          onPressed: snapshot.hasData ? () => _createUser(bloc, context) : null,
         );
       });
 }
@@ -95,9 +97,10 @@ Widget authCustomRaisedButton(dynamic bloc, String text) {
 // customRaisedButton('Iniciar sesion', blue2Color, Colors.black,
 //                 context, WelcomePage()),
 
-_auth(dynamic bloc, BuildContext context) async {
+_createUser(dynamic bloc, BuildContext context) async {
   final servLogin = new UserProvider();
-  Map<String, dynamic> rest = await servLogin.auth(bloc.mail, bloc.password);
+  Map<String, dynamic> rest =
+      await servLogin.createUser2(bloc.mail, bloc.password);
 
   // servLogin.createUser();
   print('================');
@@ -108,7 +111,7 @@ _auth(dynamic bloc, BuildContext context) async {
 
   print('Respuesta de consulta: ${rest}');
 
-  // Navigator.pushNamed(context, 'home');
+  //  Navigator.push(SignUpBasicPage());
 }
 
 Future<void> _showMyDialog(context) async {

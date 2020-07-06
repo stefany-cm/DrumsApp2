@@ -1,4 +1,5 @@
 import 'package:drumsapp2/src/bloc/provider.dart';
+import 'package:drumsapp2/src/pages/signUp_basic_page.dart';
 import 'package:drumsapp2/src/pages/signUp_page.dart';
 import 'package:drumsapp2/src/pages/welcome_page.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
@@ -54,9 +55,10 @@ class LoginPage extends StatelessWidget {
             SizedBox(height: 30.0),
             // customRaisedButton('Iniciar sesion', blue2Color, Colors.black,
             //     context, WelcomePage()),
-            //authCustomRaisedButton(bloc, 'Iniciar sesión'),
+            authCustomRaisedButton(bloc, 'Iniciar sesión'),
             SizedBox(height: 45.0),
-            _noAccountYet(context)
+            _noAccountYet(context),
+            _noAccountYet2(context)
           ],
         ),
       ),
@@ -79,6 +81,19 @@ class LoginPage extends StatelessWidget {
           style: textStyleShortBlack,
         ),
         textButton('Registrarse', blue2Color, context, SignUpPage()),
+      ],
+    );
+  }
+
+  Widget _noAccountYet2(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text(
+          '¿Aún no tiene una cuenta?',
+          style: textStyleShortBlack,
+        ),
+        textButton('Registrarse2', blue2Color, context, SignUpBasicPage()),
       ],
     );
   }
