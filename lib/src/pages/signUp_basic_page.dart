@@ -1,13 +1,12 @@
 import 'package:drumsapp2/src/bloc/provider.dart';
 import 'package:drumsapp2/src/widgets/customAppBar.dart';
-
-import 'package:drumsapp2/src/widgets/inputs.dart';
-import 'package:drumsapp2/src/widgets/inputsSignUp.dart';
+// import 'package:drumsapp2/src/widgets/inputs.dart';
+import 'package:drumsapp2/src/widgets/inputsSignUpBasic.dart';
 
 import 'package:flutter/material.dart';
 
-class SignUpPage extends StatelessWidget {
-  const SignUpPage({Key key}) : super(key: key);
+class SignUpBasicPage extends StatelessWidget {
+  const SignUpBasicPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +14,7 @@ class SignUpPage extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Stack(
         children: <Widget>[
-          customAppBar('Registro', context),
+          customAppBar('Colocar foto', context),
           _singUpForm(context)
         ],
       ),
@@ -44,13 +43,16 @@ class SignUpPage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             SizedBox(height: 5.0),
-            mailInput(bloc),
+            nameInput(bloc),
             SizedBox(height: 20.0),
-            passwordInput(bloc),
-            SizedBox(height: 30.0),
-            passwordConfimationInput(bloc),
+            datePruebaInput(bloc),
             SizedBox(height: 20.0),
-            authCustomRaisedButton(bloc, 'Registrarse'),
+            // dateInput(bloc),
+            // SizedBox(height: 30.0),
+            genreInput(bloc),
+            SizedBox(height: 20.0),
+
+            createCustomRaisedButton(bloc, 'Finalizar'),
             SizedBox(height: 45.0),
           ],
         ),
