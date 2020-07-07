@@ -16,6 +16,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       backgroundColor: Colors.white,
       body: Stack(
         children: <Widget>[
@@ -47,7 +48,7 @@ class LoginPage extends StatelessWidget {
             color: Colors.white),
         child: Column(
           children: <Widget>[
-            SizedBox(height: 5.0),
+            // SizedBox(height: 5.0),
             mailInput(bloc),
             SizedBox(height: 20.0),
             passwordInput(bloc),
@@ -59,11 +60,10 @@ class LoginPage extends StatelessWidget {
             //authCustomRaisedButton(bloc, 'Iniciar sesión'),
 //             SizedBox(height: 45.0),
 //             _noAccountYet(context)
-              authCustomRaisedButton(bloc, 'Iniciar sesión'),
+            authCustomRaisedButton(bloc, 'Iniciar sesión'),
             SizedBox(height: 45.0),
             _noAccountYet(context),
             _noAccountYet2(context)
-
           ],
         ),
       ),

@@ -2,7 +2,7 @@ import 'package:drumsapp2/src/bloc/provider.dart';
 import 'package:drumsapp2/src/pages/home_page.dart';
 import 'package:drumsapp2/src/utils/theme_utils.dart';
 import 'package:flutter/material.dart';
-
+import 'package:drumsapp2/src/pages/router/router.dart';
 import 'package:flutter/services.dart';
 
 void main() {
@@ -17,18 +17,23 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Provider(
         child: MaterialApp(
-      theme: customTheme(context),
-      title: 'DrumsApp',
-      debugShowCheckedModeBanner: false,
-      home: HomePage(),
-      // initialRoute: 'home',
-      // routes: {
-      //   'login': (BuildContext context) => LoginPage(),
-      //   'login2': (BuildContext context) => LoginPage2(),
-      //   'home': (BuildContext context) => WelcomePage(),
-      //   'homeMenu': (BuildContext context) => WelcomeMenuPage(),
-      //   'signUp': (BuildContext context) => SignUpPage(),
-      // },
-    ));
+            theme: customTheme(context),
+            title: 'DrumsApp',
+            debugShowCheckedModeBanner: false,
+            routes: publicRoutes(context),
+            initialRoute: '/',
+            onGenerateRoute: (RouteSettings settings) {
+              return MaterialPageRoute(
+                  builder: (BuildContext context) => HomePage());
+            }
+            // initialRoute: 'home',
+            // routes: {
+            //   'login': (BuildContext context) => LoginPage(),
+            //   'login2': (BuildContext context) => LoginPage2(),
+            //   'home': (BuildContext context) => WelcomePage(),
+            //   'homeMenu': (BuildContext context) => WelcomeMenuPage(),
+            //   'signUp': (BuildContext context) => SignUpPage(),
+            // },
+            ));
   }
 }

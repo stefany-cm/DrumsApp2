@@ -7,7 +7,6 @@ import 'package:drumsapp2/src/widgets/logo.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,9 +18,12 @@ class WelcomePage extends StatelessWidget {
           children: <Widget>[
             logoContainerRounded(context),
             SizedBox(height: MediaQuery.of(context).size.height * 0.15),
-            customFlatButton('Registrarse', null, blue2Color, Colors.black, context, SignUpPage()),
+            customFlatButton('Registrarse', null, blue2Color, Colors.black,
+                context, SignUpPage()),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-            customRaisedButton('Iniciar sesión', blue2Color, Colors.black, context, LoginPage()),
+            // customRaisedButton('Iniciar sesión', blue2Color, Colors.black, context, LoginPage()),
+            customRaisedButton(
+                'Iniciar sesión', blue2Color, Colors.black, context, "/login"),
           ],
         ),
       ),

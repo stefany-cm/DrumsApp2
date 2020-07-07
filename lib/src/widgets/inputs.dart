@@ -96,11 +96,11 @@ Widget authCustomRaisedButton(dynamic bloc, String text) {
 //                 context, WelcomePage()),
 
 _auth(dynamic bloc, BuildContext context) async {
+  final servLogin = new UserProvider();
+  // final servLogin = new Servicion();
 
-  //final servLogin = new UserProvider();activar esto
-  final servLogin = new Servicion();
-
-  Map<String, dynamic> rest = await servLogin.auth(bloc.mail, bloc.password);
+  Map<String, dynamic> rest =
+      await servLogin.auth(bloc.mail, bloc.password, context);
 
   // servLogin.createUser();
   print('================');
@@ -110,6 +110,8 @@ _auth(dynamic bloc, BuildContext context) async {
   print('============');
 
   print('Respuesta de consulta: ${rest}');
+
+  // Navigator.of(context).pushReplacementNamed('/signUpBasic');
 
   // Navigator.pushNamed(context, 'home');
 }
