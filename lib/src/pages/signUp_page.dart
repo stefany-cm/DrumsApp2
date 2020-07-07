@@ -1,7 +1,7 @@
 import 'package:drumsapp2/src/bloc/provider.dart';
 import 'package:drumsapp2/src/widgets/customAppBar.dart';
 
-import 'package:drumsapp2/src/widgets/inputs.dart';
+// import 'package:drumsapp2/src/widgets/inputs.dart';
 import 'package:drumsapp2/src/widgets/inputsSignUp.dart';
 
 import 'package:flutter/material.dart';

@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class HomePage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -27,9 +26,14 @@ class HomePage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text('¡Bienvenido!', style: textStyleBold),
-            Text('Aprenderás a tocar la batería desde tu casa', style: textStyleNormal, textAlign: TextAlign.center,),
+            Text(
+              'Aprenderás a tocar la batería desde tu casa',
+              style: textStyleNormal,
+              textAlign: TextAlign.center,
+            ),
             logo(context),
-            customRaisedButton('Comenzar', Colors.white, Colors.black, context, WelcomePage()),
+            customRaisedButton(
+                'Comenzar', Colors.white, Colors.black, context, "/welcome"),
           ],
         ),
       ),
