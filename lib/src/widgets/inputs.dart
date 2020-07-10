@@ -1,4 +1,3 @@
-
 import 'package:drumsapp2/src/services/user_provider.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/utils/textStyle_utils.dart';
@@ -109,9 +108,15 @@ _auth(dynamic bloc, BuildContext context) async {
 
   print('Respuesta de consulta: ${rest}');
 
-  // Navigator.of(context).pushReplacementNamed('/signUpBasic');
+  // print('Respuesta de mesaje: ${rest.containsKey('mensaje')}');
+  print('Respuesta de mesaje: ${rest['mensaje']}');
 
-  // Navigator.pushNamed(context, 'home');
+  // Navigator.of(context).pushReplacementNamed('/signUpBasic');
+  if (rest['mensaje'] == "si") {
+    Navigator.of(context).pushReplacementNamed('/homeNavigation');
+  } else {
+    _showMyDialog(context);
+  }
 }
 
 Future<void> _showMyDialog(context) async {
@@ -120,12 +125,12 @@ Future<void> _showMyDialog(context) async {
     barrierDismissible: false, // user must tap button!
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text('AlertDialog Title'),
+        title: Text('Alerta'),
         content: SingleChildScrollView(
           child: ListBody(
             children: <Widget>[
-              Text('This is a demo alert dialog.'),
-              Text('Would you like to approve of this message?'),
+              Text('El usuario no existe.'),
+              Text('Si desea registrase en la parte inferior esta la opcion'),
             ],
           ),
         ),
