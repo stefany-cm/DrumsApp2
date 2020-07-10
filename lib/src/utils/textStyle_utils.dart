@@ -37,11 +37,17 @@ final textStyleShortBlack = TextStyle(
 final textStyleCard = TextStyle(
   fontSize: 16, 
   fontWeight: FontWeight.w600,
-  color: Colors.black
+  color: Colors.grey[800]
+);
+
+final textStyleCardTitle = TextStyle(
+  fontSize: 20, 
+  fontWeight: FontWeight.w600,
+  color: Colors.grey[800]
 );
 
 final textStyleSubtitleCard = TextStyle(
   fontSize: 16, 
   fontWeight: FontWeight.normal,
-  color: Colors.black
+  color: Colors.grey[700]
 );
