@@ -51,3 +51,9 @@ final textStyleSubtitleCard = TextStyle(
   fontWeight: FontWeight.normal,
   color: Colors.grey[700]
 );
+
+final textStyleSubtitleCardShort = TextStyle(
+  fontSize: 14, 
+  fontWeight: FontWeight.normal,
+  color: Colors.grey[700]
+);
