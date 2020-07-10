@@ -1,6 +1,7 @@
 import 'package:drumsapp2/src/bloc/provider.dart';
 import 'package:drumsapp2/src/pages/principal/homeNavigation_principal.dart';
 import 'package:drumsapp2/src/pages/signUpPersonal_page.dart';
+import 'package:drumsapp2/src/pages/signUp_page.dart';
 import 'package:drumsapp2/src/pages/welcome_page.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/utils/textStyle_utils.dart';
@@ -78,7 +79,9 @@ class LoginPage extends StatelessWidget {
           '¿Aún no tiene una cuenta?',
           style: textStyleShortBlack,
         ),
-        textButton('Registrarse', blue2Color, context, HomeNavigationPrincipal()),
+        textButton('Registrarse', blue2Color, context, SignUpPage()),
+        // textButton('Registrarse', blue2Color, context,
+        //     Navigator.of(context).pushReplacementNamed('/signU'))
       ],
     );
   }

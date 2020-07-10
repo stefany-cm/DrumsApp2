@@ -1,5 +1,3 @@
-
-
 // import 'package:drumsapp2/src/bloc/login_bloc.dart';
 // import 'package:drumsapp2/src/services/provider.dart';
 import 'package:drumsapp2/src/services/user_provider.dart';
@@ -109,22 +107,54 @@ _createUser(dynamic bloc, BuildContext context) async {
   print('============');
 
   print('Respuesta de consulta: ${rest}');
-
-  //  Navigator.push(SignUpBasicPage());
+  if (rest['mensaje'] == "si") {
+    Navigator.of(context).pushReplacementNamed('/login');
+    _showMyDialog2(context);
+  } else {
+    _showMyDialog2(context);
+  }
 }
 
-Future<void> _showMyDialog(context) async {
+Future<void> _showMyDialog1(context) async {
   return showDialog<void>(
     context: context,
     barrierDismissible: false, // user must tap button!
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Text('AlertDialog Title'),
+        title: Text('Alerta '),
         content: SingleChildScrollView(
           child: ListBody(
             children: <Widget>[
-              Text('This is a demo alert dialog.'),
-              Text('Would you like to approve of this message?'),
+              Text('Se ha presentado un error '),
+              Text('Vuelvelo a intentar mas tarde '),
+            ],
+          ),
+        ),
+        actions: <Widget>[
+          FlatButton(
+            child: Text('Approve'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
+}
+
+Future<void> _showMyDialog2(context) async {
+  return showDialog<void>(
+    context: context,
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text(' :D '),
+        content: SingleChildScrollView(
+          child: ListBody(
+            children: <Widget>[
+              Text('Su usuario ha sido creado.'),
+              Text('Ahora puedes ingresar '),
             ],
           ),
         ),

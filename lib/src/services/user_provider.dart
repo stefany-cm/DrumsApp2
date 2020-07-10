@@ -53,11 +53,11 @@ class UserProvider {
       // final user = await this.jsonDecode(body);
       // print(await _userPreference.decodeJWT());
       // return {"status": true, "token": user['token']};
-      Navigator.of(context).pushReplacementNamed('/welcome');
-      print("entro 201");
-    } else {
-      print("No ");
-      Navigator.of(context).pushReplacementNamed('/signUpBasic');
+      //   Navigator.of(context).pushReplacementNamed('/welcome');
+      //   print("entro 201");
+      // } else {
+      //   print("No ");
+      //   Navigator.of(context).pushReplacementNamed('/signUpBasic');
 
       // alertError("Upss!", context, "El usuario y/o contraseñas incorrectos");
     }
