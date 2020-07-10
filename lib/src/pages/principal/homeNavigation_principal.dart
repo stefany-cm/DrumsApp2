@@ -15,7 +15,7 @@ class _HomeNavigationPrincipalState extends State<HomeNavigationPrincipal> {
   int _currentIndex = 0;
 
   final List<Widget> _children = [
-    ModulesPage(),
+    ModulesPrincipal(),
     Center(child: Text('Grupos')),
     Center(child: Text('Logros')),
     Center(child: Text('Ajustes')),

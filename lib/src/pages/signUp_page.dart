@@ -1,4 +1,8 @@
 import 'package:drumsapp2/src/bloc/provider.dart';
+import 'package:drumsapp2/src/pages/login_page.dart';
+import 'package:drumsapp2/src/utils/colors_utils.dart';
+import 'package:drumsapp2/src/utils/textStyle_utils.dart';
+import 'package:drumsapp2/src/widgets/buttons.dart';
 import 'package:drumsapp2/src/widgets/customAppBar.dart';
 
 // import 'package:drumsapp2/src/widgets/inputs.dart';
@@ -51,10 +55,23 @@ class SignUpPage extends StatelessWidget {
             passwordConfimationInput(bloc),
             SizedBox(height: 20.0),
             authCustomRaisedButton(bloc, 'Registrarse'),
-            SizedBox(height: 45.0),
+            SizedBox(height: 20.0),
+            _accountCreated(context),
           ],
         ),
       ),
     ]));
+  }
+  Widget _accountCreated(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text(
+          '¿Ya tiene una cuenta?',
+          style: textStyleShortBlack,
+        ),
+        textButton('Iniciar sesión', blue2Color, context, LoginPage()),
+      ],
+    );
   }
 }

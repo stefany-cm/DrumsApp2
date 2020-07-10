@@ -54,16 +54,9 @@ class LoginPage extends StatelessWidget {
             passwordInput(bloc),
             _forgetPassword(context),
             SizedBox(height: 30.0),
-            // customRaisedButton('Iniciar sesion', blue2Color, Colors.black,
-            //     context, WelcomePage()),
-
-            //authCustomRaisedButton(bloc, 'Iniciar sesión'),
-//             SizedBox(height: 45.0),
-//             _noAccountYet(context)
             authCustomRaisedButton(bloc, 'Iniciar sesión'),
             SizedBox(height: 45.0),
-            _noAccountYet(context),
-            _noAccountYet2(context)
+            _noAccountYet(context)
           ],
         ),
       ),

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../utils/textStyle_utils.dart';
 
-class ModulesPage extends StatelessWidget {
-  const ModulesPage({Key key}) : super(key: key);
+class ModulesPrincipal extends StatelessWidget {
+  const ModulesPrincipal({Key key}) : super(key: key);
 
-  final title = 'Módulo';
+  get title => 'Módulo';
 
   @override
   Widget build(BuildContext context) {
