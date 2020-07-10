@@ -1,5 +1,4 @@
-import 'package:drumsapp2/src/bloc/signUp_bloc.dart';
-import 'package:drumsapp2/src/pages/signUp_basic_page.dart';
+
 
 // import 'package:drumsapp2/src/bloc/login_bloc.dart';
 // import 'package:drumsapp2/src/services/provider.dart';

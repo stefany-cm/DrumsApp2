@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
-import 'package:drumsapp2/src/pages/router/router.dart';
 
 class UserProvider {
   final String _url = "http://192.168.138.129:3000";

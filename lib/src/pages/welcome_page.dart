@@ -1,5 +1,4 @@
 import 'package:drumsapp2/src/pages/signUp_page.dart';
-import 'package:drumsapp2/src/pages/login_page.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/widgets/buttons.dart';
 import 'package:drumsapp2/src/widgets/logo.dart';
