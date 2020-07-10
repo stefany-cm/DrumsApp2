@@ -5,8 +5,8 @@ import 'package:drumsapp2/src/widgets/inputsSignUpBasic.dart';
 
 import 'package:flutter/material.dart';
 
-class SignUpBasicPage extends StatelessWidget {
-  const SignUpBasicPage({Key key}) : super(key: key);
+class SignUpPersonalPage extends StatelessWidget {
+  const SignUpPersonalPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
