@@ -38,12 +38,10 @@ class ModulesPrincipal extends StatelessWidget {
   }
 }
 
-Widget cardModules(String title, ExactAssetImage image, int num,
-    String nameItem, BuildContext context) {
+Widget cardModules(String title, ExactAssetImage image, int num, String nameItem, BuildContext context) {
   final size = MediaQuery.of(context).size;
   return Container(
-      padding:
-          EdgeInsets.only(left: size.width * 0.04, right: size.width * 0.08),
+      padding: EdgeInsets.only(left: size.width * 0.04, right: size.width * 0.08),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
           color: Colors.white,
