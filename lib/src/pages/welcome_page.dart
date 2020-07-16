@@ -21,7 +21,7 @@ class WelcomePage extends StatelessWidget {
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             // customRaisedButton('Iniciar sesión', blue2Color, Colors.black, context, LoginPage()),
             customRaisedButton(
-                'Iniciar sesión', blue2Color, Colors.black, context, "/listRhythms"),
+                'Iniciar sesión', blue2Color, Colors.black, context, "/login"),
           ],
         ),
       ),
