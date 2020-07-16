@@ -2,7 +2,8 @@ import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/utils/textStyle_utils.dart';
 import 'package:flutter/material.dart';
 
-Widget customRaisedButton(String text, Color colorB, Color colorT, BuildContext context, String route) {
+Widget customRaisedButton(String text, Color colorB, Color colorT,
+    BuildContext context, String route) {
   return RaisedButton(
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
@@ -22,7 +23,8 @@ Widget customRaisedButton(String text, Color colorB, Color colorT, BuildContext 
       });
 }
 
-Widget customFlatButton(String text, Color colorB, Color colorBr, Color colorT, BuildContext context, String route) {
+Widget customFlatButton(String text, Color colorB, Color colorBr, Color colorT,
+    BuildContext context, String route) {
   return FlatButton(
       child: Container(
           padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
@@ -67,4 +69,12 @@ Widget textButton(
               builder: (context) => route,
             ));
       });
+}
+
+Widget iconButton(Icon icon, Color color, dynamic event) {
+  return CircleAvatar(
+      radius: 20,
+      backgroundColor: color,
+      child: IconButton(
+          icon: icon, iconSize: 20, color: Colors.white, onPressed: event));
 }
