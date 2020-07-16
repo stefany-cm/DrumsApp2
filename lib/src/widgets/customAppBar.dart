@@ -42,6 +42,7 @@ Widget gradientAppBar(String text, LinearGradient colorL, BuildContext context) 
 
 Widget linearAppBar(String text, Color colorL, BuildContext context) {
   return AppBar(
+    automaticallyImplyLeading: false, // hides leading widget
     title: Text(text, style: textStyleSemiBold),
     leading: IconButton(
         icon: Icon(Icons.arrow_back_ios),

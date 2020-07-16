@@ -1,4 +1,5 @@
 import 'package:drumsapp2/src/utils/colors_utils.dart';
+import 'package:drumsapp2/src/utils/textStyle_utils.dart';
 import 'package:drumsapp2/src/widgets/buttons.dart';
 import 'package:drumsapp2/src/widgets/customAppBar.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,9 @@ class BaladaRhythms extends StatefulWidget {
 }
 
 class _BaladaRhythmsState extends State<BaladaRhythms> {
+  bool state = true;
+  double rating = 0.0;
+
   @override
   void initState() {
     super.initState();
@@ -24,7 +28,9 @@ class _BaladaRhythmsState extends State<BaladaRhythms> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: linearAppBar('Balada', orangeColor, context),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(35.0),
+        child: linearAppBar('Balada', orangeColor, context)),
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -35,8 +41,8 @@ class _BaladaRhythmsState extends State<BaladaRhythms> {
                 Column(
                   children: <Widget>[
                     buttonSet(),
-                    switchMetronome(),
-                    speedSlider()
+                    switchMetronome(state, _changeSwitchMetronome),
+                    speedSlider(rating, _changeSpeedSlider)
                   ],
                 ),
                 instrumentMatrix()
@@ -57,6 +63,19 @@ class _BaladaRhythmsState extends State<BaladaRhythms> {
     ]);
     super.dispose();
   }
+
+  _changeSwitchMetronome(bool value) {
+    setState(() {
+      state = value;
+    });
+  }
+
+  _changeSpeedSlider(double value) {
+    setState(() {
+      rating = value;
+      print(rating);
+    });
+  }
 }
 
 Widget buttonSet() {
@@ -69,20 +88,37 @@ Widget buttonSet() {
     ),
     child: Row(
       children: <Widget>[
-        iconButton(Icon(Icons.stop), Colors.red[300], (){}),
-        iconButton(Icon(Icons.play_arrow), Colors.green[300], (){}),
-        iconButton(Icon(Icons.pause), Colors.grey[300], (){}),
+        iconButton(Icon(Icons.stop), Colors.red[300], () {}),
+        iconButton(Icon(Icons.play_arrow), Colors.green[300], () {}),
+        iconButton(Icon(Icons.pause), Colors.grey[300], () {}),
       ],
     ),
   );
 }
 
-Widget switchMetronome() {
-  return Container();
+Widget switchMetronome(bool state, dynamic function) {
+  return Column(children: <Widget>[
+    Text('Metrónomo', style: textStyleSubtitleCardShort),
+    Switch(
+      value: state,
+      onChanged: function,
+      activeColor: orangeColor,
+    )
+  ]);
 }
 
-Widget speedSlider() {
-  return Container();
+Widget speedSlider(double rating, dynamic function) {
+  return Column(children: <Widget>[
+    Text('Velocidad', style: textStyleSubtitleCardShort,),
+    Slider(
+        value: rating,
+        activeColor: orangeColor,
+        min: 0,
+        max: 100,
+        divisions: 10,
+        label: rating.round().toString(),
+        onChanged: function)
+  ]);
 }
 
 Widget instrumentMatrix() {
