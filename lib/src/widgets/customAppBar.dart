@@ -27,3 +27,26 @@ Widget customAppBar(String text, BuildContext context) {
     ],
   );
 }
+Widget gradientAppBar(String text, LinearGradient colorL, BuildContext context) {
+  return AppBar(
+    title: Text(text, style: textStyleSemiBold),
+    leading: IconButton(
+        icon: Icon(Icons.arrow_back_ios),
+        onPressed: () => Navigator.of(context).pop()),
+    centerTitle: true,
+    flexibleSpace: Container(
+      decoration: BoxDecoration(gradient: colorL),
+    ),
+  );
+}
+
+Widget linearAppBar(String text, Color colorL, BuildContext context) {
+  return AppBar(
+    title: Text(text, style: textStyleSemiBold),
+    leading: IconButton(
+        icon: Icon(Icons.arrow_back_ios),
+        onPressed: () => Navigator.of(context).pop()),
+    centerTitle: true,
+    backgroundColor: colorL,
+  );
+}

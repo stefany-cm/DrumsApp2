@@ -1,6 +1,6 @@
 import 'package:drumsapp2/src/pages/principal/group_principal.dart';
 import 'package:drumsapp2/src/pages/principal/modules_principal.dart';
-import 'package:drumsapp2/src/widgets/gradientAppBar.dart';
+import 'package:drumsapp2/src/widgets/customAppBar.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/colors_utils.dart';
@@ -24,10 +24,10 @@ class _HomeNavigationPrincipalState extends State<HomeNavigationPrincipal> {
     Center(child: Text('Ajustes')),
   ];
 
-  @override
+  /*@override
   void initState() {
     _title = 'Módulos';
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {

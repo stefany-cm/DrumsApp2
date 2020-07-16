@@ -40,6 +40,44 @@ Widget basicCard(String title, IconData icon, BuildContext context) {
   );
 }
 
+Widget listCard(String title, String imageR, BuildContext context) {
+  final size = MediaQuery.of(context).size;
+  return InkWell(
+    child: Container(
+      margin: EdgeInsets.only(top: 15.0),
+      padding: EdgeInsets.symmetric(
+          horizontal: size.width * 0.05, vertical: size.width * 0.04),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(18.0),
+          color: Colors.white,
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+                color: Colors.grey[200],
+                blurRadius: 8.0,
+                spreadRadius: 1.0,
+                offset: Offset(-2, 3.0))
+          ]),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              Container(child: Image.asset(imageR), width: size.width * 0.12,),
+              SizedBox(width: size.width * 0.04),
+              Text(title, style: textStyleSubtitleCard),
+            ],
+          ),
+          Icon(
+            Icons.arrow_forward_ios,
+            color: Colors.grey[300],
+          )
+        ],
+      ),
+    ),
+    onTap: () {},
+  );
+}
+
 Widget groupCard(
     String title, String date, int numStudents, BuildContext context) {
   final size = MediaQuery.of(context).size;

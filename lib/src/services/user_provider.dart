@@ -12,7 +12,7 @@ class UserProvider {
 
     final userData = {'email': email, 'password': password};
     print('Json => ${userData}');
-    final url = '$_url';
+    //final url = '$_url';
     final res = await http.post('$_url/user/create2', body: userData);
 
     Map<String, dynamic> decodeData = json.decode(res.body);
@@ -27,7 +27,7 @@ class UserProvider {
 
     final userData = {'email': email, 'password': password};
     print('Json => ${userData}');
-    final url = '$_url';
+    //final url = '$_url';
     final res = await http.post('$_url/user/create2', body: userData);
 
     Map<String, dynamic> decodeData = json.decode(res.body);
@@ -42,14 +42,14 @@ class UserProvider {
 
     final authData = {'email': email, 'password': password};
     print('Json => ${authData}');
-    final url = '$_url';
+    //final url = '$_url';
     final res = await http.post('$_url/auth/login', body: authData);
 
     Map<String, dynamic> decodeData = json.decode(res.body);
     // List<dynamic> decodeData = json.decode(res.body);
     print('????$decodeData');
     if (res.statusCode == 201) {
-      final body = await res.body;
+      //final body = await res.body;
 
       // final user = await this.jsonDecode(body);
       // print(await _userPreference.decodeJWT());

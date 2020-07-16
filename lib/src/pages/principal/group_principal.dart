@@ -1,4 +1,3 @@
-import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/utils/textStyle_utils.dart';
 import 'package:drumsapp2/src/widgets/cards.dart';
 import 'package:flutter/material.dart';

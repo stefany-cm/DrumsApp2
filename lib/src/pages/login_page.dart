@@ -1,5 +1,4 @@
 import 'package:drumsapp2/src/bloc/provider.dart';
-import 'package:drumsapp2/src/pages/signUpPersonal_page.dart';
 import 'package:drumsapp2/src/pages/signUp_page.dart';
 import 'package:drumsapp2/src/pages/welcome_page.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
@@ -85,7 +84,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget _noAccountYet2(BuildContext context) {
+  /*Widget _noAccountYet2(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -96,5 +95,5 @@ class LoginPage extends StatelessWidget {
         textButton('Registrarse2', blue2Color, context, SignUpPersonalPage()),
       ],
     );
-  }
+  }*/
 }
