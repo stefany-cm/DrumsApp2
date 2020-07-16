@@ -17,7 +17,7 @@ class WelcomePage extends StatelessWidget {
           children: <Widget>[
             logoContainerRounded(context),
             SizedBox(height: MediaQuery.of(context).size.height * 0.15),
-            customFlatButton('Registrarse', null, blue2Color, Colors.black, context, SignUpPage()),
+            customFlatButton('Registrarse', null, blue2Color, Colors.black, context, "/signUp"),
             SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             // customRaisedButton('Iniciar sesión', blue2Color, Colors.black, context, LoginPage()),
             customRaisedButton(

@@ -40,7 +40,7 @@ Widget basicCard(String title, IconData icon, BuildContext context) {
   );
 }
 
-Widget listCard(String title, String imageR, BuildContext context) {
+Widget listCard(String title, String imageR, BuildContext context, String route) {
   final size = MediaQuery.of(context).size;
   return InkWell(
     child: Container(
@@ -74,7 +74,9 @@ Widget listCard(String title, String imageR, BuildContext context) {
         ],
       ),
     ),
-    onTap: () {},
+    onTap: () {
+       Navigator.of(context).pushNamed('$route');
+    },
   );
 }
 

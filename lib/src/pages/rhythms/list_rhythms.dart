@@ -19,15 +19,6 @@ class _ListRhythmsState extends State<ListRhythms> {
     'Vals'
   ];
 
-  /*@override
-  void initState() {
-    super.initState();
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
-    ]);
-  }*/
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,21 +29,12 @@ class _ListRhythmsState extends State<ListRhythms> {
           reverse: false,
           children: <Widget>[
             for (var item in rhythms)
-              listCard(item, 'assets/RitmosList.png', context)
+              listCard(item, 'assets/RitmosList.png', context, ("/"+item+"Rhythms"))
           ],
         ),
       ),
     );
   }
-
-  /*@override
-  dispose() {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
-    super.dispose();
-  }*/
 }
 
 class EachList extends StatelessWidget {

@@ -2,8 +2,7 @@ import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/utils/textStyle_utils.dart';
 import 'package:flutter/material.dart';
 
-Widget customRaisedButton(String text, Color colorB, Color colorT,
-    BuildContext context, String route) {
+Widget customRaisedButton(String text, Color colorB, Color colorT, BuildContext context, String route) {
   return RaisedButton(
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
@@ -23,8 +22,7 @@ Widget customRaisedButton(String text, Color colorB, Color colorT,
       });
 }
 
-Widget customFlatButton(String text, Color colorB, Color colorBr, Color colorT,
-    BuildContext context, dynamic route) {
+Widget customFlatButton(String text, Color colorB, Color colorBr, Color colorT, BuildContext context, String route) {
   return FlatButton(
       child: Container(
           padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
@@ -35,11 +33,8 @@ Widget customFlatButton(String text, Color colorB, Color colorBr, Color colorT,
           side: BorderSide(color: colorBr, width: 2, style: BorderStyle.solid),
           borderRadius: BorderRadius.circular(20)),
       onPressed: () {
-        Navigator.push(
-            context,
-            new MaterialPageRoute(
-              builder: (context) => route,
-            ));
+        // Navigator.of(context).pushReplacementNamed('$route');
+        Navigator.of(context).pushNamed('$route');
       });
 }
 

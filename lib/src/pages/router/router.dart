@@ -1,6 +1,7 @@
 import 'package:drumsapp2/src/pages/home_page.dart';
 import 'package:drumsapp2/src/pages/login_page.dart';
 import 'package:drumsapp2/src/pages/principal/homeNavigation_principal.dart';
+import 'package:drumsapp2/src/pages/rhythms/balada_rhythms.dart';
 import 'package:drumsapp2/src/pages/rhythms/list_rhythms.dart';
 import 'package:drumsapp2/src/pages/signUpPersonal_page.dart';
 import 'package:drumsapp2/src/pages/signUp_page.dart';
@@ -20,6 +21,7 @@ Map<String, WidgetBuilder> publicRoutes(BuildContext context) {
     "/homeNavigation": (context) => HomeNavigationPrincipal(),
     "/groupPricipal": (context) => GroupPrincipal(),
     "/listRhythms": (context) => ListRhythms(),
+    "/BaladaRhythms": (context) => BaladaRhythms(),
     // "/modulesPrincipal": (context) => ModulesPrincipal(),//
     // "/hom": (context) => HomeNavigationPrincipal(),
   };
