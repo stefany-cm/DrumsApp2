@@ -29,8 +29,8 @@ class _BaladaRhythmsState extends State<BaladaRhythms> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(35.0),
-        child: linearAppBar('Balada', orangeColor, context)),
+          preferredSize: Size.fromHeight(35.0),
+          child: linearAppBar('Balada', orangeColor, context)),
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -48,7 +48,7 @@ class _BaladaRhythmsState extends State<BaladaRhythms> {
                 instrumentMatrix()
               ],
             ),
-            pseudoSheetMusic()
+            pseudoSheetMusic(3, 8)
           ],
         ),
       ),
@@ -109,7 +109,10 @@ Widget switchMetronome(bool state, dynamic function) {
 
 Widget speedSlider(double rating, dynamic function) {
   return Column(children: <Widget>[
-    Text('Velocidad', style: textStyleSubtitleCardShort,),
+    Text(
+      'Velocidad',
+      style: textStyleSubtitleCardShort,
+    ),
     Slider(
         value: rating,
         activeColor: orangeColor,
@@ -125,6 +128,8 @@ Widget instrumentMatrix() {
   return Container();
 }
 
-Widget pseudoSheetMusic() {
-  return Container();
+Widget pseudoSheetMusic(int x, int y) {
+  return Container(
+    
+  );
 }

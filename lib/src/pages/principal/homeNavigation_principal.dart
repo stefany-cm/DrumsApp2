@@ -1,5 +1,5 @@
 import 'package:drumsapp2/src/pages/principal/group_principal.dart';
-import 'package:drumsapp2/src/pages/principal/modules_principal.dart';
+import 'package:drumsapp2/src/pages/principal/modules/modules_principal.dart';
 import 'package:drumsapp2/src/widgets/customAppBar.dart';
 import 'package:flutter/material.dart';
 
@@ -9,8 +9,7 @@ class HomeNavigationPrincipal extends StatefulWidget {
   const HomeNavigationPrincipal({Key key}) : super(key: key);
 
   @override
-  _HomeNavigationPrincipalState createState() =>
-      _HomeNavigationPrincipalState();
+  _HomeNavigationPrincipalState createState() =>  _HomeNavigationPrincipalState();
 }
 
 class _HomeNavigationPrincipalState extends State<HomeNavigationPrincipal> {
@@ -24,10 +23,10 @@ class _HomeNavigationPrincipalState extends State<HomeNavigationPrincipal> {
     Center(child: Text('Ajustes')),
   ];
 
-  /*@override
+  @override
   void initState() {
     _title = 'Módulos';
-  }*/
+  }
 
   @override
   Widget build(BuildContext context) {
