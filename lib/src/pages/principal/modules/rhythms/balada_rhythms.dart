@@ -45,7 +45,7 @@ class _BaladaRhythmsState extends State<BaladaRhythms> {
                     speedSlider(rating, _changeSpeedSlider)
                   ],
                 ),
-                instrumentMatrix()
+                instrumentMatrix(3, 8)
               ],
             ),
             pseudoSheetMusic(3, 8)
@@ -124,12 +124,59 @@ Widget speedSlider(double rating, dynamic function) {
   ]);
 }
 
-Widget instrumentMatrix() {
-  return Container();
+Widget instrumentMatrix(int x, int y) {
+  List<Widget> myRowChildren = [];
+  List<List<Widget>> instruments = [];
+  List<Widget> columnInstruments = [];
+  int z = 0;
+  for (int i = 0; i < x; i++) {
+    for (int j = 0; j < y; j++) {
+      columnInstruments.add(_buttonInstrument(i, j));
+    }
+    instruments.add(columnInstruments);
+    columnInstruments = [];
+  }
+  print(instruments);
+
+  myRowChildren = instruments
+      .map(
+        (columns) => Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: columns.map((nr) {
+            return Container(
+              padding: EdgeInsets.all(10),
+              child: nr,
+            );
+          }).toList(),
+        ),
+      )
+      .toList();
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: myRowChildren,
+  );
+}
+
+Widget _buttonInstrument(int i, int j) {
+  String _nameInstrumentImage;
+  switch (i) {
+    case 0: {_nameInstrumentImage = 'tambor';}
+      break;
+    case 1: {_nameInstrumentImage = 'platillo';}
+      break;
+    case 2: {_nameInstrumentImage = 'bombo';}
+      break;
+  }
+  return GestureDetector(
+    onTap: () => {print('click on [$i, $j]')},
+    child: Image(
+      image: AssetImage('assets/$_nameInstrumentImage.png'),
+      fit: BoxFit.cover,
+      height: 30,
+    ),
+  );
 }
 
 Widget pseudoSheetMusic(int x, int y) {
-  return Container(
-    
-  );
+  return Container();
 }
