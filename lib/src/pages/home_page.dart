@@ -4,15 +4,14 @@ import 'package:drumsapp2/src/utils/textStyle_utils.dart';
 import 'package:drumsapp2/src/widgets/buttons.dart';
 import 'package:drumsapp2/src/widgets/logo.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
+    // SystemChrome.setPreferredOrientations([
+    //   DeviceOrientation.portraitUp,
+    //   DeviceOrientation.portraitDown,
+    // ]);
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,

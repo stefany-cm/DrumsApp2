@@ -24,7 +24,7 @@ Widget customRaisedButton(String text, Color colorB, Color colorT,
 }
 
 Widget customFlatButton(String text, Color colorB, Color colorBr, Color colorT,
-    BuildContext context, dynamic route) {
+    BuildContext context, String route) {
   return FlatButton(
       child: Container(
           padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
@@ -35,11 +35,8 @@ Widget customFlatButton(String text, Color colorB, Color colorBr, Color colorT,
           side: BorderSide(color: colorBr, width: 2, style: BorderStyle.solid),
           borderRadius: BorderRadius.circular(20)),
       onPressed: () {
-        Navigator.push(
-            context,
-            new MaterialPageRoute(
-              builder: (context) => route,
-            ));
+        // Navigator.of(context).pushReplacementNamed('$route');
+        Navigator.of(context).pushNamed('$route');
       });
 }
 
@@ -72,4 +69,12 @@ Widget textButton(
               builder: (context) => route,
             ));
       });
+}
+
+Widget iconButton(Icon icon, Color color, dynamic event) {
+  return CircleAvatar(
+      radius: 20,
+      backgroundColor: color,
+      child: IconButton(
+          icon: icon, iconSize: 20, color: Colors.white, onPressed: event));
 }
