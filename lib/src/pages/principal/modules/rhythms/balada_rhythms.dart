@@ -12,7 +12,7 @@ class BaladaRhythms extends StatefulWidget {
 }
 
 class _BaladaRhythmsState extends State<BaladaRhythms> {
-  List<List<int>> matrix = [[1, 0, 1, 0, 1, 0, 1, 2], [1, 1, 0, 0, 1, 1, 0, 2], [1, 0, 1, 0, 1, 0, 1, 2]];
+  List<List<int>> matrix = [[1, 1, 1, 1, 1, 1, 1, 1], [0, 0, 1, 0, 0, 0, 1, 0], [1, 0, 0, 0, 1, 0, 0, 0]];
 
   @override
   Widget build(BuildContext context) {

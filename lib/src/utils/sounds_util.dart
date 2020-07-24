@@ -12,6 +12,24 @@ final List sounds = [
   "sounds/pbr.mp3"
 ];
 
-play(int i) async {
+play(int i) {
   audioCache.play(sounds[i]);
+}
+
+playAll(List<List<int>> matrix) async {
+  int colums = 0;
+  for (int i = 0; i < matrix.length; i++) {
+    for (int j = 0; j < matrix[i].length; j++) {
+      if (matrix[i][j] == 1) {
+        colums++;
+      }
+    }
+    playColum(colums);
+    colums = 0;
+  }
+}
+playColum(int numInstruments) async{
+  for (int i = 0; i < numInstruments; i++) {
+    audioCache.play(sounds[i]);
+  }
 }
