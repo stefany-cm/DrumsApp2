@@ -4,6 +4,7 @@ import 'package:drumsapp2/src/widgets/buttons.dart';
 import 'package:drumsapp2/src/widgets/customAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sheet_music/sheet_music.dart';
 
 class BaladaRhythms extends StatefulWidget {
   BaladaRhythms({Key key}) : super(key: key);
@@ -15,6 +16,7 @@ class BaladaRhythms extends StatefulWidget {
 class _BaladaRhythmsState extends State<BaladaRhythms> {
   bool state = true;
   double rating = 0.0;
+  List<List<int>> matrix = [[1, 0, 1, 0, 1, 0, 1, 2], [1, 1, 0, 0, 1, 1, 0, 2], [1, 0, 1, 0, 1, 0, 1, 2]];
 
   @override
   void initState() {
@@ -29,27 +31,30 @@ class _BaladaRhythmsState extends State<BaladaRhythms> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(35.0),
+          preferredSize: Size.fromHeight(40.0),
           child: linearAppBar('Balada', orangeColor, context)),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Column(
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    buttonSet(),
-                    switchMetronome(state, _changeSwitchMetronome),
-                    speedSlider(rating, _changeSpeedSlider)
-                  ],
-                ),
-                instrumentMatrix(3, 8)
-              ],
-            ),
-            pseudoSheetMusic(3, 8)
-          ],
+      body: SingleChildScrollView(
+              child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Column(
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      buttonSet(),
+                      switchMetronome(state, _changeSwitchMetronome),
+                      speedSlider(rating, _changeSpeedSlider)
+                    ],
+                  ),
+                  instrumentMatrix(matrix)
+                ],
+              ),
+              pseudoSheetMusic(matrix)
+            ],
+          ),
         ),
       ),
     );
@@ -124,15 +129,22 @@ Widget speedSlider(double rating, dynamic function) {
   ]);
 }
 
-Widget instrumentMatrix(int x, int y) {
+Widget instrumentMatrix(List<List <int>> matrix) {
   List<Widget> myRowChildren = [];
   List<List<Widget>> instruments = [];
   List<Widget> columnInstruments = [];
-  int z = 0;
-  for (int i = 0; i < x; i++) {
-    for (int j = 0; j < y; j++) {
-      columnInstruments.add(_buttonInstrument(i, j));
+  
+  for (int i = 0; i < matrix.length; i++) {
+    for (int j = 0; j < matrix[i].length; j++) {
+      int z = matrix[i][j];
+      print("add [$i, $j] = $z");
+      if (matrix[i][j] == 1) {
+        columnInstruments.add(_buttonInstrument(i, j));
+      }else {
+         columnInstruments.add(_buttonEmpty(i, j));
+      }
     }
+    print("------------\n");
     instruments.add(columnInstruments);
     columnInstruments = [];
   }
@@ -144,7 +156,12 @@ Widget instrumentMatrix(int x, int y) {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: columns.map((nr) {
             return Container(
-              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.grey[300],
+                          width: 1,
+                        )),
+              padding: EdgeInsets.symmetric(vertical: 3, horizontal: 10),
               child: nr,
             );
           }).toList(),
@@ -172,11 +189,33 @@ Widget _buttonInstrument(int i, int j) {
     child: Image(
       image: AssetImage('assets/$_nameInstrumentImage.png'),
       fit: BoxFit.cover,
-      height: 30,
+      height: 40,
+    ),
+  );
+}
+Widget _buttonEmpty(int i, int j) {
+    return GestureDetector(
+    onTap: () => {print('click on [$i, $j]')},
+    child: Image(
+      image: AssetImage('assets/vacio.png'),
+      fit: BoxFit.cover,
+      height: 40
     ),
   );
 }
 
-Widget pseudoSheetMusic(int x, int y) {
-  return Container();
+
+
+Widget pseudoSheetMusic(List<List <int>> matrix) {
+  instrumentMatrix(matrix);
+  return Container(
+    child: SheetMusic( 
+      scale: "C Major", //DO MAJOR
+      pitch: "G5", //4/4
+      trebleClef: true,
+      hide: false,
+      
+    ),
+  );
 }
+
