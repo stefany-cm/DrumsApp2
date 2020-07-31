@@ -17,19 +17,23 @@ play(int i) {
 }
 
 playAll(List<List<int>> matrix) async {
-  int colums = 0;
-  for (int i = 0; i < matrix.length; i++) {
-    for (int j = 0; j < matrix[i].length; j++) {
+  int colums = matrix[0].length;
+  int cont = 0;
+  for (int i = 0; i < colums; i++) {
+    for (int j = 0; j < matrix.length; j++) {
       if (matrix[i][j] == 1) {
-        colums++;
+        print("[$j - $i]--------------------------------------------------------------------------");
+        cont++;
       }
     }
-    playColum(colums);
-    colums = 0;
+    playColum(cont);
+    print("$cont*****************");
+    cont = 0;
   }
 }
 playColum(int numInstruments) async{
   for (int i = 0; i < numInstruments; i++) {
+    print("$i aaaaaaaaaaaaaaaaaaaaaaaaaaa");
     audioCache.play(sounds[i]);
   }
 }

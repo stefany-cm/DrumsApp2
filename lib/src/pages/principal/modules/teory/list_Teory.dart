@@ -8,17 +8,13 @@ class ListTeory extends StatefulWidget {
   const ListTeory({Key key}) : super(key: key);
 
   @override
-  _ListRhythmsState createState() => _ListRhythmsState();
+  _ListTeoryState createState() => _ListTeoryState();
 }
 
-class _ListRhythmsState extends State<ListTeory> {
-   List rhythms = [
-    {"name": "Balada", "matrix":[[1, 1, 1, 1, 1, 1, 1, 1], [0, 0, 1, 0, 0, 0, 1, 0], [1, 0, 0, 0, 1, 0, 0, 0]]},
-    {"name": "Reggaetón", "matrix":[[1, 0, 1, 0, 1, 0, 1, 0], [0, 1, 0, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 0]]},
-    {"name": "SKA", "matrix":[[0, 1, 0, 1, 0, 1, 0, 1], [0, 0, 1, 0, 0, 0, 1, 0], [1, 0, 0, 0, 1, 0, 0, 0]]},
-    {"name": "Balada pop rock", "matrix":[[1, 1, 1, 1, 1, 1, 1, 1], [0, 0, 1, 0, 0, 0, 1, 1], [1, 0, 0, 1, 1, 0, 0, 0]]},
-    {"name": "Vals", "matrix":[[1, 0, 1, 0, 1, 0], [0, 0, 1, 0, 1, 0], [1, 0, 0, 0, 0, 0]]}
-  ];
+class _ListTeoryState extends State<ListTeory> {
+   static const teory = {
+
+   };
   
   @override
   Widget build(BuildContext context) {
@@ -27,10 +23,7 @@ class _ListRhythmsState extends State<ListTeory> {
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.05),
         child: ListView(
-          reverse: false,
-          children: rhythms.map((e){
-              listCard(e, 'assets/RitmosList.png', context, (ViewRhythms(matrix: e, nameRhythms: e))); 
-            }).toList()
+          
         ),
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:drumsapp2/src/utils/sounds_util.dart';
 import 'package:drumsapp2/src/widgets/instrument_matrix.dart';
 import 'package:drumsapp2/src/widgets/tools_instrument_matrix.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,7 @@ class _MatrixCollectionState extends State<MatrixCollection> {
                 children: <Widget>[
                   Column(
                     children: <Widget>[
-                      buttonSet(),
+                      buttonSet(_startButtonSet),
                       switchMetronome(state, _changeSwitchMetronome),
                       speedSlider(rating, _changeSpeedSlider)
                     ],
@@ -61,6 +62,10 @@ class _MatrixCollectionState extends State<MatrixCollection> {
       DeviceOrientation.portraitUp,
     ]);
     super.dispose();
+  }
+
+  _startButtonSet(){
+    playAll(widget.matrix);
   }
 
   _changeSwitchMetronome(bool value) {

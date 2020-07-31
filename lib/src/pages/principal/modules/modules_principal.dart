@@ -8,11 +8,13 @@ class ModulesPrincipal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
+    return SingleChildScrollView(
+      child:
+      Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          SizedBox(height: MediaQuery.of(context).size.height * 0.125),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
@@ -38,6 +40,7 @@ Widget cardModules(String title, ExactAssetImage image, int num, String nameItem
   final size = MediaQuery.of(context).size;
   return InkWell(
       child: Container(
+        margin: EdgeInsets.only(top: size.width * 0.02, bottom: size.width * 0.04),
         padding: EdgeInsets.only(left: size.width * 0.04, right: size.width * 0.08),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20.0),
