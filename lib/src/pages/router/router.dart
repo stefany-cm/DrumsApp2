@@ -5,6 +5,7 @@ import 'package:drumsapp2/src/pages/principal/modules/compositions/list_composit
 import 'package:drumsapp2/src/pages/principal/modules/exercises/list_exercises.dart';
 import 'package:drumsapp2/src/pages/principal/modules/rhythms/balada_rhythms.dart';
 import 'package:drumsapp2/src/pages/principal/modules/rhythms/list_rhythms.dart';
+import 'package:drumsapp2/src/pages/principal/modules/rhythms/view_rhythms.dart';
 import 'package:drumsapp2/src/pages/principal/modules/teory/list_Teory.dart';
 import 'package:drumsapp2/src/pages/signUpPersonal_page.dart';
 import 'package:drumsapp2/src/pages/signUp_page.dart';
@@ -27,7 +28,7 @@ Map<String, WidgetBuilder> publicRoutes(BuildContext context) {
     "/listExercises": (context) => ListExercises(),
     "/listRhythms": (context) => ListRhythms(),
     "/listComposition": (context) => ListComposition(),
-    "/BaladaRhythms": (context) => BaladaRhythms(),
+    "/BaladaRhythms": (context) => ViewRhythms(),
     // "/modulesPrincipal": (context) => ModulesPrincipal(),//
     // "/hom": (context) => HomeNavigationPrincipal(),
   };

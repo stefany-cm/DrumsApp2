@@ -1,5 +1,4 @@
 import 'package:drumsapp2/src/utils/colors_utils.dart';
-import 'package:drumsapp2/src/widgets/cards.dart';
 import 'package:drumsapp2/src/widgets/customAppBar.dart';
 import 'package:flutter/material.dart';
 
@@ -28,8 +27,6 @@ class _ListRhythmsState extends State<ListComposition> {
         child: ListView(
           reverse: false,
           children: <Widget>[
-            for (var item in rhythms)
-              listCard(item, 'assets/RitmosList.png', context, ("/"+item+"Rhythms"))
           ],
         ),
       ),

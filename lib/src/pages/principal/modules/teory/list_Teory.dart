@@ -1,3 +1,4 @@
+import 'package:drumsapp2/src/pages/principal/modules/rhythms/view_rhythms.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/widgets/cards.dart';
 import 'package:drumsapp2/src/widgets/customAppBar.dart';
@@ -11,14 +12,14 @@ class ListTeory extends StatefulWidget {
 }
 
 class _ListRhythmsState extends State<ListTeory> {
-  List<String> rhythms = [
-    'Balada',
-    'Reggaetón',
-    'SKA',
-    'Balada pop rock',
-    'Vals'
+   List rhythms = [
+    {"name": "Balada", "matrix":[[1, 1, 1, 1, 1, 1, 1, 1], [0, 0, 1, 0, 0, 0, 1, 0], [1, 0, 0, 0, 1, 0, 0, 0]]},
+    {"name": "Reggaetón", "matrix":[[1, 0, 1, 0, 1, 0, 1, 0], [0, 1, 0, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1, 0]]},
+    {"name": "SKA", "matrix":[[0, 1, 0, 1, 0, 1, 0, 1], [0, 0, 1, 0, 0, 0, 1, 0], [1, 0, 0, 0, 1, 0, 0, 0]]},
+    {"name": "Balada pop rock", "matrix":[[1, 1, 1, 1, 1, 1, 1, 1], [0, 0, 1, 0, 0, 0, 1, 1], [1, 0, 0, 1, 1, 0, 0, 0]]},
+    {"name": "Vals", "matrix":[[1, 0, 1, 0, 1, 0], [0, 0, 1, 0, 1, 0], [1, 0, 0, 0, 0, 0]]}
   ];
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,10 +28,9 @@ class _ListRhythmsState extends State<ListTeory> {
         margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.05),
         child: ListView(
           reverse: false,
-          children: <Widget>[
-            for (var item in rhythms)
-              listCard(item, 'assets/RitmosList.png', context, ("/"+item+"Rhythms"))
-          ],
+          children: rhythms.map((e){
+              listCard(e, 'assets/RitmosList.png', context, (ViewRhythms(matrix: e, nameRhythms: e))); 
+            }).toList()
         ),
       ),
     );

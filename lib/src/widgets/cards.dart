@@ -1,3 +1,4 @@
+import 'package:drumsapp2/src/pages/principal/modules/rhythms/view_rhythms.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/utils/textStyle_utils.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,7 @@ Widget basicCard(String title, IconData icon, BuildContext context) {
   );
 }
 
-Widget listCard(String title, String imageR, BuildContext context, String route) {
+Widget listCard(String title, String imageR, BuildContext context, ViewRhythms route) {
   final size = MediaQuery.of(context).size;
   return InkWell(
     child: Container(
@@ -75,7 +76,12 @@ Widget listCard(String title, String imageR, BuildContext context, String route)
       ),
     ),
     onTap: () {
-       Navigator.of(context).pushNamed('$route');
+      Navigator.push(
+        context,
+        new MaterialPageRoute(
+          builder: (context) => route,
+        )
+      );
     },
   );
 }
