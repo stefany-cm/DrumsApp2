@@ -1,39 +1,42 @@
 import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 
-final AudioCache audioCache = AudioCache();
+AudioCache audioCacheInstrument = AudioCache();
+AudioCache audioCacheMatrix = AudioCache();
+AudioPlayer player;
 
-final List sounds = [
-  "r.mp3",
-  "p.mp3",
-  "b.mp3",
-  "sounds/pr.mp3",
-  "sounds/pb.mp3",
-  "sounds/br.mp3",
-  "sounds/pbr.mp3"
-];
+String url = "sounds/";
+String ext = ".mp3";
+bool isSound = false;
+bool isPaused = false;
 
-play(int i) {
-  audioCache.play(sounds[i]);
+List sounds = ["platillos", "redoblante", "bombo"];
+
+playInstrument(int i) {
+  audioCacheInstrument.play("$url${sounds[i]}$ext");
 }
 
-playAll(List<List<int>> matrix) async {
-  int colums = matrix[0].length;
-  int cont = 0;
-  for (int i = 0; i < colums; i++) {
-    for (int j = 0; j < matrix.length; j++) {
-      if (matrix[i][j] == 1) {
-        print("[$j - $i]--------------------------------------------------------------------------");
-        cont++;
-      }
-    }
-    playColum(cont);
-    print("$cont*****************");
-    cont = 0;
+playMatrix(String r) async{
+  if (!isSound) {
+    player = await audioCacheMatrix.loop("$url$r$ext");
+  }
+  if (isPaused){
+    player.resume();
+    isPaused = false;
+  }
+  isSound = true;
+}
+
+pauseMatrix(){
+  if(isSound && !isPaused){
+    player.pause();
+    isPaused = true;
   }
 }
-playColum(int numInstruments) async{
-  for (int i = 0; i < numInstruments; i++) {
-    print("$i aaaaaaaaaaaaaaaaaaaaaaaaaaa");
-    audioCache.play(sounds[i]);
+
+stopMatrix(){
+  if(isSound){
+    player.stop();
+    isSound = false;
   }
 }

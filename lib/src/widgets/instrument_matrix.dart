@@ -2,17 +2,17 @@ import 'package:drumsapp2/src/utils/sounds_util.dart';
 import 'package:flutter/material.dart';
 import 'package:sheet_music/sheet_music.dart';
 
-Widget instrumentMatrix(List<List <int>> matrix) {
+Widget instrumentMatrix(List<List<int>> matrix) {
   List<Widget> myRowChildren = [];
   List<List<Widget>> instruments = [];
   List<Widget> columnInstruments = [];
-  
+
   for (int i = 0; i < matrix.length; i++) {
     for (int j = 0; j < matrix[i].length; j++) {
       if (matrix[i][j] == 1) {
         columnInstruments.add(buttonInstrument(i, j));
-      }else {
-         columnInstruments.add(buttonEmpty(i, j));
+      } else {
+        columnInstruments.add(buttonEmpty(i, j));
       }
     }
     instruments.add(columnInstruments);
@@ -27,10 +27,10 @@ Widget instrumentMatrix(List<List <int>> matrix) {
           children: columns.map((nr) {
             return Container(
               decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.grey[300],
-                          width: 1,
-                        )),
+                  border: Border.all(
+                color: Colors.grey[300],
+                width: 1,
+              )),
               padding: EdgeInsets.symmetric(vertical: 3, horizontal: 10),
               child: nr,
             );
@@ -47,16 +47,25 @@ Widget instrumentMatrix(List<List <int>> matrix) {
 Widget buttonInstrument(int i, int j) {
   String _nameInstrumentImage;
   switch (i) {
-    case 0: {_nameInstrumentImage = 'tambor';}
+    case 0:
+      {
+        _nameInstrumentImage = 'platillo';
+      }
       break;
-    case 1: {_nameInstrumentImage = 'platillo';}
+    case 1:
+      {
+        _nameInstrumentImage = 'tambor';
+      }
       break;
-    case 2: {_nameInstrumentImage = 'bombo';}
+    case 2:
+      {
+        _nameInstrumentImage = 'bombo';
+      }
       break;
   }
   return GestureDetector(
     onTap: () => {
-      play(i),
+      playInstrument(i),
     },
     child: Image(
       image: AssetImage('assets/instruments/$_nameInstrumentImage.png'),
@@ -65,25 +74,27 @@ Widget buttonInstrument(int i, int j) {
     ),
   );
 }
+
 Widget buttonEmpty(int i, int j) {
-    return GestureDetector(
+  return GestureDetector(
     onTap: () => {},
     child: Image(
-      image: AssetImage('assets/instruments/vacio.png'),
-      fit: BoxFit.cover,
-      height: 40
-    ),
+        image: AssetImage('assets/instruments/vacio.png'),
+        fit: BoxFit.cover,
+        height: 40),
   );
 }
 
-Widget pseudoSheetMusic(List<List <int>> matrix) {
-  instrumentMatrix(matrix);
+Widget pseudoSheetMusic(int time, double width, String pseudo) {
+  //print(time.toDouble());
   return Container(
-    child: SheetMusic( 
-      scale: "C Major", //DO MAJOR
-      pitch: "G5", //4/4
-      trebleClef: true,
-      hide: false
+      width: width,
+      height: 120,
+      alignment: Alignment.topRight,
+      child: Image(
+      image: AssetImage('assets/musicsheet/$pseudo.jpg'),
+      fit: BoxFit.cover,
+      width: ((width*0.108)*time.toDouble()),
     ),
   );
 }

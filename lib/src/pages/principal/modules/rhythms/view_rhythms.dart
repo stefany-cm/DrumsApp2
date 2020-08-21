@@ -24,7 +24,7 @@ class _ViewRhythmsState extends State<ViewRhythms> {
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
           child: linearAppBar(widget.nameRhythms, orangeColor, context)),
-      body: MatrixCollection(matrix: widget.matrix),
+      body: MatrixCollection(matrix: widget.matrix, nameRhythms:  widget.nameRhythms),
     );
   }
 }
