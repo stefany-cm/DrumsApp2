@@ -92,9 +92,9 @@ Widget pseudoSheetMusic(int time, double width, String pseudo) {
       height: 120,
       alignment: Alignment.topRight,
       child: Image(
-      image: AssetImage('assets/musicsheet/$pseudo.jpg'),
+      image: AssetImage('assets/musicsheet/$pseudo.JPG'),
       fit: BoxFit.cover,
-      width: ((width*0.108)*time.toDouble()),
+      //width: ((width*0.108)*time.toDouble()),
     ),
   );
 }

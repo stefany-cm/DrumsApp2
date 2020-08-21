@@ -35,7 +35,7 @@ pauseMatrix(){
 }
 
 stopMatrix(){
-  if(isSound){
+  if(isSound || isPaused){
     player.stop();
     isSound = false;
   }
