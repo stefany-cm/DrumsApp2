@@ -1,11 +1,13 @@
 import 'package:drumsapp2/src/bloc/provider.dart';
 import 'package:drumsapp2/src/pages/home_page.dart';
 import 'package:drumsapp2/src/utils/theme_utils.dart';
+//import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:drumsapp2/src/pages/router/router.dart';
 import 'package:flutter/services.dart';
 
 void main() {
+  //debugPrintHitTestResults = true;
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       statusBarBrightness: Brightness.light));

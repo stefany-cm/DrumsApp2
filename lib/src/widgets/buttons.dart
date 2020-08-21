@@ -45,13 +45,12 @@ Widget backIconButton(BuildContext context) {
     padding: const EdgeInsets.only(top: 25.0),
     alignment: Alignment.bottomLeft,
     child: IconButton(
-        icon: Icon(
-          Icons.arrow_back_ios,
-          color: Colors.white,
-        ),
-        onPressed: () {
-          Navigator.pop(context);
-        }),
+      icon: Icon(Icons.arrow_back_ios),
+      color: Colors.white,
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    ),
   );
 }
 

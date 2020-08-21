@@ -3,7 +3,7 @@ import 'package:drumsapp2/src/utils/textStyle_utils.dart';
 import 'package:drumsapp2/src/widgets/buttons.dart';
 import 'package:flutter/material.dart';
 
-Widget buttonSet() {
+Widget buttonSet(dynamic startEvent, dynamic pauseEvent, dynamic stopEvent) {
   return Container(
     margin: EdgeInsets.all(8),
     padding: EdgeInsets.all(5),
@@ -13,9 +13,9 @@ Widget buttonSet() {
     ),
     child: Row(
       children: <Widget>[
-        iconButton(Icon(Icons.stop), Colors.red[300], () {}),
-        iconButton(Icon(Icons.play_arrow), Colors.green[300], () {}),
-        iconButton(Icon(Icons.pause), Colors.grey[300], () {}),
+        iconButton(Icon(Icons.stop), Colors.red[300], stopEvent),
+        iconButton(Icon(Icons.play_arrow), Colors.green[300], startEvent),
+        iconButton(Icon(Icons.pause), Colors.grey[300], pauseEvent),
       ],
     ),
   );

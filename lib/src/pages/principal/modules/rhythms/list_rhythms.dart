@@ -1,3 +1,4 @@
+import 'package:drumsapp2/src/pages/principal/modules/rhythms/view_rhythms.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/widgets/cards.dart';
 import 'package:drumsapp2/src/widgets/customAppBar.dart';
@@ -11,29 +12,44 @@ class ListRhythms extends StatefulWidget {
 }
 
 class _ListRhythmsState extends State<ListRhythms> {
-  List<String> rhythms = [
-    'Balada',
-    'Reggaetón',
-    'SKA',
-    'Balada pop rock',
-    'Vals'
-  ];
+  static const rhythms = {
+    "Balada": [
+      [1, 1, 1, 1, 1, 1, 1, 1],
+      [0, 0, 1, 0, 0, 0, 1, 0],
+      [1, 0, 0, 0, 1, 0, 0, 0]
+    ],
+    "Reggaetón": [
+      [1, 0, 1, 0, 1, 0, 1, 0],
+      [0, 1, 0, 1, 0, 1, 0, 1],
+      [1, 0, 1, 0, 1, 0, 1, 0]
+    ],
+    "SKA": [
+      [0, 1, 0, 1, 0, 1, 0, 1],
+      [0, 0, 1, 0, 0, 0, 1, 0],
+      [1, 0, 0, 0, 1, 0, 0, 0]
+    ],
+    "Balada pop rock": [
+      [1, 1, 1, 1, 1, 1, 1, 1],
+      [0, 0, 1, 0, 0, 0, 1, 1],
+      [1, 0, 0, 1, 1, 0, 0, 0]
+    ],
+    "Vals": [
+      [1, 0, 1, 0, 1, 0],
+      [0, 0, 1, 0, 1, 0],
+      [1, 0, 0, 0, 0, 0]
+    ]
+  };
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: linearAppBar('Ritmos', orangeColor, context),
-      body: Container(
-        margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.05),
-        child: ListView(
-          reverse: false,
-          children: <Widget>[
-            for (var item in rhythms)
-              listCard(item, 'assets/RitmosList.png', context, ("/"+item+"Rhythms"))
-          ],
-        ),
-      ),
-    );
+        appBar: linearAppBar('Ritmos', orangeColor, context),
+        body: ListView(
+            reverse: false,
+            children: rhythms.entries.map((entry) {
+              return listCard(entry.key, 'assets/icons/RitmosList.png', context,
+                  (ViewRhythms(matrix: entry.value, nameRhythms: entry.key)));
+            }).toList()));
   }
 }
 
@@ -42,16 +58,16 @@ class EachList extends StatelessWidget {
   EachList(this.name);
   @override
   Widget build(BuildContext context) {
-    return new Card(
-      child: new Container(
+    return Card(
+      child: Container(
         padding: EdgeInsets.all(8.0),
-        child: new Row(
+        child: Row(
           children: <Widget>[
             new CircleAvatar(
-              child: new Text(name[0]),
+              child: Text(name[0]),
             ),
-            new Padding(padding: EdgeInsets.only(right: 10.0)),
-            new Text(
+            Padding(padding: EdgeInsets.only(right: 10.0)),
+            Text(
               name,
               style: TextStyle(fontSize: 20.0),
             )

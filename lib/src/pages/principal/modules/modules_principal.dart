@@ -8,24 +8,26 @@ class ModulesPrincipal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
+    return SingleChildScrollView(
+      child:
+      Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          SizedBox(height: MediaQuery.of(context).size.height * 0.125),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              cardModules('Teoría', ExactAssetImage('assets/Teoria.png'), 2,'Items', context, "/listTeory"),
-              cardModules('Ejercicios',ExactAssetImage('assets/Ejercicios.png'),3,'Niveles',context, "/listExercises"),
+              cardModules('Teoría', ExactAssetImage('assets/icons/Teoria.png'), 2,'Items', context, "/listTeory"),
+              cardModules('Ejercicios',ExactAssetImage('assets/icons/Ejercicios.png'),3,'Niveles',context, "/listExercises"),
             ],
           ),
           SizedBox(height: 20.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              cardModules('Ritmos', ExactAssetImage('assets/Ritmos.png'), 2,'Items', context, "/listRhythms"),
-              cardModules('Composición',ExactAssetImage('assets/Composicion.png'),3,'Niveles', context, "/listComposition"),
+              cardModules('Ritmos', ExactAssetImage('assets/icons/Ritmos.png'), 2,'Items', context, "/listRhythms"),
+              cardModules('Composición',ExactAssetImage('assets/icons/Composicion.png'),3,'Niveles', context, "/listComposition"),
             ],
           )
         ],
@@ -38,6 +40,7 @@ Widget cardModules(String title, ExactAssetImage image, int num, String nameItem
   final size = MediaQuery.of(context).size;
   return InkWell(
       child: Container(
+        margin: EdgeInsets.only(top: size.width * 0.02, bottom: size.width * 0.04),
         padding: EdgeInsets.only(left: size.width * 0.04, right: size.width * 0.08),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20.0),

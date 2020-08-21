@@ -1,3 +1,5 @@
+
+import 'package:drumsapp2/src/utils/sounds_util.dart';
 import 'package:drumsapp2/src/widgets/instrument_matrix.dart';
 import 'package:drumsapp2/src/widgets/tools_instrument_matrix.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +8,8 @@ import 'package:flutter/services.dart';
 class MatrixCollection extends StatefulWidget {
 
   final List<List<int>> matrix;
-  const MatrixCollection({Key key, this.matrix}) : super(key: key);
+  final String nameRhythms;
+  const MatrixCollection({Key key, this.matrix, this.nameRhythms}) : super(key: key);
 
   @override
   _MatrixCollectionState createState() => _MatrixCollectionState();
@@ -40,7 +43,7 @@ class _MatrixCollectionState extends State<MatrixCollection> {
                 children: <Widget>[
                   Column(
                     children: <Widget>[
-                      buttonSet(),
+                      buttonSet(_startButtonSet, _pauseButtonSet, _stopButtonSet),
                       switchMetronome(state, _changeSwitchMetronome),
                       speedSlider(rating, _changeSpeedSlider)
                     ],
@@ -48,7 +51,7 @@ class _MatrixCollectionState extends State<MatrixCollection> {
                   instrumentMatrix(widget.matrix)
                 ],
               ),
-              pseudoSheetMusic(widget.matrix)
+              pseudoSheetMusic(widget.matrix[0].length, MediaQuery.of(context).size.width, widget.nameRhythms)
             ],
           ),
         ),
@@ -61,6 +64,18 @@ class _MatrixCollectionState extends State<MatrixCollection> {
       DeviceOrientation.portraitUp,
     ]);
     super.dispose();
+  }
+
+  _startButtonSet(){
+    playMatrix(widget.nameRhythms);
+  }
+
+  _pauseButtonSet(){
+    pauseMatrix();
+  }
+
+  _stopButtonSet(){
+    stopMatrix();
   }
 
   _changeSwitchMetronome(bool value) {

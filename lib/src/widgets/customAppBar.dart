@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'logo.dart';
 
 Widget customAppBar(String text, BuildContext context) {
+  Size size = MediaQuery.of(context).size;
   return Column(
     children: <Widget>[
       Expanded(
@@ -15,13 +16,13 @@ Widget customAppBar(String text, BuildContext context) {
               decoration: BoxDecoration(gradient: blueLinearGColor),
               child: Column(
                 children: <Widget>[
-                  // SizedBox(height: 15.0),
+                  SizedBox(height: size.height*0.015),
                   backIconButton(context),
                   logoSize(context, 1, 0.2),
-                  // SizedBox(height: 15.0),
+                  SizedBox(height: size.height*0.015),
                   Text(text,
                       style: textStyleSemiBold, textAlign: TextAlign.center),
-                  SizedBox(height: 15.0)
+                  SizedBox(height: size.height*0.015)
                 ],
               )))
     ],

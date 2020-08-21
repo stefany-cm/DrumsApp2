@@ -1,3 +1,4 @@
+import 'package:drumsapp2/src/pages/principal/modules/rhythms/view_rhythms.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/widgets/cards.dart';
 import 'package:drumsapp2/src/widgets/customAppBar.dart';
@@ -7,18 +8,14 @@ class ListTeory extends StatefulWidget {
   const ListTeory({Key key}) : super(key: key);
 
   @override
-  _ListRhythmsState createState() => _ListRhythmsState();
+  _ListTeoryState createState() => _ListTeoryState();
 }
 
-class _ListRhythmsState extends State<ListTeory> {
-  List<String> rhythms = [
-    'Balada',
-    'Reggaetón',
-    'SKA',
-    'Balada pop rock',
-    'Vals'
-  ];
+class _ListTeoryState extends State<ListTeory> {
+   static const teory = {
 
+   };
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,11 +23,7 @@ class _ListRhythmsState extends State<ListTeory> {
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.05),
         child: ListView(
-          reverse: false,
-          children: <Widget>[
-            for (var item in rhythms)
-              listCard(item, 'assets/RitmosList.png', context, ("/"+item+"Rhythms"))
-          ],
+          
         ),
       ),
     );

@@ -32,7 +32,8 @@ class HomePage extends StatelessWidget {
             ),
             logo(context),
             customRaisedButton(
-                'Comenzar', Colors.white, Colors.black, context, "/welcome"),
+                'Comenzar', Colors.white, Colors.black, context, "/homeNavigation"),
+                //'Comenzar', Colors.white, Colors.black, context, "/welcome"),
           ],
         ),
       ),
