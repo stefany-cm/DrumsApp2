@@ -9,15 +9,12 @@ Widget instrumentMatrix(List<List <int>> matrix) {
   
   for (int i = 0; i < matrix.length; i++) {
     for (int j = 0; j < matrix[i].length; j++) {
-      int z = matrix[i][j];
-      print("add [$i, $j] = $z");
       if (matrix[i][j] == 1) {
         columnInstruments.add(buttonInstrument(i, j));
       }else {
          columnInstruments.add(buttonEmpty(i, j));
       }
     }
-    print("------------\n");
     instruments.add(columnInstruments);
     columnInstruments = [];
   }
@@ -59,11 +56,10 @@ Widget buttonInstrument(int i, int j) {
   }
   return GestureDetector(
     onTap: () => {
-      print('click on [$i, $j]'),
       play(i),
     },
     child: Image(
-      image: AssetImage('assets/$_nameInstrumentImage.png'),
+      image: AssetImage('assets/instruments/$_nameInstrumentImage.png'),
       fit: BoxFit.cover,
       height: 40,
     ),
@@ -71,9 +67,9 @@ Widget buttonInstrument(int i, int j) {
 }
 Widget buttonEmpty(int i, int j) {
     return GestureDetector(
-    onTap: () => {print('click on [$i, $j]')},
+    onTap: () => {},
     child: Image(
-      image: AssetImage('assets/vacio.png'),
+      image: AssetImage('assets/instruments/vacio.png'),
       fit: BoxFit.cover,
       height: 40
     ),

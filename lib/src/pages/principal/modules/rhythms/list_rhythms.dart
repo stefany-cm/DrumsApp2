@@ -47,7 +47,7 @@ class _ListRhythmsState extends State<ListRhythms> {
         body: ListView(
             reverse: false,
             children: rhythms.entries.map((entry) {
-              return listCard(entry.key, 'assets/RitmosList.png', context,
+              return listCard(entry.key, 'assets/icons/RitmosList.png', context,
                   (ViewRhythms(matrix: entry.value, nameRhythms: entry.key)));
             }).toList()));
   }

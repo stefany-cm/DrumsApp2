@@ -18,16 +18,16 @@ class ModulesPrincipal extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              cardModules('Teoría', ExactAssetImage('assets/Teoria.png'), 2,'Items', context, "/listTeory"),
-              cardModules('Ejercicios',ExactAssetImage('assets/Ejercicios.png'),3,'Niveles',context, "/listExercises"),
+              cardModules('Teoría', ExactAssetImage('assets/icons/Teoria.png'), 2,'Items', context, "/listTeory"),
+              cardModules('Ejercicios',ExactAssetImage('assets/icons/Ejercicios.png'),3,'Niveles',context, "/listExercises"),
             ],
           ),
           SizedBox(height: 20.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              cardModules('Ritmos', ExactAssetImage('assets/Ritmos.png'), 2,'Items', context, "/listRhythms"),
-              cardModules('Composición',ExactAssetImage('assets/Composicion.png'),3,'Niveles', context, "/listComposition"),
+              cardModules('Ritmos', ExactAssetImage('assets/icons/Ritmos.png'), 2,'Items', context, "/listRhythms"),
+              cardModules('Composición',ExactAssetImage('assets/icons/Composicion.png'),3,'Niveles', context, "/listComposition"),
             ],
           )
         ],
