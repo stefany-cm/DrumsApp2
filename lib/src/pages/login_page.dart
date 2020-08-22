@@ -1,4 +1,6 @@
 import 'package:drumsapp2/src/bloc/provider.dart';
+import 'package:drumsapp2/src/pages/principal/homeNavigation_principal.dart';
+import 'package:drumsapp2/src/pages/signUpPersonal_page.dart';
 import 'package:drumsapp2/src/pages/signUp_page.dart';
 import 'package:drumsapp2/src/pages/welcome_page.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
@@ -31,11 +33,14 @@ class LoginPage extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return SingleChildScrollView(
-      child: Column(children: <Widget>[
-      SafeArea(child: Container(height: 80.0)),
+        child: Column(children: <Widget>[
+      SafeArea(
+        child: Container(
+          height: 80.0,
+        ),
+      ),
       Container(
         width: size.width,
-        height: size.height*0.7,
         margin: EdgeInsets.only(top: size.height * 0.23),
         padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
         decoration: new BoxDecoration(
@@ -44,13 +49,14 @@ class LoginPage extends StatelessWidget {
             color: Colors.white),
         child: Column(
           children: <Widget>[
+            // SizedBox(height: 5.0),
             mailInput(bloc),
-            SizedBox(height: size.height*0.020),
+            SizedBox(height: 20.0),
             passwordInput(bloc),
             _forgetPassword(context),
-            SizedBox(height: size.height*0.030),
+            SizedBox(height: 30.0),
             authCustomRaisedButton(bloc, 'Iniciar sesión'),
-            SizedBox(height: size.height*0.065),
+            SizedBox(height: 45.0),
             _noAccountYet(context)
           ],
         ),
@@ -80,7 +86,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  /*Widget _noAccountYet2(BuildContext context) {
+  Widget _noAccountYet2(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -91,5 +97,5 @@ class LoginPage extends StatelessWidget {
         textButton('Registrarse2', blue2Color, context, SignUpPersonalPage()),
       ],
     );
-  }*/
+  }
 }

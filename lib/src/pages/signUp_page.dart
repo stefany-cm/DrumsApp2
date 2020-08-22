@@ -31,11 +31,14 @@ class SignUpPage extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return SingleChildScrollView(
-      child: Column(children: <Widget>[
-      SafeArea(child: Container(height: 80.0)),
+        child: Column(children: <Widget>[
+      SafeArea(
+        child: Container(
+          height: 80.0,
+        ),
+      ),
       Container(
         width: size.width,
-        height: size.height*0.7,
         margin: EdgeInsets.only(top: size.height * 0.23),
         padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
         decoration: new BoxDecoration(
@@ -44,15 +47,15 @@ class SignUpPage extends StatelessWidget {
             color: Colors.white),
         child: Column(
           children: <Widget>[
-            SizedBox(height: size.height*0.05),
+            SizedBox(height: 5.0),
             mailInput(bloc),
-            SizedBox(height: size.height*0.020),
+            SizedBox(height: 20.0),
             passwordInput(bloc),
-            SizedBox(height: size.height*0.030),
+            SizedBox(height: 30.0),
             passwordConfimationInput(bloc),
-            SizedBox(height: size.height*0.025),
+            SizedBox(height: 20.0),
             authCustomRaisedButton(bloc, 'Registrarse'),
-            SizedBox(height: size.height*0.040),
+            SizedBox(height: 20.0),
             _accountCreated(context),
           ],
         ),

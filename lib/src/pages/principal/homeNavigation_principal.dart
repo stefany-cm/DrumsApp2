@@ -1,6 +1,6 @@
 import 'package:drumsapp2/src/pages/principal/group_principal.dart';
-import 'package:drumsapp2/src/pages/principal/modules/modules_principal.dart';
-import 'package:drumsapp2/src/widgets/customAppBar.dart';
+import 'package:drumsapp2/src/pages/principal/modules_principal.dart';
+import 'package:drumsapp2/src/widgets/gradientAppBar.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/colors_utils.dart';
@@ -9,7 +9,8 @@ class HomeNavigationPrincipal extends StatefulWidget {
   const HomeNavigationPrincipal({Key key}) : super(key: key);
 
   @override
-  _HomeNavigationPrincipalState createState() =>  _HomeNavigationPrincipalState();
+  _HomeNavigationPrincipalState createState() =>
+      _HomeNavigationPrincipalState();
 }
 
 class _HomeNavigationPrincipalState extends State<HomeNavigationPrincipal> {

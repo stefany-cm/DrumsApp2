@@ -127,11 +127,12 @@ Widget datePruebaInput(dynamic bloc) {
         // dateFormat: DateFormat.yMd(),
         selectedDate: selectedData,
       );
+      ;
     },
   );
 }
 
-/*Future<void> _showMyDialog(context) async {
+Future<void> _showMyDialog(context) async {
   return showDialog<void>(
     context: context,
     barrierDismissible: false, // user must tap button!
@@ -157,4 +158,4 @@ Widget datePruebaInput(dynamic bloc) {
       );
     },
   );
-}*/
+}

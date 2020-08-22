@@ -115,7 +115,7 @@ _createUser(dynamic bloc, BuildContext context) async {
   }
 }
 
-/*Future<void> _showMyDialog1(context) async {
+Future<void> _showMyDialog1(context) async {
   return showDialog<void>(
     context: context,
     barrierDismissible: false, // user must tap button!
@@ -141,7 +141,7 @@ _createUser(dynamic bloc, BuildContext context) async {
       );
     },
   );
-}*/
+}
 
 Future<void> _showMyDialog2(context) async {
   return showDialog<void>(

@@ -1,55 +1,157 @@
-import 'package:drumsapp2/src/pages/principal/modules/rhythms/view_rhythms.dart';
+import 'package:drumsapp2/src/bloc/provider.dart';
+import 'package:drumsapp2/src/models/theory.dart';
+import 'package:drumsapp2/src/services/partiture_provider.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
-import 'package:drumsapp2/src/widgets/cards.dart';
+import 'dart:convert';
+import 'dart:async';
+import 'package:http/http.dart' as http;
+
+import 'package:animate_do/animate_do.dart';
 import 'package:drumsapp2/src/widgets/customAppBar.dart';
+
 import 'package:flutter/material.dart';
 
-class ListTeory extends StatefulWidget {
-  const ListTeory({Key key}) : super(key: key);
+// Future<List<Theory>> getTheory() async {
+//   final String _url = "http://192.168.1.19:3000";
+//   print('entrando  getTeoria ' + _url);
 
-  @override
-  _ListTeoryState createState() => _ListTeoryState();
-}
+//   final res = await http.get('$_url/partitura/getTheory');
 
-class _ListTeoryState extends State<ListTeory> {
-   static const teory = {
+//   print(theoryFromJson(res.body));
+//   return theoryFromJson(res.body);
+// }
 
-   };
-  
+PartitureProvider _consul = new PartitureProvider();
+
+class PagerTheory extends StatelessWidget {
+  const PagerTheory({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: linearAppBar('Teoría', pinkColor, context),
-      body: Container(
-        margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.05),
-        child: ListView(
-          
-        ),
+      backgroundColor: Colors.white,
+      body: FutureBuilder(
+        future: _consul.getTheory(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          print(snapshot.connectionState);
+
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else {
+            // return _ListaTheorys(snapshot.data);
+            return _listTheoryForm(context, snapshot.data);
+          }
+        },
       ),
     );
   }
 }
 
-class EachList extends StatelessWidget {
-  final String name;
-  EachList(this.name);
+Widget _listTheoryForm(BuildContext context, dynamic data) {
+  final List<Theory> theorys = data;
+  // Provider bloc = new Provider();
+  // final bloc = Provider.ofT(context);
+  return ListView.builder(
+    itemCount: theorys.length,
+    itemBuilder: (BuildContext context, int i) {
+      final theory = theorys[i];
+
+      return listTile(theory.name, theory.description, theory.id, i,
+          "/list_subTheory", data);
+
+      //     BounceInUp(
+      //   delay: Duration(milliseconds: 100 * i),
+      //   child: ListTile(
+      //     title: Text('${theory.name}'),
+      //     subtitle: Text(theory.description),
+
+      //     onTap: () => theory.id = 60,
+
+      //   ),
+      // );
+    },
+  );
+}
+
+Widget listTile(
+    String name, String description, int id, int i, route, dynamic data) {
+  return StreamBuilder(
+    builder: (BuildContext context, AsyncSnapshot snapshot) {
+      return Container(
+        child: BounceInUp(
+          delay: Duration(milliseconds: 100 * i),
+          child: ListTile(
+            title: Text(name),
+            subtitle: Text(description),
+
+            // onLongPress: data ? () => _consulSub(bloc, context) : null,
+
+            onTap: () => Navigator.of(context).pushNamed('$route'),
+
+            // onLongPress: (value = id) => ,
+            // onChanged: (value) => bloc.changeMail(value),
+          ),
+        ),
+
+        // padding: EdgeInsets.symmetric(horizontal: 20.0),
+        // child: TextField(
+        //   keyboardType: TextInputType.emailAddress,
+        //   decoration: InputDecoration(
+        //       icon: Icon(Icons.alternate_email),
+        //       labelText: 'Correo electrónico',
+        //       hintText: 'ejemplo@correo.com',
+        //       counterText: snapshot.data,
+        //       errorText: snapshot.error),
+        //   onChanged: (value) => bloc.changeMail(value),
+        // ),
+      );
+    },
+  );
+}
+
+_consulSub(dynamic bloc, BuildContext context) async {
+  final servLogin = new PartitureProvider();
+  // final servLogin = new Servicion();
+
+  Future<List<Theory>> rest =
+      await servLogin.getSubTheory(bloc.theoriaID, context);
+
+  // servLogin.createUser();
+
+  print('============');
+
+  print('Respuesta de consulta: ${rest}');
+}
+
+class PagersubTheory extends StatelessWidget {
+  const PagersubTheory({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return new Card(
-      child: new Container(
-        padding: EdgeInsets.all(8.0),
-        child: new Row(
-          children: <Widget>[
-            new CircleAvatar(
-              child: new Text(name[0]),
-            ),
-            new Padding(padding: EdgeInsets.only(right: 10.0)),
-            new Text(
-              name,
-              style: TextStyle(fontSize: 20.0),
-            )
-          ],
-        ),
+    return Scaffold(
+      resizeToAvoidBottomInset: true,
+      appBar: AppBar(
+        title: Text("Theory"),
+      ),
+      backgroundColor: Colors.white,
+      body: FutureBuilder(
+        // future: _consul.getSubTheory(id, context),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          print(snapshot.connectionState);
+
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else {
+            // return _ListaTheorys(snapshot.data);
+            return _listTheoryForm(context, snapshot.data);
+          }
+        },
       ),
     );
   }
