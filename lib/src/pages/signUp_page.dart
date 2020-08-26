@@ -1,4 +1,3 @@
-import 'package:drumsapp2/src/bloc/provider.dart';
 import 'package:drumsapp2/src/pages/login_page.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/utils/textStyle_utils.dart';
@@ -27,7 +26,7 @@ class SignUpPage extends StatelessWidget {
   }
 
   Widget _singUpForm(BuildContext context) {
-    final bloc = Provider.ofS(context);
+    // final bloc = Provider.ofS(context);
     final size = MediaQuery.of(context).size;
 
     return SingleChildScrollView(
@@ -48,13 +47,13 @@ class SignUpPage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             SizedBox(height: 5.0),
-            mailInput(bloc),
+            mailInput(),
             SizedBox(height: 20.0),
-            passwordInput(bloc),
+            passwordInput(),
             SizedBox(height: 30.0),
-            passwordConfimationInput(bloc),
+            passwordConfimationInput(),
             SizedBox(height: 20.0),
-            authCustomRaisedButton(bloc, 'Registrarse'),
+            authCustomRaisedButton('Registrarse'),
             SizedBox(height: 20.0),
             _accountCreated(context),
           ],
@@ -62,6 +61,7 @@ class SignUpPage extends StatelessWidget {
       ),
     ]));
   }
+
   Widget _accountCreated(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,

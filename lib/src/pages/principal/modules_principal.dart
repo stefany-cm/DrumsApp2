@@ -18,16 +18,36 @@ class ModulesPrincipal extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                cardModules('Teoría', ExactAssetImage('assets/Teoria.png'), 2,'Items', context),
-                cardModules('Ejercicios',ExactAssetImage('assets/Ejercicios.png'),3,'Niveles',context),
+                cardModules(
+                    'Teoría',
+                    ExactAssetImage('assets/icons/Teoria.png'),
+                    2,
+                    'Items',
+                    context),
+                cardModules(
+                    'Ejercicios',
+                    ExactAssetImage('assets/icons/Ejercicios.png'),
+                    3,
+                    'Niveles',
+                    context),
               ],
             ),
             SizedBox(height: 20.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                cardModules('Ritmos', ExactAssetImage('assets/Ritmos.png'), 2,'Items', context),
-                cardModules('Composición',ExactAssetImage('assets/Composicion.png'),3,'Niveles', context),
+                cardModules(
+                    'Ritmos',
+                    ExactAssetImage('assets/icons/Ritmos.png'),
+                    2,
+                    'Items',
+                    context),
+                cardModules(
+                    'Composición',
+                    ExactAssetImage('assets/icons/Composicion.png'),
+                    3,
+                    'Niveles',
+                    context),
               ],
             )
           ],
@@ -38,10 +58,12 @@ class ModulesPrincipal extends StatelessWidget {
   }
 }
 
-Widget cardModules(String title, ExactAssetImage image, int num, String nameItem, BuildContext context) {
+Widget cardModules(String title, ExactAssetImage image, int num,
+    String nameItem, BuildContext context) {
   final size = MediaQuery.of(context).size;
   return Container(
-      padding: EdgeInsets.only(left: size.width * 0.04, right: size.width * 0.08),
+      padding:
+          EdgeInsets.only(left: size.width * 0.04, right: size.width * 0.08),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
           color: Colors.white,

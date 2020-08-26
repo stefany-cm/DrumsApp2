@@ -1,4 +1,3 @@
-import 'package:drumsapp2/src/bloc/provider.dart';
 import 'package:drumsapp2/src/models/theory.dart';
 import 'package:drumsapp2/src/services/partiture_provider.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';

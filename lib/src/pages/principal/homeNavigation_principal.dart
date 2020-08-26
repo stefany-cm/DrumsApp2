@@ -1,7 +1,10 @@
+import 'package:drumsapp2/src/controllers/homeNavigationPrincipal_controller.dart';
+
 import 'package:drumsapp2/src/pages/principal/group_principal.dart';
 import 'package:drumsapp2/src/pages/principal/modules_principal.dart';
 import 'package:drumsapp2/src/widgets/gradientAppBar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/state_manager.dart';
 
 import '../../utils/colors_utils.dart';
 
@@ -31,11 +34,13 @@ class _HomeNavigationPrincipalState extends State<HomeNavigationPrincipal> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: gradientAppBar(_title, purpleLinearGColor, context),
-      body: _children[_currentIndex],
-      bottomNavigationBar: _customBottomNavigationBar(),
-    );
+    return GetBuilder<HomeNavigationPrincipalController>(
+        init: HomeNavigationPrincipalController(),
+        builder: (_) => Scaffold(
+              appBar: gradientAppBar(_title, purpleLinearGColor, context),
+              body: _children[_currentIndex],
+              bottomNavigationBar: _customBottomNavigationBar(),
+            ));
   }
 
   Widget _customBottomNavigationBar() {
@@ -69,13 +74,25 @@ class _HomeNavigationPrincipalState extends State<HomeNavigationPrincipal> {
     setState(() {
       _currentIndex = index;
       switch (index) {
-        case 0: {_title = 'Módulos';}
+        case 0:
+          {
+            _title = 'Módulos';
+          }
           break;
-        case 1: {_title = 'Grupos';}
+        case 1:
+          {
+            _title = 'Grupos';
+          }
           break;
-        case 2: {_title = 'Logros';}
+        case 2:
+          {
+            _title = 'Logros';
+          }
           break;
-        case 3: {_title = 'Ajustes';}
+        case 3:
+          {
+            _title = 'Ajustes';
+          }
           break;
       }
     });

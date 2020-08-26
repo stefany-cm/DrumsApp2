@@ -6,9 +6,8 @@ import 'package:drumsapp2/src/utils/textStyle_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-Widget mailInput(dynamic bloc) {
+Widget mailInput() {
   return StreamBuilder(
-    stream: bloc.mailStream,
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Container(
         padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -20,16 +19,15 @@ Widget mailInput(dynamic bloc) {
               hintText: 'ejemplo@correo.com',
               counterText: snapshot.data,
               errorText: snapshot.error),
-          onChanged: (value) => bloc.changeMail(value),
+          // onChanged: (value) => bloc.changeMail(value),
         ),
       );
     },
   );
 }
 
-Widget passwordInput(dynamic bloc) {
+Widget passwordInput() {
   return StreamBuilder(
-    stream: bloc.passwordStream,
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Container(
           padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -41,15 +39,14 @@ Widget passwordInput(dynamic bloc) {
                 labelText: 'Contraseña',
                 counterText: snapshot.data,
                 errorText: snapshot.error),
-            onChanged: bloc.changePassword,
+            // onChanged: bloc.changePassword,
           ));
     },
   );
 }
 
-Widget passwordConfimationInput(dynamic bloc) {
+Widget passwordConfimationInput() {
   return StreamBuilder(
-    stream: bloc.confirmPasswordStream,
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Container(
           padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -61,58 +58,55 @@ Widget passwordConfimationInput(dynamic bloc) {
                 labelText: 'Confirmar contraseña',
                 counterText: snapshot.data,
                 errorText: snapshot.error),
-            onChanged: bloc.changeConfirmPassword,
+            // onChanged: bloc.changeConfirmPassword,
           ));
     },
   );
 }
 
-Widget authCustomRaisedButton(dynamic bloc, String text) {
-  return StreamBuilder(
-      stream: bloc.passwordStream,
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        return RaisedButton(
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
-            child: Text(
-              text,
-              style: textStyleButton,
-            ),
-          ),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-          elevation: 0.0,
-          splashColor: blue2Color,
-          color: blue2Color,
-          textColor: Colors.black,
-          // onPressed: _login1(bloc, context),
-          onPressed: snapshot.hasData ? () => _createUser(bloc, context) : null,
-        );
-      });
+Widget authCustomRaisedButton(String text) {
+  return StreamBuilder(builder: (BuildContext context, AsyncSnapshot snapshot) {
+    return RaisedButton(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
+        child: Text(
+          text,
+          style: textStyleButton,
+        ),
+      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+      elevation: 0.0,
+      splashColor: blue2Color,
+      color: blue2Color,
+      textColor: Colors.black,
+      // onPressed: _login1(bloc, context),
+      onPressed: snapshot.hasData ? () => _createUser(context) : null,
+    );
+  });
 }
 
 // customRaisedButton('Iniciar sesion', blue2Color, Colors.black,
 //                 context, WelcomePage()),
 
-_createUser(dynamic bloc, BuildContext context) async {
-  final servLogin = new UserProvider();
-  Map<String, dynamic> rest =
-      await servLogin.createUser2(bloc.mail, bloc.password);
+_createUser(BuildContext context) async {
+  // final servLogin = new UserProvider();
+  // Map<String, dynamic> rest =
+  //     await servLogin.createUser2(bloc.mail, bloc.password);
 
-  // servLogin.createUser();
-  print('================');
-  print('Email: ${bloc.mail}');
+  // // servLogin.createUser();
+  // print('================');
+  // print('Email: ${bloc.mail}');
 
-  print('Password: ${bloc.password}');
-  print('============');
+  // print('Password: ${bloc.password}');
+  // print('============');
 
-  print('Respuesta de consulta: ${rest}');
-  if (rest['mensaje'] == "si") {
-    Navigator.of(context).pushReplacementNamed('/login');
-    _showMyDialog2(context);
-  } else {
-    _showMyDialog2(context);
-  }
+  // print('Respuesta de consulta: ${rest}');
+  // if (rest['mensaje'] == "si") {
+  //   Navigator.of(context).pushReplacementNamed('/login');
+  //   _showMyDialog2(context);
+  // } else {
+  //   _showMyDialog2(context);
+  // }
 }
 
 Future<void> _showMyDialog1(context) async {

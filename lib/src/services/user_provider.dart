@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 class UserProvider {
-  final String _url = "http://192.168.138.129:3000";
+  final String _url = "http://192.168.1.20:3000";
 
   Future createUser2(String email, String password) async {
     print('entrando aca   ' + _url);
@@ -36,7 +36,7 @@ class UserProvider {
     return decodeData;
   }
 
-  Future auth(String email, String password, BuildContext context) async {
+  Future auth(String email, String password) async {
     print('entrando aca   ' + _url);
 
     final authData = {'email': email, 'password': password};

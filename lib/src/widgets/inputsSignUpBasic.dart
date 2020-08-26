@@ -1,4 +1,3 @@
-
 import 'package:drumsapp2/src/services/user_provider.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/utils/textStyle_utils.dart';
@@ -6,9 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:date_field/date_field.dart';
 
-Widget nameInput(dynamic bloc) {
+Widget nameInput() {
   return StreamBuilder(
-    stream: bloc.mailStream,
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Container(
         padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -20,7 +18,7 @@ Widget nameInput(dynamic bloc) {
               hintText: 'Juanito alcachofa',
               counterText: snapshot.data,
               errorText: snapshot.error),
-          onChanged: (value) => bloc.changeMail(value),
+          // onChanged: (value) => bloc.changeMail(value),
         ),
       );
     },
@@ -47,9 +45,9 @@ Widget nameInput(dynamic bloc) {
 //   );
 // }
 
-Widget genreInput(dynamic bloc) {
+Widget genreInput() {
   return StreamBuilder(
-    stream: bloc.confirmPasswordStream,
+    // stream: bloc.confirmPasswordStream,
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       return Container(
           padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -61,60 +59,59 @@ Widget genreInput(dynamic bloc) {
                 labelText: 'Genero',
                 counterText: snapshot.data,
                 errorText: snapshot.error),
-            onChanged: bloc.changeConfirmPassword,
+            // onChanged: bloc.changeConfirmPassword,
           ));
     },
   );
 }
 
-Widget createCustomRaisedButton(dynamic bloc, String text) {
+Widget createCustomRaisedButton(String text) {
   return StreamBuilder(
-      stream: bloc.passwordStream,
+      // stream: bloc.passwordStream,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
-        return RaisedButton(
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
-            child: Text(
-              text,
-              style: textStyleButton,
-            ),
-          ),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-          elevation: 0.0,
-          splashColor: blue2Color,
-          color: blue2Color,
-          textColor: Colors.black,
-          // onPressed: _login1(bloc, context),
-          onPressed: snapshot.hasData ? () => _createUser(bloc, context) : null,
-        );
-      });
+    return RaisedButton(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
+        child: Text(
+          text,
+          style: textStyleButton,
+        ),
+      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+      elevation: 0.0,
+      splashColor: blue2Color,
+      color: blue2Color,
+      textColor: Colors.black,
+      // onPressed: _login1(bloc, context),
+      onPressed: snapshot.hasData ? () => _createUser(context) : null,
+    );
+  });
 }
 
 // customRaisedButton('Iniciar sesion', blue2Color, Colors.black,
 //                 context, WelcomePage()),
 
-_createUser(dynamic bloc, BuildContext context) async {
-  final servLogin = new UserProvider();
-  Map<String, dynamic> rest =
-      await servLogin.createUser2(bloc.mail, bloc.password);
+_createUser(BuildContext context) async {
+  // final servLogin = new UserProvider();
+  // Map<String, dynamic> rest =
+  //     await servLogin.createUser2(bloc.mail, bloc.password);
 
-  // servLogin.createUser();
-  print('================');
-  print('Email: ${bloc.mail}');
+  // // servLogin.createUser();
+  // print('================');
+  // print('Email: ${bloc.mail}');
 
-  print('Password: ${bloc.password}');
-  print('============');
+  // print('Password: ${bloc.password}');
+  // print('============');
 
-  print('Respuesta de consulta: ${rest}');
+  // print('Respuesta de consulta: ${rest}');
 
   // Navigator.pushNamed(context, 'home');
 }
 
-Widget datePruebaInput(dynamic bloc) {
+Widget datePruebaInput() {
   DateTime selectedData;
   return StreamBuilder(
-    stream: bloc.confirmPasswordStream,
+    // stream: bloc.confirmPasswordStream,
     builder: (BuildContext context, AsyncSnapshot snapshot) {
       return DateField(
         onDateSelected: (DateTime value) {

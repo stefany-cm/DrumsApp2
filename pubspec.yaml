@@ -36,6 +36,8 @@ dependencies:
   date_field: ^ 0.1.2 
   animate_do: ^1.7.2
   shared_preferences: ^0.5.8
+  get: ^3.5.1
+  dio: ^3.0.10
   
 
 dev_dependencies:

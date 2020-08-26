@@ -1,4 +1,3 @@
-import 'package:drumsapp2/src/bloc/provider.dart';
 import 'package:drumsapp2/src/widgets/customAppBar.dart';
 // import 'package:drumsapp2/src/widgets/inputs.dart';
 import 'package:drumsapp2/src/widgets/inputsSignUpBasic.dart';
@@ -22,7 +21,7 @@ class SignUpPersonalPage extends StatelessWidget {
   }
 
   Widget _singUpForm(BuildContext context) {
-    final bloc = Provider.ofS(context);
+    // final bloc = Provider.ofS(context);
     final size = MediaQuery.of(context).size;
 
     return SingleChildScrollView(
@@ -43,16 +42,16 @@ class SignUpPersonalPage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             SizedBox(height: 5.0),
-            nameInput(bloc),
+            nameInput(),
             SizedBox(height: 20.0),
-            datePruebaInput(bloc),
+            datePruebaInput(),
             SizedBox(height: 20.0),
             // dateInput(bloc),
             // SizedBox(height: 30.0),
-            genreInput(bloc),
+            genreInput(),
             SizedBox(height: 20.0),
 
-            createCustomRaisedButton(bloc, 'Finalizar'),
+            createCustomRaisedButton('Finalizar'),
             SizedBox(height: 45.0),
           ],
         ),
