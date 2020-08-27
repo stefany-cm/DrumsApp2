@@ -1,56 +1,138 @@
-import 'package:drumsapp2/src/pages/principal/modules/rhythms/view_rhythms.dart';
+import 'package:drumsapp2/src/controllers/theory_controller.dart';
+import 'package:drumsapp2/src/models/RespTheoryAndSub.dart';
+
 import 'package:drumsapp2/src/utils/colors_utils.dart';
-import 'package:drumsapp2/src/widgets/cards.dart';
+import 'package:drumsapp2/src/utils/textStyle_utils.dart';
+
+import 'package:get/get.dart';
+
+import 'package:animate_do/animate_do.dart';
 import 'package:drumsapp2/src/widgets/customAppBar.dart';
+
 import 'package:flutter/material.dart';
 
-class ListTeory extends StatefulWidget {
-  const ListTeory({Key key}) : super(key: key);
+class PagerTheory extends StatelessWidget {
+  const PagerTheory({Key key}) : super(key: key);
 
-  @override
-  _ListTeoryState createState() => _ListTeoryState();
-}
-
-class _ListTeoryState extends State<ListTeory> {
-   static const teory = {
-
-   };
-  
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: linearAppBar('Teoría', pinkColor, context),
-      body: Container(
-        margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.05),
-        child: ListView(
-          
-        ),
-      ),
+    return GetBuilder<TheoryController>(
+      init: TheoryController(),
+      builder: (_) => Scaffold(
+          resizeToAvoidBottomInset: true,
+          appBar: linearAppBar('Teoría', pinkColor, context),
+          backgroundColor: Colors.white,
+          body: _listTheoryForm(context)),
     );
   }
 }
 
-class EachList extends StatelessWidget {
-  final String name;
-  EachList(this.name);
-  @override
-  Widget build(BuildContext context) {
-    return new Card(
-      child: new Container(
-        padding: EdgeInsets.all(8.0),
-        child: new Row(
-          children: <Widget>[
-            new CircleAvatar(
-              child: new Text(name[0]),
-            ),
-            new Padding(padding: EdgeInsets.only(right: 10.0)),
-            new Text(
-              name,
-              style: TextStyle(fontSize: 20.0),
-            )
-          ],
-        ),
-      ),
-    );
-  }
+// Widget _listTheoryForm2() {
+//   return GetBuilder<TheoryController>(
+//       id: 'listTheory',
+//       // init: TheoryController(),
+//       builder: (_) => ListView.builder(
+//             itemBuilder: (context, index) {
+//               final RespTheoryAndSub resp = _.listResp[index];
+//               return ListTile(
+//                 title: Text(resp.name),
+//                 subtitle: Text(resp.description),
+//                 onTap: () => {},
+//               );
+//             },
+//             itemCount: _.listResp.length,
+//           ));
+// }
+
+Widget _listTheoryForm(BuildContext context) {
+  final size = MediaQuery.of(context).size;
+
+  return GetBuilder<TheoryController>(
+      id: 'listTheory',
+      // init: TheoryController(),
+      builder: (_) => ListView.builder(
+            itemBuilder: (context, index) {
+              final RespTheoryAndSub resp = _.listResp[index];
+              return InkWell(
+                child: Container(
+                  margin: EdgeInsets.only(top: 15.0),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: size.width * 0.05,
+                      vertical: size.width * 0.04),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(18.0),
+                      color: Colors.white,
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                            color: Colors.grey[200],
+                            blurRadius: 8.0,
+                            spreadRadius: 1.0,
+                            offset: Offset(-2, 3.0))
+                      ]),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Container(
+                            child: Image.asset('assets/icons/RitmosList.png'),
+                            width: size.width * 0.12,
+                          ),
+                          SizedBox(width: size.width * 0.04),
+                          Text(resp.name, style: textStyleSubtitleCard),
+                        ],
+                      ),
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.grey[300],
+                      )
+                    ],
+                  ),
+                ),
+                onTap: () {},
+              );
+            },
+            itemCount: _.listResp.length,
+          ));
 }
+
+// Widget listCardTheory(String title, String imageR, BuildContext context) {
+//   final size = MediaQuery.of(context).size;
+//   return InkWell(
+//     child: Container(
+//       margin: EdgeInsets.only(top: 15.0),
+//       padding: EdgeInsets.symmetric(
+//           horizontal: size.width * 0.05, vertical: size.width * 0.04),
+//       decoration: BoxDecoration(
+//           borderRadius: BorderRadius.circular(18.0),
+//           color: Colors.white,
+//           boxShadow: <BoxShadow>[
+//             BoxShadow(
+//                 color: Colors.grey[200],
+//                 blurRadius: 8.0,
+//                 spreadRadius: 1.0,
+//                 offset: Offset(-2, 3.0))
+//           ]),
+//       child: Row(
+//         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//         children: <Widget>[
+//           Row(
+//             children: <Widget>[
+//               Container(
+//                 child: Image.asset(imageR),
+//                 width: size.width * 0.12,
+//               ),
+//               SizedBox(width: size.width * 0.04),
+//               Text(title, style: textStyleSubtitleCard),
+//             ],
+//           ),
+//           Icon(
+//             Icons.arrow_forward_ios,
+//             color: Colors.grey[300],
+//           )
+//         ],
+//       ),
+//     ),
+//     onTap: () {},
+//   );
+// }

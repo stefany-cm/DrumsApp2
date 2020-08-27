@@ -7,7 +7,7 @@ class Servicion {
 
   Future createUser() async {
     print('entrando aca 1  ' + _url);
-    //final url = '$_url';
+    final url = '$_url';
     final res = await http.get('$_url/user/get');
 
     List<dynamic> decodeData = json.decode(res.body);
@@ -21,7 +21,7 @@ class Servicion {
 
     final authData = {'email': email, 'password': password};
     print('Json => ${authData}');
-    //final url = '$_url';
+    final url = '$_url';
     final res = await http.post('$_url/auth/login', body: authData);
 
     Map<String, dynamic> decodeData = json.decode(res.body);
