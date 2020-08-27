@@ -1,157 +1,138 @@
-import 'package:drumsapp2/src/models/theory.dart';
-import 'package:drumsapp2/src/services/partiture_provider.dart';
+import 'package:drumsapp2/src/controllers/theory_controller.dart';
+import 'package:drumsapp2/src/models/RespTheoryAndSub.dart';
+
 import 'package:drumsapp2/src/utils/colors_utils.dart';
-import 'dart:convert';
-import 'dart:async';
-import 'package:http/http.dart' as http;
+import 'package:drumsapp2/src/utils/textStyle_utils.dart';
+
+import 'package:get/get.dart';
 
 import 'package:animate_do/animate_do.dart';
 import 'package:drumsapp2/src/widgets/customAppBar.dart';
 
 import 'package:flutter/material.dart';
 
-// Future<List<Theory>> getTheory() async {
-//   final String _url = "http://192.168.1.19:3000";
-//   print('entrando  getTeoria ' + _url);
-
-//   final res = await http.get('$_url/partitura/getTheory');
-
-//   print(theoryFromJson(res.body));
-//   return theoryFromJson(res.body);
-// }
-
-PartitureProvider _consul = new PartitureProvider();
-
 class PagerTheory extends StatelessWidget {
   const PagerTheory({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: true,
-      appBar: linearAppBar('Teoría', pinkColor, context),
-      backgroundColor: Colors.white,
-      body: FutureBuilder(
-        future: _consul.getTheory(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          print(snapshot.connectionState);
-
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          } else {
-            // return _ListaTheorys(snapshot.data);
-            return _listTheoryForm(context, snapshot.data);
-          }
-        },
-      ),
+    return GetBuilder<TheoryController>(
+      init: TheoryController(),
+      builder: (_) => Scaffold(
+          resizeToAvoidBottomInset: true,
+          appBar: linearAppBar('Teoría', pinkColor, context),
+          backgroundColor: Colors.white,
+          body: _listTheoryForm(context)),
     );
   }
 }
 
-Widget _listTheoryForm(BuildContext context, dynamic data) {
-  final List<Theory> theorys = data;
-  // Provider bloc = new Provider();
-  // final bloc = Provider.ofT(context);
-  return ListView.builder(
-    itemCount: theorys.length,
-    itemBuilder: (BuildContext context, int i) {
-      final theory = theorys[i];
+// Widget _listTheoryForm2() {
+//   return GetBuilder<TheoryController>(
+//       id: 'listTheory',
+//       // init: TheoryController(),
+//       builder: (_) => ListView.builder(
+//             itemBuilder: (context, index) {
+//               final RespTheoryAndSub resp = _.listResp[index];
+//               return ListTile(
+//                 title: Text(resp.name),
+//                 subtitle: Text(resp.description),
+//                 onTap: () => {},
+//               );
+//             },
+//             itemCount: _.listResp.length,
+//           ));
+// }
 
-      return listTile(theory.name, theory.description, theory.id, i,
-          "/list_subTheory", data);
+Widget _listTheoryForm(BuildContext context) {
+  final size = MediaQuery.of(context).size;
 
-      //     BounceInUp(
-      //   delay: Duration(milliseconds: 100 * i),
-      //   child: ListTile(
-      //     title: Text('${theory.name}'),
-      //     subtitle: Text(theory.description),
-
-      //     onTap: () => theory.id = 60,
-
-      //   ),
-      // );
-    },
-  );
+  return GetBuilder<TheoryController>(
+      id: 'listTheory',
+      // init: TheoryController(),
+      builder: (_) => ListView.builder(
+            itemBuilder: (context, index) {
+              final RespTheoryAndSub resp = _.listResp[index];
+              return InkWell(
+                child: Container(
+                  margin: EdgeInsets.only(top: 15.0),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: size.width * 0.05,
+                      vertical: size.width * 0.04),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(18.0),
+                      color: Colors.white,
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                            color: Colors.grey[200],
+                            blurRadius: 8.0,
+                            spreadRadius: 1.0,
+                            offset: Offset(-2, 3.0))
+                      ]),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Container(
+                            child: Image.asset('assets/icons/RitmosList.png'),
+                            width: size.width * 0.12,
+                          ),
+                          SizedBox(width: size.width * 0.04),
+                          Text(resp.name, style: textStyleSubtitleCard),
+                        ],
+                      ),
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.grey[300],
+                      )
+                    ],
+                  ),
+                ),
+                onTap: () {},
+              );
+            },
+            itemCount: _.listResp.length,
+          ));
 }
 
-Widget listTile(
-    String name, String description, int id, int i, route, dynamic data) {
-  return StreamBuilder(
-    builder: (BuildContext context, AsyncSnapshot snapshot) {
-      return Container(
-        child: BounceInUp(
-          delay: Duration(milliseconds: 100 * i),
-          child: ListTile(
-            title: Text(name),
-            subtitle: Text(description),
-
-            // onLongPress: data ? () => _consulSub(bloc, context) : null,
-
-            onTap: () => Navigator.of(context).pushNamed('$route'),
-
-            // onLongPress: (value = id) => ,
-            // onChanged: (value) => bloc.changeMail(value),
-          ),
-        ),
-
-        // padding: EdgeInsets.symmetric(horizontal: 20.0),
-        // child: TextField(
-        //   keyboardType: TextInputType.emailAddress,
-        //   decoration: InputDecoration(
-        //       icon: Icon(Icons.alternate_email),
-        //       labelText: 'Correo electrónico',
-        //       hintText: 'ejemplo@correo.com',
-        //       counterText: snapshot.data,
-        //       errorText: snapshot.error),
-        //   onChanged: (value) => bloc.changeMail(value),
-        // ),
-      );
-    },
-  );
-}
-
-_consulSub(dynamic bloc, BuildContext context) async {
-  final servLogin = new PartitureProvider();
-  // final servLogin = new Servicion();
-
-  Future<List<Theory>> rest =
-      await servLogin.getSubTheory(bloc.theoriaID, context);
-
-  // servLogin.createUser();
-
-  print('============');
-
-  print('Respuesta de consulta: ${rest}');
-}
-
-class PagersubTheory extends StatelessWidget {
-  const PagersubTheory({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: true,
-      appBar: AppBar(
-        title: Text("Theory"),
-      ),
-      backgroundColor: Colors.white,
-      body: FutureBuilder(
-        // future: _consul.getSubTheory(id, context),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          print(snapshot.connectionState);
-
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          } else {
-            // return _ListaTheorys(snapshot.data);
-            return _listTheoryForm(context, snapshot.data);
-          }
-        },
-      ),
-    );
-  }
-}
+// Widget listCardTheory(String title, String imageR, BuildContext context) {
+//   final size = MediaQuery.of(context).size;
+//   return InkWell(
+//     child: Container(
+//       margin: EdgeInsets.only(top: 15.0),
+//       padding: EdgeInsets.symmetric(
+//           horizontal: size.width * 0.05, vertical: size.width * 0.04),
+//       decoration: BoxDecoration(
+//           borderRadius: BorderRadius.circular(18.0),
+//           color: Colors.white,
+//           boxShadow: <BoxShadow>[
+//             BoxShadow(
+//                 color: Colors.grey[200],
+//                 blurRadius: 8.0,
+//                 spreadRadius: 1.0,
+//                 offset: Offset(-2, 3.0))
+//           ]),
+//       child: Row(
+//         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//         children: <Widget>[
+//           Row(
+//             children: <Widget>[
+//               Container(
+//                 child: Image.asset(imageR),
+//                 width: size.width * 0.12,
+//               ),
+//               SizedBox(width: size.width * 0.04),
+//               Text(title, style: textStyleSubtitleCard),
+//             ],
+//           ),
+//           Icon(
+//             Icons.arrow_forward_ios,
+//             color: Colors.grey[300],
+//           )
+//         ],
+//       ),
+//     ),
+//     onTap: () {},
+//   );
+// }

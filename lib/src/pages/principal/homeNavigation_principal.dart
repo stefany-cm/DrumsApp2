@@ -1,7 +1,7 @@
 import 'package:drumsapp2/src/controllers/homeNavigationPrincipal_controller.dart';
 
 import 'package:drumsapp2/src/pages/principal/group_principal.dart';
-import 'package:drumsapp2/src/pages/principal/modules_principal.dart';
+import 'package:drumsapp2/src/pages/principal/modules/modules_principal.dart';
 import 'package:drumsapp2/src/widgets/gradientAppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';

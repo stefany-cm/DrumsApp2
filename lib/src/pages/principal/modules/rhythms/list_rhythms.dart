@@ -1,8 +1,10 @@
+import 'package:drumsapp2/src/controllers/rhythms_controller.dart';
 import 'package:drumsapp2/src/pages/principal/modules/rhythms/view_rhythms.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/widgets/cards.dart';
 import 'package:drumsapp2/src/widgets/customAppBar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/state_manager.dart';
 
 class ListRhythms extends StatefulWidget {
   const ListRhythms({Key key}) : super(key: key);
@@ -12,44 +14,41 @@ class ListRhythms extends StatefulWidget {
 }
 
 class _ListRhythmsState extends State<ListRhythms> {
-  static const rhythms = {
-    "Balada": [
-      [1, 1, 1, 1, 1, 1, 1, 1],
-      [0, 0, 1, 0, 0, 0, 1, 0],
-      [1, 0, 0, 0, 1, 0, 0, 0]
-    ],
-    "Reggaetón": [
-      [1, 0, 1, 0, 1, 0, 1, 0],
-      [0, 1, 0, 1, 0, 1, 0, 1],
-      [1, 0, 1, 0, 1, 0, 1, 0]
-    ],
-    "SKA": [
-      [0, 1, 0, 1, 0, 1, 0, 1],
-      [0, 0, 1, 0, 0, 0, 1, 0],
-      [1, 0, 0, 0, 1, 0, 0, 0]
-    ],
-    "Balada pop rock": [
-      [1, 1, 1, 1, 1, 1, 1, 1],
-      [0, 0, 1, 0, 0, 0, 1, 1],
-      [1, 0, 0, 1, 1, 0, 0, 0]
-    ],
-    "Vals": [
-      [1, 0, 1, 0, 1, 0],
-      [0, 0, 1, 0, 1, 0],
-      [1, 0, 0, 0, 0, 0]
-    ]
-  };
+  // static const rhythms = {
+  //   "Balada": [
+  //     [1, 1, 1, 1, 1, 1, 1, 1],
+  //     [0, 0, 1, 0, 0, 0, 1, 0],
+  //     [1, 0, 0, 0, 1, 0, 0, 0]
+  //   ],
+  //   "Reggaetón": [
+  //     [1, 0, 1, 0, 1, 0, 1, 0],
+  //     [0, 1, 0, 1, 0, 1, 0, 1],
+  //     [1, 0, 1, 0, 1, 0, 1, 0]
+  //   ],
+  //   "SKA": [
+  //     [0, 1, 0, 1, 0, 1, 0, 1],
+  //     [0, 0, 1, 0, 0, 0, 1, 0],
+  //     [1, 0, 0, 0, 1, 0, 0, 0]
+  //   ],
+  //   "Balada pop rock": [
+  //     [1, 1, 1, 1, 1, 1, 1, 1],
+  //     [0, 0, 1, 0, 0, 0, 1, 1],
+  //     [1, 0, 0, 1, 1, 0, 0, 0]
+  //   ],
+  //   "Vals": [
+  //     [1, 0, 1, 0, 1, 0],
+  //     [0, 0, 1, 0, 1, 0],
+  //     [1, 0, 0, 0, 0, 0]
+  //   ]
+  // };
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: linearAppBar('Ritmos', orangeColor, context),
-        body: ListView(
-            reverse: false,
-            children: rhythms.entries.map((entry) {
-              return listCard(entry.key, 'assets/icons/RitmosList.png', context,
-                  (ViewRhythms(matrix: entry.value, nameRhythms: entry.key)));
-            }).toList()));
+    return GetBuilder<RhythmsController>(
+        init: RhythmsController(),
+        builder: (_) => Scaffold(
+            appBar: linearAppBar('Ritmos', orangeColor, context),
+            body: listCard(context)));
   }
 }
 

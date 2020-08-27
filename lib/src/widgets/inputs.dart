@@ -45,26 +45,6 @@ Widget passwordInput() {
   );
 }
 
-Widget passwordConfimationInput(dynamic bloc) {
-  return StreamBuilder(
-    stream: bloc.confirmPasswordStream,
-    builder: (BuildContext context, AsyncSnapshot snapshot) {
-      return Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.0),
-          child: TextFormField(
-            obscureText: true,
-            decoration: InputDecoration(
-                icon: Icon(Icons.check_circle_outline),
-                //suffixIcon: Icon(Icons.visibility_off), //Cambiar a statefulwidget
-                labelText: 'Confirmar contraseña',
-                counterText: snapshot.data,
-                errorText: snapshot.error),
-            onChanged: bloc.changeConfirmPassword,
-          ));
-    },
-  );
-}
-
 Widget authCustomRaisedButton(String text) {
   return GetBuilder<LoginController>(
       builder: (_) => RaisedButton(

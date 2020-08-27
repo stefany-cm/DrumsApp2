@@ -14,7 +14,7 @@ import 'package:drumsapp2/src/pages/signUp_page.dart';
 import 'package:drumsapp2/src/pages/welcome_page.dart';
 import 'package:drumsapp2/src/pages/principal/group_principal.dart';
 import 'package:drumsapp2/src/pages/principal/homeNavigation_principal.dart';
-import 'package:drumsapp2/src/pages/principal/modules_principal.dart';
+import 'package:drumsapp2/src/pages/principal/modules/modules_principal.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';

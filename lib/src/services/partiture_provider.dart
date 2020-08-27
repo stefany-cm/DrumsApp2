@@ -1,5 +1,8 @@
 import 'dart:convert';
 import 'dart:async';
+import 'package:drumsapp2/src/models/Matriz.dart';
+import 'package:drumsapp2/src/models/RespRhythm.dart';
+import 'package:drumsapp2/src/models/RespTheoryAndSub.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:drumsapp2/src/models/theory.dart';
@@ -7,21 +10,21 @@ import 'package:flutter/cupertino.dart';
 
 class PartitureProvider {
   //final String _url = "http://192.168.138.129:3000";
-  final String _url = "http://192.168.1.29:3000";
+  final String _url = "http://192.168.1.14:3000";
 
-  Future getPartiture() async {
+  Future<List<List<int>>> getPartiture(int id) async {
     print('entrando  getPartiture' + _url);
 
-    final res = await http.get('$_url/partitura/get');
+    final res = await http.get('$_url/partitura/getId/${id}');
 
-    Map<String, dynamic> decodeData = json.decode(res.body);
+    // Map<String, dynamic> decodeData = json.decode(res.body);
 
-    print('????$decodeData');
+    // print('????$decodeData');
 
-    return decodeData;
+    return matrizFromJson(res.body);
   }
 
-  Future getRhythmAll() async {
+  Future<List<RespRhythm>> getRhythmAll() async {
     print('entrando  getRhythmAll ' + _url);
 
     final res = await http.get('$_url/partitura/getRhythm');
@@ -30,8 +33,17 @@ class PartitureProvider {
     List<dynamic> decodeData = json.decode(res.body);
 
     print('????$decodeData');
+    //  print(respTheoryAndSubFromJson(res.body));
+    return respRhythmFromJson(res.body);
+  }
 
-    return decodeData;
+  Future<List<RespTheoryAndSub>> getTheoryAndSub() async {
+    print('entrando  getTheoryAndSub' + _url);
+
+    final res = await http.get('$_url/partitura/getTheoryAndSub');
+
+    print(respTheoryAndSubFromJson(res.body));
+    return respTheoryAndSubFromJson(res.body);
   }
 
   Future<List<Theory>> getTheory() async {
@@ -53,33 +65,4 @@ class PartitureProvider {
   }
   //getRhythm
 
-  Future createUser(String email, String password) async {
-    print('entrando aca   ' + _url);
-
-    final userData = {'email': email, 'password': password};
-    print('Json => ${userData}');
-    //final url = '$_url';
-    final res = await http.post('$_url/user/create2', body: userData);
-
-    Map<String, dynamic> decodeData = json.decode(res.body);
-
-    print('????$decodeData');
-
-    return decodeData;
-  }
-
-  Future auth(String email, String password, BuildContext context) async {
-    print('entrando aca   ' + _url);
-
-    final authData = {'email': email, 'password': password};
-    print('Json => ${authData}');
-    //final url = '$_url';
-    final res = await http.post('$_url/auth/login', body: authData);
-
-    Map<String, dynamic> decodeData = json.decode(res.body);
-    // List<dynamic> decodeData = json.decode(res.body);
-    print('????$decodeData');
-
-    return decodeData;
-  }
 }
