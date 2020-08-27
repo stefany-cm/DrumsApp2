@@ -17,7 +17,7 @@ class MatrixCollection extends StatefulWidget {
 
 class _MatrixCollectionState extends State<MatrixCollection> {
 
-  bool state = true;
+  bool state = false;
   double rating = 0.0;
   
   @override
@@ -59,6 +59,9 @@ class _MatrixCollectionState extends State<MatrixCollection> {
   }
    @override
   dispose() {
+    state = false;
+    _stopButtonSet();
+    _changeSwitchMetronome(state);
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitDown,
       DeviceOrientation.portraitUp,
@@ -67,21 +70,35 @@ class _MatrixCollectionState extends State<MatrixCollection> {
   }
 
   _startButtonSet(){
+    state = true;
+    stopMetronome();
+    _changeSwitchMetronome(state);
     playMatrix(widget.nameRhythms);
   }
 
   _pauseButtonSet(){
     pauseMatrix();
+    state = false;
+     _changeSwitchMetronome(state);
   }
 
   _stopButtonSet(){
+    state = false;
+     _changeSwitchMetronome(state);
     stopMatrix();
   }
 
   _changeSwitchMetronome(bool value) {
-    setState(() {
-      state = value;
-    });
+      setState(() {
+        state = value;
+      });
+    
+      if(!value){
+        stopMetronome();
+      }
+      if(value&& !isSound){
+        playMetronome();
+      }
   }
 
   _changeSpeedSlider(double value) {
