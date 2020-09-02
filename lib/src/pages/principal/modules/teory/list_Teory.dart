@@ -1,5 +1,6 @@
 import 'package:drumsapp2/src/controllers/theory_controller.dart';
 import 'package:drumsapp2/src/models/RespTheoryAndSub.dart';
+import 'package:drumsapp2/src/models/Theory.dart';
 
 import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/utils/textStyle_utils.dart';
@@ -49,10 +50,10 @@ Widget _listTheoryForm(BuildContext context) {
 
   return GetBuilder<TheoryController>(
       id: 'listTheory',
-      // init: TheoryController(),
+      init: TheoryController(),
       builder: (_) => ListView.builder(
             itemBuilder: (context, index) {
-              final RespTheoryAndSub resp = _.listResp[index];
+              final Theory resp = _.listResp[index];
               return InkWell(
                 child: Container(
                   margin: EdgeInsets.only(top: 15.0),
@@ -89,7 +90,7 @@ Widget _listTheoryForm(BuildContext context) {
                     ],
                   ),
                 ),
-                onTap: () {},
+                onTap: () => _.showSubTheory(resp),
               );
             },
             itemCount: _.listResp.length,
