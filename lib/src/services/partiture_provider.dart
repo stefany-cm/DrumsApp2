@@ -2,15 +2,16 @@ import 'dart:convert';
 import 'dart:async';
 import 'package:drumsapp2/src/models/Matriz.dart';
 import 'package:drumsapp2/src/models/RespRhythm.dart';
+import 'package:drumsapp2/src/models/RespSub.dart';
 import 'package:drumsapp2/src/models/RespTheoryAndSub.dart';
 import 'package:http/http.dart' as http;
 
-import 'package:drumsapp2/src/models/theory.dart';
+import 'package:drumsapp2/src/models/Theory.dart';
 import 'package:flutter/cupertino.dart';
 
 class PartitureProvider {
   //final String _url = "http://192.168.138.129:3000";
-  final String _url = "http://192.168.1.14:3000";
+  final String _url = "http://192.168.1.11:3000";
 
   Future<List<List<int>>> getPartiture(int id) async {
     print('entrando  getPartiture' + _url);
@@ -55,13 +56,13 @@ class PartitureProvider {
     return theoryFromJson(res.body);
   }
 
-  Future getSubTheory(int id, BuildContext context) async {
+  Future<List<RespSub>> getSubTheory(int id) async {
     print('entrando  getSubTeoria ' + _url);
 
-    final res = await http.get('$_url/partitura/getTheory/${id}');
+    final res = await http.get('$_url/partitura/getTheorySub/${id}');
 
-    print(theoryFromJson(res.body));
-    return theoryFromJson(res.body);
+    print(respSubFromJson(res.body));
+    return respSubFromJson(res.body);
   }
   //getRhythm
 

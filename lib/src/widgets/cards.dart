@@ -97,7 +97,7 @@ Widget listCard(BuildContext context) {
 
   return GetBuilder<RhythmsController>(
       id: 'listRhythms',
-      // init: TheoryController(),
+      init: RhythmsController(),
       builder: (_) => ListView.builder(
             itemBuilder: (context, index) {
               final RespRhythm resp = _.listResp[index];
