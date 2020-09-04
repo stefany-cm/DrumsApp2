@@ -11,8 +11,9 @@ import 'package:get/state_manager.dart';
 class MatrixCollection extends StatefulWidget {
   final List<List<int>> matrix;
   final String nameRhythms;
+  final String nameExercio;
   const MatrixCollection(
-      {Key key, this.matrix, this.nameRhythms, String nameExercises})
+      {Key key, this.matrix, this.nameRhythms, this.nameExercio})
       : super(key: key);
 
   // const MatrixCollection({Key key}) : super(key: key);
@@ -64,8 +65,12 @@ class _MatrixCollectionState extends State<MatrixCollection> {
             ),
             // pseudoSheetMusic(_.listResp[0].length,
             //     MediaQuery.of(context).size.width, _.name)
-            pseudoSheetMusic(widget.matrix[0].length,
-                MediaQuery.of(context).size.width, widget.nameRhythms)
+            pseudoSheetMusic(
+                widget.matrix[0].length,
+                MediaQuery.of(context).size.width,
+                widget.nameRhythms,
+                widget.nameExercio,
+                context)
           ],
         ),
       ),
@@ -114,7 +119,8 @@ class _MatrixCollectionState extends State<MatrixCollection> {
       stopMetronome();
     }
     if (value && !isSound) {
-      playMetronome();
+      // playMetronome();
+      playMetronome(1);
     }
   }
 

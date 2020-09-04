@@ -87,11 +87,10 @@ Widget listCardExercises(
     ),
     onTap: () {
       Navigator.push(
-        context,
-        new MaterialPageRoute(
-          builder: (context) => route,
-        )
-      );
+          context,
+          new MaterialPageRoute(
+            builder: (context) => route,
+          ));
     },
   );
 }
@@ -148,7 +147,7 @@ Widget listCard(BuildContext context) {
           ));
 }
 
-Widget listCardExercises(BuildContext context) {
+Widget listCardExercisesv2(BuildContext context) {
   final size = MediaQuery.of(context).size;
 
   return GetBuilder<ExercisesController>(

@@ -27,7 +27,7 @@ class _ListExercises2State extends State<ListExercises2> {
         init: ExercisesController(),
         builder: (_) => Scaffold(
             appBar: linearAppBar('Ejercicios', greenColor, context),
-            body: listCardExercises(context)));
+            body: listCardExercisesv2(context)));
   }
 }
 

@@ -85,13 +85,57 @@ Widget buttonEmpty(int i, int j) {
   );
 }
 
-Widget pseudoSheetMusic(int time, double width, String pseudo) {
+Widget pseudoSheetMusic(int time, double width, String pseudo, String exercises,
+    BuildContext context) {
+  //print(time.toDouble());
+  return Builder(builder: (context) {
+    if (pseudo == null) {
+      return Container(
+        width: width,
+        height: 120,
+        alignment: Alignment.topRight,
+        child: Image(
+          image: AssetImage('assets/exercises/$exercises.JPG'),
+          fit: BoxFit.cover,
+          //width: ((width*0.108)*time.toDouble()),
+        ),
+      );
+    } else {
+      return Container(
+        width: width,
+        height: 120,
+        alignment: Alignment.topRight,
+        child: Image(
+          image: AssetImage('assets/musicsheet/$pseudo.JPG'),
+          fit: BoxFit.cover,
+          //width: ((width*0.108)*time.toDouble()),
+        ),
+      );
+    }
+  });
+}
+
+Widget pseudoSheetExercises(int time, double width, String pseudo) {
   //print(time.toDouble());
   return Container(
-      width: width,
-      height: 120,
-      alignment: Alignment.topRight,
-      child: Image(
+    width: width,
+    height: 120,
+    alignment: Alignment.topRight,
+    child: Image(
+      image: AssetImage('assets/musicsheet/$pseudo.JPG'),
+      fit: BoxFit.cover,
+      //width: ((width*0.108)*time.toDouble()),
+    ),
+  );
+}
+
+Widget pseudoSheet(int time, double width, String pseudo) {
+  //print(time.toDouble());
+  return Container(
+    width: width,
+    height: 120,
+    alignment: Alignment.topRight,
+    child: Image(
       image: AssetImage('assets/musicsheet/$pseudo.JPG'),
       fit: BoxFit.cover,
       //width: ((width*0.108)*time.toDouble()),
