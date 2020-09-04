@@ -22,18 +22,27 @@ class _ViewRhythmsState extends State<ViewRhythms> {
   Widget build(BuildContext context) {
     return GetBuilder<MatrizController>(
         init: MatrizController(),
-        builder: (_) => Scaffold(
+        id: 'matriz',
+        builder: (_) {
+          if (_.loading) {
+            return Center(
+              child: LinearProgressIndicator(),
+            );
+          } else {
+            return Scaffold(
               appBar: PreferredSize(
                   preferredSize: Size.fromHeight(40.0),
                   child: linearAppBar(_.name, orangeColor, context)),
               body:
-                  // if(CircularProgressIndicator()){
 
-                  // }else{
+                  //  if(CircularProgressIndicator()){
 
-                  // }
-
+                  //  }else{
+                  // MatrixCollection(),
+                  //  }
                   MatrixCollection(matrix: _.listResp, nameRhythms: _.name),
-            ));
+            );
+          }
+        });
   }
 }
