@@ -29,6 +29,7 @@ class SignUpController extends GetxController {
     this._email = emailInput;
     print("object" + _email.toString());
   }
+  
 
   void onInputCofirtPassword(String confipassword) {
     this._confipassword = confipassword;

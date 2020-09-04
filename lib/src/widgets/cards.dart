@@ -2,6 +2,7 @@ import 'package:drumsapp2/src/controllers/exercises_controller.dart';
 import 'package:drumsapp2/src/controllers/rhythms_controller.dart';
 import 'package:drumsapp2/src/models/RespPractice.dart';
 import 'package:drumsapp2/src/models/RespRhythm.dart';
+import 'package:drumsapp2/src/pages/principal/modules/exercises/view_exercises.dart';
 import 'package:drumsapp2/src/pages/principal/modules/rhythms/view_rhythms.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/utils/textStyle_utils.dart';
@@ -46,8 +47,8 @@ Widget basicCard(String title, IconData icon, BuildContext context) {
   );
 }
 
-Widget listCardV1(
-    String title, String imageR, BuildContext context, ViewRhythms route) {
+Widget listCardExercises(
+    String title, String imageR, BuildContext context, ViewExercises route) {
   final size = MediaQuery.of(context).size;
   return InkWell(
     child: Container(
@@ -86,10 +87,11 @@ Widget listCardV1(
     ),
     onTap: () {
       Navigator.push(
-          context,
-          new MaterialPageRoute(
-            builder: (context) => route,
-          ));
+        context,
+        new MaterialPageRoute(
+          builder: (context) => route,
+        )
+      );
     },
   );
 }
