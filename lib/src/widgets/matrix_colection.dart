@@ -11,7 +11,9 @@ import 'package:get/state_manager.dart';
 class MatrixCollection extends StatefulWidget {
   final List<List<int>> matrix;
   final String nameRhythms;
-  const MatrixCollection({Key key, this.matrix, this.nameRhythms})
+  final String nameExercio;
+  const MatrixCollection(
+      {Key key, this.matrix, this.nameRhythms, this.nameExercio})
       : super(key: key);
 
   // const MatrixCollection({Key key}) : super(key: key);
@@ -35,39 +37,45 @@ class _MatrixCollectionState extends State<MatrixCollection> {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<MatrizController>(
-        // id: 'matriz',
-        init: MatrizController(),
-        builder: (_) => SingleChildScrollView(
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                child: Column(
+    return
+        // GetBuilder<MatrizController>(
+        //     // id: 'matriz',
+        //     // init: MatrizController(),
+        //     builder: (_) =>
+        SingleChildScrollView(
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Column(
                   children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: <Widget>[
-                        Column(
-                          children: <Widget>[
-                            buttonSet(_startButtonSet, _pauseButtonSet,
-                                _stopButtonSet),
-                            switchMetronome(state, _changeSwitchMetronome),
-                            speedSlider(rating, _changeSpeedSlider)
-                          ],
-                        ),
-                        // instrumentMatrix(),
-                        // instrumentMatrix(_.listResp)
-                        instrumentMatrix(widget.matrix)
-                      ],
-                    ),
-                    // pseudoSheetMusic(_.listResp[0].length,
-                    //     MediaQuery.of(context).size.width, _.name)
-                    pseudoSheetMusic(widget.matrix[0].length,
-                        MediaQuery.of(context).size.width, widget.nameRhythms)
+                    buttonSet(_startButtonSet, _pauseButtonSet, _stopButtonSet),
+                    switchMetronome(state, _changeSwitchMetronome),
+                    speedSlider(rating, _changeSpeedSlider)
                   ],
                 ),
-              ),
-            ));
+                // instrumentMatrix(),
+                // instrumentMatrix(_.listResp)
+                instrumentMatrix(widget.matrix)
+              ],
+            ),
+            // pseudoSheetMusic(_.listResp[0].length,
+            //     MediaQuery.of(context).size.width, _.name)
+            pseudoSheetMusic(
+                widget.matrix[0].length,
+                MediaQuery.of(context).size.width,
+                widget.nameRhythms,
+                widget.nameExercio,
+                context)
+          ],
+        ),
+      ),
+    );
+    // );
   }
 
   @override
@@ -111,7 +119,8 @@ class _MatrixCollectionState extends State<MatrixCollection> {
       stopMetronome();
     }
     if (value && !isSound) {
-      playMetronome();
+      // playMetronome();
+      playMetronome(1);
     }
   }
 

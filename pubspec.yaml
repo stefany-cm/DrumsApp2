@@ -63,6 +63,7 @@ flutter:
     - assets/images/
     - assets/sounds/
     - assets/musicsheet/
+    - assets/exercises/
     - assets/instruments/
     - assets/achievements/
   #   - images/a_dot_burr.jpeg

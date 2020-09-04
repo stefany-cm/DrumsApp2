@@ -22,7 +22,7 @@ class _ViewExercisesState extends State<ViewExercises> {
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(40.0),
           child: linearAppBar(widget.level, greenColor, context)),
-      body: MatrixCollection(matrix: widget.matrix, nameRhythms:  widget.level),
+      body: MatrixCollection(matrix: widget.matrix, nameRhythms: widget.level),
     );
   }
 }

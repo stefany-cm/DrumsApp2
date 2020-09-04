@@ -33,7 +33,7 @@ class ModulesPrincipal extends StatelessWidget {
                   3,
                   'Niveles',
                   context,
-                  "/listLevelsExercises"),
+                  "/listExercises2"),
               /*cardModules(
                   'Composición',
                   ExactAssetImage('assets/icons/Composicion.png'),

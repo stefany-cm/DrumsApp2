@@ -1,4 +1,6 @@
+import 'package:drumsapp2/src/controllers/exercises_controller.dart';
 import 'package:drumsapp2/src/controllers/rhythms_controller.dart';
+import 'package:drumsapp2/src/models/RespPractice.dart';
 import 'package:drumsapp2/src/models/RespRhythm.dart';
 import 'package:drumsapp2/src/pages/principal/modules/exercises/view_exercises.dart';
 import 'package:drumsapp2/src/pages/principal/modules/rhythms/view_rhythms.dart';
@@ -85,11 +87,10 @@ Widget listCardExercises(
     ),
     onTap: () {
       Navigator.push(
-        context,
-        new MaterialPageRoute(
-          builder: (context) => route,
-        )
-      );
+          context,
+          new MaterialPageRoute(
+            builder: (context) => route,
+          ));
     },
   );
 }
@@ -140,6 +141,58 @@ Widget listCard(BuildContext context) {
                   ),
                 ),
                 onTap: () => _.showMatrizRhythms(resp),
+              );
+            },
+            itemCount: _.listResp.length,
+          ));
+}
+
+Widget listCardExercisesv2(BuildContext context) {
+  final size = MediaQuery.of(context).size;
+
+  return GetBuilder<ExercisesController>(
+      id: 'listExercises',
+      init: ExercisesController(),
+      builder: (_) => ListView.builder(
+            itemBuilder: (context, index) {
+              final RespPractice resp = _.listResp[index];
+              return InkWell(
+                child: Container(
+                  margin: EdgeInsets.only(top: 15.0),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: size.width * 0.05,
+                      vertical: size.width * 0.04),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(18.0),
+                      color: Colors.white,
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                            color: Colors.grey[200],
+                            blurRadius: 8.0,
+                            spreadRadius: 1.0,
+                            offset: Offset(-2, 3.0))
+                      ]),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Container(
+                            child: Image.asset('assets/icons/RitmosList.png'),
+                            width: size.width * 0.12,
+                          ),
+                          SizedBox(width: size.width * 0.04),
+                          Text(resp.name, style: textStyleSubtitleCard),
+                        ],
+                      ),
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.grey[300],
+                      )
+                    ],
+                  ),
+                ),
+                onTap: () => _.showMatrizExercises(resp),
               );
             },
             itemCount: _.listResp.length,

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:async';
 import 'package:drumsapp2/src/models/Matriz.dart';
+import 'package:drumsapp2/src/models/RespPractice.dart';
 import 'package:drumsapp2/src/models/RespRhythm.dart';
 import 'package:drumsapp2/src/models/RespSub.dart';
 import 'package:drumsapp2/src/models/RespTheoryAndSub.dart';
@@ -36,6 +37,19 @@ class PartitureProvider {
     print('????$decodeData');
     //  print(respTheoryAndSubFromJson(res.body));
     return respRhythmFromJson(res.body);
+  }
+
+  Future<List<RespPractice>> getExercisesAll() async {
+    print('entrando  getPracticeAll ' + _url);
+
+    final res = await http.get('$_url/partitura/getPractice');
+
+    // Map<String, dynamic> decodeData = json.decode(res.body);
+    List<dynamic> decodeData = json.decode(res.body);
+
+    print('????$decodeData');
+    //  print(respTheoryAndSubFromJson(res.body));
+    return respPracticeFromJson(res.body);
   }
 
   Future<List<RespTheoryAndSub>> getTheoryAndSub() async {
