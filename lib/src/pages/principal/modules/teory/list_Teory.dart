@@ -7,7 +7,6 @@ import 'package:drumsapp2/src/utils/textStyle_utils.dart';
 
 import 'package:get/get.dart';
 
-import 'package:animate_do/animate_do.dart';
 import 'package:drumsapp2/src/widgets/customAppBar.dart';
 
 import 'package:flutter/material.dart';
@@ -76,7 +75,7 @@ Widget _listTheoryForm(BuildContext context) {
                       Row(
                         children: <Widget>[
                           Container(
-                            child: Image.asset('assets/icons/RitmosList.png'),
+                            child: Image.asset('assets/icons/TeoriaList.png'),
                             width: size.width * 0.12,
                           ),
                           SizedBox(width: size.width * 0.04),
