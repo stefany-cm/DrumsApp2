@@ -1,3 +1,4 @@
+import 'package:drumsapp2/src/services/user_provider.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/utils/textStyle_utils.dart';
 import 'package:flutter/cupertino.dart';
