@@ -1,36 +1,33 @@
+import 'package:drumsapp2/src/controllers/exercises_controller.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
+import 'package:drumsapp2/src/widgets/cards.dart';
 import 'package:drumsapp2/src/widgets/customAppBar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/state_manager.dart';
 
-class ListExercises extends StatefulWidget {
-  const ListExercises({Key key}) : super(key: key);
+class ListExercises2 extends StatefulWidget {
+  const ListExercises2({Key key}) : super(key: key);
 
   @override
-  _ListExercisesState createState() => _ListExercisesState();
+  _ListExercises2State createState() => _ListExercises2State();
 }
 
-class _ListExercisesState extends State<ListExercises> {
-  List<String> rhythms = [
-    'Balada',
-    'Reggaetón',
-    'SKA',
-    'Balada pop rock',
-    'Vals'
-  ];
+class _ListExercises2State extends State<ListExercises2> {
+  // List<String> rhythms = [
+  //   'Balada',
+  //   'Reggaetón',
+  //   'SKA',
+  //   'Balada pop rock',
+  //   'Vals'
+  // ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: linearAppBar('Ejercicios', greenColor, context),
-      body: Container(
-        margin: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * 0.05),
-        child: ListView(
-          reverse: false,
-          children: <Widget>[],
-        ),
-      ),
-    );
+    return GetBuilder<ExercisesController>(
+        init: ExercisesController(),
+        builder: (_) => Scaffold(
+            appBar: linearAppBar('Ejercicios', greenColor, context),
+            body: listCardExercises(context)));
   }
 }
 

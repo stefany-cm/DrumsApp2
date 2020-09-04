@@ -25,7 +25,7 @@ class ModulesPrincipal extends StatelessWidget {
                   3,
                   'Niveles',
                   context,
-                  "/listExercises"),
+                  "/listExercises2"),
             ],
           ),
           SizedBox(height: 20.0),
