@@ -10,7 +10,7 @@ import 'package:flutter/cupertino.dart';
 
 class PartitureProvider {
   //final String _url = "http://192.168.138.129:3000";
-  final String _url = "http://192.168.1.14:3000";
+  final String _url = "http://192.168.1.9:3000";
 
   Future<List<List<int>>> getPartiture(int id) async {
     print('entrando  getPartiture' + _url);

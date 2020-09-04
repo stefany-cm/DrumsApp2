@@ -18,8 +18,14 @@ playInstrument(int i) {
   audioCacheInstrument.play("$url${sounds[i]}$ext");
 }
 
-playMetronome() async{
-  metronome = await audioCacheInstrument.loop("$url${sounds[3]}44$ext");
+playMetronome(int m) async{
+  if(m/2 == 4){
+    metronome = await audioCacheInstrument.loop("$url${sounds[3]}44$ext");
+    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa $m");
+  } else {
+    metronome = await audioCacheInstrument.loop("$url${sounds[3]}34$ext");
+    print("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee $m");
+  }
 }
 stopMetronome() async{
   metronome.stop();

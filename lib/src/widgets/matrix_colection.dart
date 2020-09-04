@@ -97,7 +97,7 @@ class _MatrixCollectionState extends State<MatrixCollection> {
         stopMetronome();
       }
       if(value&& !isSound){
-        playMetronome();
+        playMetronome(widget.matrix[0].length);
       }
   }
 
