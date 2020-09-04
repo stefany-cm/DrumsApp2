@@ -1,26 +1,12 @@
-import 'package:drumsapp2/src/controllers/matriz_controller.dart';
 import 'package:drumsapp2/src/utils/sounds_util.dart';
-
 import 'package:flutter/material.dart';
-import 'package:get/state_manager.dart';
 import 'package:sheet_music/sheet_music.dart';
 
-Widget instrumentMatrix() {
-  return GetBuilder<MatrizController>(
-      init: MatrizController(),
-      id: 'matriz',
-      builder: (_) => Container(
-            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            // padding: EdgeInsets.symmetric(horizontal: 20.0),
-            child: myRowChildrenV2(_.listResp),
-          ));
-}
-
-Widget myRowChildrenV2(List<List<int>> matrix) {
+Widget instrumentMatrix(List<List<int>> matrix) {
   List<Widget> myRowChildren = [];
-
-  List<Widget> columnInstruments = [];
   List<List<Widget>> instruments = [];
+  List<Widget> columnInstruments = [];
+
   for (int i = 0; i < matrix.length; i++) {
     for (int j = 0; j < matrix[i].length; j++) {
       if (matrix[i][j] == 1) {
@@ -33,6 +19,7 @@ Widget myRowChildrenV2(List<List<int>> matrix) {
     columnInstruments = [];
   }
   print(instruments);
+
   myRowChildren = instruments
       .map(
         (columns) => Row(
@@ -51,14 +38,10 @@ Widget myRowChildrenV2(List<List<int>> matrix) {
         ),
       )
       .toList();
-
-  return GetBuilder<MatrizController>(
-      builder: (_) => ListView(children: <Widget>[
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: myRowChildren,
-            )
-          ]));
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: myRowChildren,
+  );
 }
 
 Widget buttonInstrument(int i, int j) {
@@ -105,10 +88,10 @@ Widget buttonEmpty(int i, int j) {
 Widget pseudoSheetMusic(int time, double width, String pseudo) {
   //print(time.toDouble());
   return Container(
-    width: width,
-    height: 120,
-    alignment: Alignment.topRight,
-    child: Image(
+      width: width,
+      height: 120,
+      alignment: Alignment.topRight,
+      child: Image(
       image: AssetImage('assets/musicsheet/$pseudo.JPG'),
       fit: BoxFit.cover,
       //width: ((width*0.108)*time.toDouble()),
