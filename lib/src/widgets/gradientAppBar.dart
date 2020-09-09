@@ -15,3 +15,13 @@ Widget gradientAppBar(String text, LinearGradient colorL, BuildContext context) 
     ),
   );
 }
+Widget gradientAppBarPrincipal(String text, LinearGradient colorL, BuildContext context) {
+  return AppBar(
+    title: Text(text, style: textStyleSemiBold),
+    centerTitle: true,
+    leading: SizedBox(height: 0),
+    flexibleSpace: Container(
+      decoration: BoxDecoration(gradient: colorL),
+    ),
+  );
+}

@@ -1,3 +1,5 @@
+import 'package:drumsapp2/src/pages/principal/homeNavigation_principal.dart';
+import 'package:drumsapp2/src/pages/principal/modules/modules_principal.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/utils/textStyle_utils.dart';
 import 'package:drumsapp2/src/widgets/buttons.dart';
@@ -50,6 +52,21 @@ Widget linearAppBar(String text, Color colorL, BuildContext context) {
     leading: IconButton(
         icon: Icon(Icons.arrow_back_ios),
         onPressed: () => Navigator.of(context).pop()),
+    centerTitle: true,
+    backgroundColor: colorL,
+  );
+}
+Widget linearAppBarTheory(String text, Color colorL, BuildContext context) {
+  return AppBar(
+    automaticallyImplyLeading: false, // hides leading widget
+    title: Text(text, style: textStyleSemiBold),
+    leading: IconButton(
+        icon: Icon(Icons.arrow_back_ios),
+        onPressed: () => Navigator.push(
+            context,
+            new MaterialPageRoute(
+              builder: (context) => HomeNavigationPrincipal(),
+            ))),
     centerTitle: true,
     backgroundColor: colorL,
   );

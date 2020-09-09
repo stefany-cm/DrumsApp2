@@ -1,6 +1,6 @@
 import 'package:drumsapp2/src/controllers/homeNavigationPrincipal_controller.dart';
 
-import 'package:drumsapp2/src/pages/principal/group_principal.dart';
+import 'package:drumsapp2/src/pages/principal/groups/group_principal.dart';
 import 'package:drumsapp2/src/pages/principal/modules/modules_principal.dart';
 import 'package:drumsapp2/src/widgets/gradientAppBar.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +37,7 @@ class _HomeNavigationPrincipalState extends State<HomeNavigationPrincipal> {
     return GetBuilder<HomeNavigationPrincipalController>(
         init: HomeNavigationPrincipalController(),
         builder: (_) => Scaffold(
-              appBar: gradientAppBar(_title, purpleLinearGColor, context),
+              appBar: gradientAppBarPrincipal(_title, purpleLinearGColor, context),
               body: _children[_currentIndex],
               bottomNavigationBar: _customBottomNavigationBar(),
             ));

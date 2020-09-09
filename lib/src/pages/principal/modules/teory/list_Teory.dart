@@ -20,7 +20,7 @@ class PagerTheory extends StatelessWidget {
       init: TheoryController(),
       builder: (_) => Scaffold(
           resizeToAvoidBottomInset: true,
-          appBar: linearAppBar('Teoría', pinkColor, context),
+          appBar: linearAppBarTheory('Teoría', pinkColor, context),
           backgroundColor: Colors.white,
           body: _listTheoryForm(context)),
     );
@@ -89,7 +89,7 @@ Widget _listTheoryForm(BuildContext context) {
                     ],
                   ),
                 ),
-                onTap: () => _.showSubTheory(resp, resp.name),
+                onTap: () => _.showSubTheory(resp, _.listResp.length),
               );
             },
             itemCount: _.listResp.length,

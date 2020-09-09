@@ -3,13 +3,12 @@ import 'package:drumsapp2/src/controllers/rhythms_controller.dart';
 import 'package:drumsapp2/src/models/RespPractice.dart';
 import 'package:drumsapp2/src/models/RespRhythm.dart';
 import 'package:drumsapp2/src/pages/principal/modules/exercises/view_exercises.dart';
-import 'package:drumsapp2/src/pages/principal/modules/rhythms/view_rhythms.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/utils/textStyle_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 
-Widget basicCard(String title, IconData icon, BuildContext context) {
+Widget basicCard(String title, IconData icon, BuildContext context, dynamic event) {
   final size = MediaQuery.of(context).size;
   return InkWell(
     child: Container(
@@ -43,7 +42,7 @@ Widget basicCard(String title, IconData icon, BuildContext context) {
         ],
       ),
     ),
-    onTap: () {},
+    onTap: event,
   );
 }
 

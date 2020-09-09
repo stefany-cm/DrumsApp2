@@ -1,4 +1,5 @@
 import 'package:drumsapp2/src/controllers/subTheory_controller.dart';
+import 'package:drumsapp2/src/models/theory.dart';
 import 'package:drumsapp2/src/pages/principal/modules/teory/sub_theory/view_subTheory.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/widgets/customAppBar.dart';
@@ -7,8 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 
 class SubTheory extends StatelessWidget {
-  final String nameTheory;
-  const SubTheory({Key key, this.nameTheory}) : super(key: key);
+  final String name;
+  final int listlength, id;
+  const SubTheory({Key key, this.name, this.id, this.listlength})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,27 +20,80 @@ class SubTheory extends StatelessWidget {
       builder: (_) => Scaffold(
           resizeToAvoidBottomInset: true,
           appBar:
-              linearAppBarActions(nameTheory, pinkColor, context, _actions()),
+              linearAppBarActions(name, pinkColor, context, _actions(context)),
           backgroundColor: Colors.white,
           body: ViewSubTheory()),
     );
   }
 
-  List<Widget> _actions() {
-    List<Widget> resp = new List();
+  List<Widget> _actions(BuildContext context) {
+    Widget _titleTematicaFinalizadaAlert() {
+      return Container(
+        padding: EdgeInsets.all(15),
+        decoration: BoxDecoration(color: pinkColor, borderRadius: BorderRadius.only(topRight: Radius.circular(15), bottomLeft: Radius.circular(40), bottomRight: Radius.circular(40))),
+        child: Column(
+          children: [
+            Icon(
+              Icons.check_circle,
+              color: Colors.white,
+              size: 45,
+            ),
+            Text(
+              "Tematica Finalizada",
+              style: TextStyle(color: Colors.white, fontSize: 25),
+            )
+          ],
+        ),
+      );
+    }
 
+    void _showAlertDialog() {
+      showDialog(
+          context: context,
+          builder: (buildcontext) {
+            return AlertDialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(topRight: Radius.circular(20), bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20))),
+              titlePadding: EdgeInsets.all(0),
+              title: _titleTematicaFinalizadaAlert(),
+              content: Text("Ha completado la temática teorica: $name", style: TextStyle(color: Colors.grey[700], fontSize: 18),),
+              actions: <Widget>[
+                RaisedButton(
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(topRight: Radius.circular(15), bottomLeft: Radius.circular(15), bottomRight: Radius.circular(15))),
+                  color: Colors.grey[300],
+                  child: Text(
+                    "Volver",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                RaisedButton(
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(topRight: Radius.circular(15), bottomLeft: Radius.circular(15), bottomRight: Radius.circular(15))),
+                  color: pinkColor,
+                  child: Text(
+                    "Confirmar",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed("/listTeory");
+                  },
+                )
+              ],
+            );
+          });
+    }
+
+    List<Widget> resp = new List();
     resp.add(IconButton(
-        icon: Icon(Icons.check),
-        onPressed: () {
-          print("ingrese al alert******");
-          AlertDialog(
-            title: Text("My title"),
-            content: Text("This is my message."),
-          );
-        }));
+        icon: Icon(Icons.check, size: 30), onPressed: _showAlertDialog));
     return resp;
   }
-
   /*Widget _cardSwiper(BuildContext context) {
     final _screenSize = MediaQuery.of(context).size;
 

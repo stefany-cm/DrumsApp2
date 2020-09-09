@@ -1,5 +1,6 @@
 import 'package:drumsapp2/src/pages/home_page.dart';
 import 'package:drumsapp2/src/pages/login_page.dart';
+import 'package:drumsapp2/src/pages/principal/groups/group_principal.dart';
 import 'package:drumsapp2/src/pages/principal/homeNavigation_principal.dart';
 
 import 'package:drumsapp2/src/pages/principal/modules/compositions/list_compositions.dart';
@@ -14,7 +15,6 @@ import 'package:drumsapp2/src/pages/principal/modules/teory/sub_theory/list_subT
 import 'package:drumsapp2/src/pages/signUpPersonal_page.dart';
 import 'package:drumsapp2/src/pages/signUp_page.dart';
 import 'package:drumsapp2/src/pages/welcome_page.dart';
-import 'package:drumsapp2/src/pages/principal/group_principal.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
