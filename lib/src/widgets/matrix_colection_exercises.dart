@@ -58,7 +58,7 @@ class _MatrixCollectionExercisesState extends State<MatrixCollectionExercises> {
                 ),
                 // instrumentMatrix(),
                 // instrumentMatrix(_.listResp)
-                instrumentMatrixExercises(widget.matrix)
+                instrumentMatrix(widget.matrix)
               ],
             ),
             // pseudoSheetMusic(_.listResp[0].length,

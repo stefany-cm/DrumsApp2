@@ -43,47 +43,6 @@ Widget instrumentMatrix(List<List<int>> matrix) {
   );
 }
 
-List<Widget> myRowChildren = [];
-List<List<Widget>> instruments = [];
-List<Widget> columnInstruments = [];
-Widget instrumentMatrixExercises(List<List<int>> matrix) {
-  for (int i = 0; i < matrix.length; i++) {
-    for (int j = 0; j < matrix[i].length; j++) {
-      if (matrix[i][j] == 1) {
-        columnInstruments.add(buttonInstrument(i, j));
-      } else {
-        columnInstruments.add(buttonEmpty(i, j));
-      }
-    }
-    instruments.add(columnInstruments);
-    columnInstruments = [];
-  }
-  print(instruments);
-
-  myRowChildren = instruments
-      .map(
-        (columns) => Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: columns.map((nr) {
-            return Container(
-              decoration: BoxDecoration(
-                  border: Border.all(
-                color: Colors.grey[300],
-                width: 1,
-              )),
-              padding: EdgeInsets.symmetric(vertical: 3, horizontal: 10),
-              child: nr,
-            );
-          }).toList(),
-        ),
-      )
-      .toList();
-  return Column(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: myRowChildren,
-  );
-}
-
 Widget buttonInstrument(int i, int j) {
   String _nameInstrumentImage;
   switch (i) {
@@ -117,9 +76,8 @@ Widget buttonInstrument(int i, int j) {
 
 Widget buttonEmpty(int i, int j) {
   return GestureDetector(
-    onTap: () => {columnInstruments.add(buttonEmpty(i, j))},
+    onTap: () => {},
     child: Image(
-      
         image: AssetImage('assets/instruments/vacio.png'),
         fit: BoxFit.cover,
         height: 40),

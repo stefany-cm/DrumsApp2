@@ -1,7 +1,7 @@
 import 'package:drumsapp2/src/controllers/matrizE_controller.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/widgets/customAppBar.dart';
-import 'package:drumsapp2/src/widgets/matrix_colection_exercises.dart';
+import 'package:drumsapp2/src/widgets/matrix_colection.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -40,7 +40,7 @@ class _ViewExercisesV2State extends State<ViewExercisesV2> {
                   //  }else{
                   // MatrixCollection(),
                   //  }
-                  MatrixCollectionExercises(matrix: _.listResp, nameExercio: _.name),
+                  MatrixCollection(matrix: _.listResp, nameExercio: _.name),
             );
           }
         });
