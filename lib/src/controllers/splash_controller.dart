@@ -1,4 +1,3 @@
-import 'package:drumsapp2/src/controllers/home_controller.dart';
 import 'package:drumsapp2/src/pages/home_page.dart';
 import 'package:get/get.dart';
 

@@ -1,5 +1,3 @@
-import 'package:drumsapp2/src/controllers/home_controller.dart';
-import 'package:drumsapp2/src/pages/home_page.dart';
 import 'package:drumsapp2/src/pages/principal/homeNavigation_principal.dart';
 // import 'package:drumsapp2/src/pages/principal/modules/modules_principal.dart';
 import 'package:drumsapp2/src/services/user_provider.dart';

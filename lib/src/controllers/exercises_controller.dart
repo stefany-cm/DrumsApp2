@@ -1,8 +1,5 @@
-import 'dart:developer';
 
 import 'package:drumsapp2/src/models/RespPractice.dart';
-import 'package:drumsapp2/src/models/RespRhythm.dart';
-import 'package:drumsapp2/src/pages/principal/modules/exercises/list_exercises.dart';
 import 'package:drumsapp2/src/pages/principal/modules/exercises/view_exercisesV2.dart';
 import 'package:drumsapp2/src/services/partiture_provider.dart';
 import 'package:get/get.dart';

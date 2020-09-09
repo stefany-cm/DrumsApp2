@@ -6,21 +6,21 @@ import 'package:drumsapp2/src/widgets/tools_instrument_matrix.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class MatrixCollection extends StatefulWidget {
+class MatrixCollectionExercises extends StatefulWidget {
   final List<List<int>> matrix;
   final String nameRhythms;
   final String nameExercio;
-  const MatrixCollection(
+  const MatrixCollectionExercises(
       {Key key, this.matrix, this.nameRhythms, this.nameExercio})
       : super(key: key);
 
   // const MatrixCollection({Key key}) : super(key: key);
 
   @override
-  _MatrixCollectionState createState() => _MatrixCollectionState();
+  _MatrixCollectionExercisesState createState() => _MatrixCollectionExercisesState();
 }
 
-class _MatrixCollectionState extends State<MatrixCollection> {
+class _MatrixCollectionExercisesState extends State<MatrixCollectionExercises> {
   bool state = false;
   double rating = 0.0;
 

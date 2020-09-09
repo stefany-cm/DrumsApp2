@@ -8,7 +8,6 @@ import 'package:drumsapp2/src/models/RespTheoryAndSub.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:drumsapp2/src/models/Theory.dart';
-import 'package:flutter/cupertino.dart';
 
 class PartitureProvider {
   //final String _url = "http://192.168.138.129:3000";

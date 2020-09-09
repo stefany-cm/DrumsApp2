@@ -1,15 +1,11 @@
-import 'dart:developer';
 
 // import 'package:drumsapp2/src/controllers/rhythms_controller.dart';
 
 import 'package:drumsapp2/src/models/RespPractice.dart';
 // import 'package:drumsapp2/src/pages/principal/modules/Matriz/view_rhythms.dart';
 import 'package:drumsapp2/src/services/partiture_provider.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
 import 'package:get/state_manager.dart';
-import 'package:provider/provider.dart';
 
 class MatrizControllerE extends GetxController {
   List<List<int>> _listResp = [];

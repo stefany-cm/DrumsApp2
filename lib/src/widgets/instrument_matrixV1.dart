@@ -1,6 +1,5 @@
 import 'package:drumsapp2/src/utils/sounds_util.dart';
 import 'package:flutter/material.dart';
-import 'package:sheet_music/sheet_music.dart';
 
 Widget instrumentMatrix(List<List<int>> matrix) {
   List<Widget> myRowChildren = [];

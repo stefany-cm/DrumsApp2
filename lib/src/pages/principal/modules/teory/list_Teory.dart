@@ -1,5 +1,4 @@
 import 'package:drumsapp2/src/controllers/theory_controller.dart';
-import 'package:drumsapp2/src/models/RespTheoryAndSub.dart';
 import 'package:drumsapp2/src/models/Theory.dart';
 
 import 'package:drumsapp2/src/utils/colors_utils.dart';

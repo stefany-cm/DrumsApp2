@@ -1,5 +1,4 @@
 import 'package:drumsapp2/src/controllers/matrizE_controller.dart';
-import 'package:drumsapp2/src/controllers/matriz_controller.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/widgets/customAppBar.dart';
 import 'package:drumsapp2/src/widgets/matrix_colection.dart';

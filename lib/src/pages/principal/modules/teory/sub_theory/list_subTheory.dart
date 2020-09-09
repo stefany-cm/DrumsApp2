@@ -1,5 +1,4 @@
 import 'package:drumsapp2/src/controllers/subTheory_controller.dart';
-import 'package:drumsapp2/src/models/theory.dart';
 import 'package:drumsapp2/src/pages/principal/modules/teory/sub_theory/view_subTheory.dart';
 import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/widgets/customAppBar.dart';
