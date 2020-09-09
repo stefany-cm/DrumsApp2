@@ -4,6 +4,7 @@ import 'dart:developer';
 
 import 'package:drumsapp2/src/models/RespSub.dart';
 import 'package:drumsapp2/src/models/Theory.dart';
+import 'package:drumsapp2/src/pages/principal/modules/teory/sub_theory/list_subTheory.dart';
 // import 'package:drumsapp2/src/pages/principal/modules/Matriz/view_rhythms.dart';
 import 'package:drumsapp2/src/services/partiture_provider.dart';
 import 'package:get/route_manager.dart';
@@ -17,6 +18,8 @@ class SubTheoryController extends GetxController {
   Theory _theory;
 
   Theory get theory1 => _theory;
+  bool _loadind = true;
+  bool get loading => _loadind;
 
   String _name = "";
 
@@ -29,13 +32,17 @@ class SubTheoryController extends GetxController {
   @override
   void onInit() {
     // TODO: implement onInit
+    
     super.onInit();
+
     print("same as inistState SubTheoryController");
     print("get ${Get.arguments}");
     this._theory = Get.arguments as Theory;
     this._name = this._theory.name;
-
+    print("object " + _loadind.toString());
     print("get ${this._theory}");
+    _loadind = true;
+    this.loadResp(this._theory.id);
     // update(["theoryT"]);
   }
 
@@ -43,7 +50,11 @@ class SubTheoryController extends GetxController {
     PartitureProvider consl = new PartitureProvider();
     _listResp = await consl.getSubTheory(id);
     _subtheorys = _listResp[0].subtheorys;
+    
     update(["listsubTheory"]);
+    
+    _loadind = false;
+    print("object " + _loadind.toString());
   }
 
   @override
@@ -51,6 +62,10 @@ class SubTheoryController extends GetxController {
     // TODO: implement onReady
     super.onReady();
     print("onReady");
-    this.loadResp(this._theory.id);
+    //this.loadResp(this._theory.id);
   }
+
+  /*showSubTheory(Subtheory resp) {
+    Get.to(ViewSubTeory(), arguments: resp);
+  }*/
 }

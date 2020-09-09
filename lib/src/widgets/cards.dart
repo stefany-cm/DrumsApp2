@@ -178,7 +178,7 @@ Widget listCardExercisesv2(BuildContext context) {
                       Row(
                         children: <Widget>[
                           Container(
-                            child: Image.asset('assets/icons/RitmosList.png'),
+                            child: Image.asset('assets/icons/EjerciciosList.png'),
                             width: size.width * 0.12,
                           ),
                           SizedBox(width: size.width * 0.04),

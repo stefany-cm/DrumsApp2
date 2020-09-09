@@ -89,7 +89,7 @@ Widget _listTheoryForm(BuildContext context) {
                     ],
                   ),
                 ),
-                onTap: () => _.showSubTheory(resp),
+                onTap: () => _.showSubTheory(resp, resp.name),
               );
             },
             itemCount: _.listResp.length,

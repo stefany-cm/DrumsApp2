@@ -16,19 +16,21 @@ Widget customAppBar(String text, BuildContext context) {
               decoration: BoxDecoration(gradient: blueLinearGColor),
               child: Column(
                 children: <Widget>[
-                  SizedBox(height: size.height*0.015),
+                  SizedBox(height: size.height * 0.015),
                   backIconButton(context),
                   logoSize(context, 1, 0.2),
-                  SizedBox(height: size.height*0.015),
+                  SizedBox(height: size.height * 0.015),
                   Text(text,
                       style: textStyleSemiBold, textAlign: TextAlign.center),
-                  SizedBox(height: size.height*0.015)
+                  SizedBox(height: size.height * 0.015)
                 ],
               )))
     ],
   );
 }
-Widget gradientAppBar(String text, LinearGradient colorL, BuildContext context) {
+
+Widget gradientAppBar(
+    String text, LinearGradient colorL, BuildContext context) {
   return AppBar(
     title: Text(text, style: textStyleSemiBold),
     leading: IconButton(
@@ -51,4 +53,17 @@ Widget linearAppBar(String text, Color colorL, BuildContext context) {
     centerTitle: true,
     backgroundColor: colorL,
   );
+}
+
+Widget linearAppBarActions(
+    String text, Color colorL, BuildContext context, List<Widget> act) {
+  return AppBar(
+      automaticallyImplyLeading: false, // hides leading widget
+      title: Text(text, style: textStyleSemiBold),
+      leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () => Navigator.of(context).pop()),
+      centerTitle: true,
+      backgroundColor: colorL,
+      actions: act);
 }

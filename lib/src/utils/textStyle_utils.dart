@@ -6,11 +6,25 @@ final textStyleBold = TextStyle(
   fontWeight: FontWeight.bold,
   color: Colors.white,
 );
-
+final textStyleBoldBlack = TextStyle(
+  fontSize: 30,
+  fontWeight: FontWeight.bold,
+  color: Colors.black,
+);
 final textStyleSemiBold = TextStyle(
   fontSize: 25,
   fontWeight: FontWeight.w600,
   color: Colors.white,
+  
+);
+final textStyleTitle = TextStyle(
+  fontSize: 30,
+  fontWeight: FontWeight.bold,
+  color: Colors.grey[900],
+);
+final textStyleDescription = TextStyle(
+  fontSize: 20,
+  color: Colors.black45,
 );
 
 final textStyleNormal = TextStyle(

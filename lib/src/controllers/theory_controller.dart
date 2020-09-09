@@ -41,7 +41,7 @@ class TheoryController extends GetxController {
     update(['text']);
   }
 
-  showSubTheory(Theory resp) {
-    Get.to(SubTheory(), arguments: resp);
+  showSubTheory(Theory resp, String name) {
+    Get.to(SubTheory(nameTheory: name), arguments: resp);
   }
 }

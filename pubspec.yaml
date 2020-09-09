@@ -25,12 +25,13 @@ dependencies:
     sdk: flutter
   sheet_music: ^0.3.0
   audioplayers: ^0.15.1
-  intro_slider: ^2.3.1
 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
+  flutter_swiper: ^1.1.6
+  youtube_player_flutter: ^6.1.0+4
   http: ^0.12.1
   provider: ^4.3.2+1
   rxdart: ^0.22.2
@@ -39,6 +40,7 @@ dependencies:
   shared_preferences: ^0.5.8
   get: ^3.5.1
   dio: ^3.0.10
+  carousel_slider: ^1.3.0
   
 
 dev_dependencies:
@@ -80,7 +82,20 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
+  fonts:
+   - family: Caslon
+     fonts:
+       - asset: assets/fonts/Caslon.ttf
+   - family: AvenirBold
+     fonts:
+       - asset: assets/fonts/AvenirBold.otf
+   - family: SultanNahia
+     fonts:
+       - asset: assets/fonts/SultanNahia.ttf
+   - family: Avenir
+     fonts:
+       - asset: assets/fonts/AvenirNextLTPro-Regular.otf
+
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
