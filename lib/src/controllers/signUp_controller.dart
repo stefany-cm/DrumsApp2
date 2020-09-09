@@ -1,6 +1,8 @@
 import 'package:drumsapp2/src/pages/login_page.dart';
 // import 'package:drumsapp2/src/pages/principal/modules/modules_principal.dart';
 import 'package:drumsapp2/src/services/user_provider.dart';
+import 'package:drumsapp2/src/utils/colors_utils.dart';
+import 'package:drumsapp2/src/widgets/alerts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -52,8 +54,9 @@ class SignUpController extends GetxController {
 
         // Navigator.of(context).pushReplacementNamed('/signUpBasic');
         if (rest['mensaje'] == "si") {
+          Get.dialog(showAlertDialogOneAction("¡Felicitaciones!", "Su usuario ha sido creado exitosamente :D", Icons.mood, blue1Color));
           // Navigator.of(context).pushReplacementNamed('/homeNavigation');
-          Get.dialog(AlertDialog(
+          /*Get.dialog(AlertDialog(
             title: Text("Felicitaciones  "),
             content: Text("Tu usuario ha sido creado exitosamente :D "),
             actions: <Widget>[
@@ -64,27 +67,30 @@ class SignUpController extends GetxController {
                 },
               ),
             ],
-          ));
+          ));*/
 
           // Get.off(LoginPage());
           print('deberia enviar Login? ');
         } else {
-          Get.dialog(AlertDialog(
+          Get.dialog(showAlertDialogOneAction("Algo salió mal", "Su usuario no se pudo registrar", Icons.info, blue1Color));
+          /*Get.dialog(AlertDialog(
             title: Text("ERROR "),
             content: Text("No se pudo registrar "),
-          ));
+          ));*/
         }
       } else {
-        Get.dialog(AlertDialog(
+          Get.dialog(showAlertDialogOneAction("Algo salió mal", "Las contraseñas no coinciden", Icons.info, blue1Color));
+        /*Get.dialog(AlertDialog(
           title: Text("ERROR "),
           content: Text("Las contraseñas no coiciden "),
-        ));
+        ));*/
       }
     } else {
-      Get.dialog(AlertDialog(
+      Get.dialog(showAlertDialogOneAction("Algo salió mal", "Debe llenar todos los campos", Icons.info, blue1Color));
+      /*Get.dialog(AlertDialog(
         title: Text("error "),
         content: Text("ingrese algo pendejo"),
-      ));
+      ));*/
     }
   }
 

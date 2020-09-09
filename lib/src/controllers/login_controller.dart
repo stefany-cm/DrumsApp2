@@ -1,6 +1,8 @@
 import 'package:drumsapp2/src/pages/principal/homeNavigation_principal.dart';
 // import 'package:drumsapp2/src/pages/principal/modules/modules_principal.dart';
 import 'package:drumsapp2/src/services/user_provider.dart';
+import 'package:drumsapp2/src/utils/colors_utils.dart';
+import 'package:drumsapp2/src/widgets/alerts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -46,17 +48,19 @@ class LoginController extends GetxController {
         Get.off(HomeNavigationPrincipal());
         print('deberia enviar Modules principal? ');
       } else {
-        Get.dialog(AlertDialog(
+        Get.dialog(showAlertDialogOneAction("Algo salió mal", "Si desea registrase en la parte inferior esta la opcion", Icons.info, blue1Color));
+        /*Get.dialog(AlertDialog(
           title: Text("ERROR "),
           content:
               Text("Si desea registrase en la parte inferior esta la opcion"),
-        ));
+        ));*/
       }
     } else {
-      Get.dialog(AlertDialog(
+      Get.dialog(showAlertDialogOneAction("Algo salió mal", "Debe llenar todos los campos", Icons.info, blue1Color));
+      /*Get.dialog(AlertDialog(
         title: Text("error "),
         content: Text("ingrese algo pendejo"),
-      ));
+      ));*/
     }
   }
 
