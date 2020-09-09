@@ -118,7 +118,7 @@ class _MatrixCollectionState extends State<MatrixCollection> {
     }
     if (value && !isSound) {
       // playMetronome();
-      playMetronome(1);
+      playMetronome(2);
     }
   }
 

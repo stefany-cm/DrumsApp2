@@ -42,28 +42,31 @@ class SignUpPage extends StatelessWidget {
                   height: 80.0,
                 ),
               ),
-              Container(
-                width: size.width,
-                margin: EdgeInsets.only(top: size.height * 0.23),
-                padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
-                decoration: new BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20)),
-                    color: Colors.white),
-                child: Column(
-                  children: <Widget>[
-                    SizedBox(height: 5.0),
-                    mailInput(),
-                    SizedBox(height: 20.0),
-                    passwordInput(),
-                    SizedBox(height: 30.0),
-                    passwordConfimationInput(),
-                    SizedBox(height: 20.0),
-                    authCustomRaisedButton('Registrarse'),
-                    SizedBox(height: 20.0),
-                    _accountCreated(context),
-                  ],
+              SingleChildScrollView(
+                child: Container(
+                  width: size.width,
+                  height: size.height*0.62,
+                  margin: EdgeInsets.only(top: size.height * 0.23),
+                  padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+                  decoration: new BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20)),
+                      color: Colors.white),
+                  child: Column(
+                    children: <Widget>[
+                      SizedBox(height: 5.0),
+                      mailInput(),
+                      SizedBox(height: 20.0),
+                      passwordInput(),
+                      SizedBox(height: 30.0),
+                      passwordConfimationInput(),
+                      SizedBox(height: 20.0),
+                      authCustomRaisedButton('Registrarse'),
+                      SizedBox(height: 20.0),
+                      _accountCreated(context),
+                    ],
+                  ),
                 ),
               ),
             ])));
