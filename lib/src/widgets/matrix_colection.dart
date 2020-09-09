@@ -22,7 +22,7 @@ class MatrixCollection extends StatefulWidget {
 
 class _MatrixCollectionState extends State<MatrixCollection> {
   bool state = false;
-  double rating = 0.0;
+  double rating = 100;
 
   @override
   void initState() {
@@ -118,7 +118,7 @@ class _MatrixCollectionState extends State<MatrixCollection> {
     }
     if (value && !isSound) {
       // playMetronome();
-      playMetronome(2);
+      playMetronome(widget.matrix[0].length);
     }
   }
 

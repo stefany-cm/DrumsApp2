@@ -12,6 +12,7 @@ Widget buttonSet(dynamic startEvent, dynamic pauseEvent, dynamic stopEvent) {
       color: Colors.grey[200],
     ),
     child: Row(
+      
       children: <Widget>[
         iconButton(Icon(Icons.stop), Colors.red[300], stopEvent),
         iconButton(Icon(Icons.play_arrow), Colors.green[300], startEvent),
@@ -41,9 +42,10 @@ Widget speedSlider(double rating, dynamic function) {
     Slider(
         value: rating,
         activeColor: orangeColor,
-        min: 0,
-        max: 100,
-        divisions: 10,
+        inactiveColor: Colors.grey[200],
+        min: 80,
+        max: 160,
+        divisions: 4,
         label: rating.round().toString(),
         onChanged: function)
   ]);
