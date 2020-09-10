@@ -90,6 +90,7 @@ class _MatrixCollectionState extends State<MatrixCollection> {
 
   _startButtonSet() {
     state = true;
+    
     stopMetronome();
     _changeSwitchMetronome(state);
     playMatrix(widget.nameRhythms);

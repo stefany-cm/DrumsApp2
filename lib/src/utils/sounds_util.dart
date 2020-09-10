@@ -7,7 +7,7 @@ AudioCache audioCacheMatrix = AudioCache();
 AudioPlayer player;
 AudioPlayer metronome;
 
-String url = "sounds/";
+String url = "exercises/";
 String ext = ".mp3";
 bool isPaused = false;
 bool isSound = false;

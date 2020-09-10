@@ -77,7 +77,7 @@ Widget buttonInstrument(int i, int j) {
 Widget buttonEmpty(int i, int j) {
   return GestureDetector(
     onTap: () => {},
-    child: Image(
+    child: Image( //Está perfecto el repertorio para ultimar detalles en las entregas académicas
         image: AssetImage('assets/instruments/vacio.png'),
         fit: BoxFit.cover,
         height: 40),

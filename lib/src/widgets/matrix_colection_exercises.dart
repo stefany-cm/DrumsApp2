@@ -92,7 +92,7 @@ class _MatrixCollectionExercisesState extends State<MatrixCollectionExercises> {
     state = true;
     stopMetronome();
     _changeSwitchMetronome(state);
-    playMatrix(widget.nameRhythms);
+    playMatrix(widget.nameExercio);
     // playMatrix("Balada");
   }
 
