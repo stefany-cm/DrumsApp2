@@ -27,52 +27,64 @@ class _MatrixCollectionState extends State<MatrixCollection> {
   @override
   void initState() {
     super.initState();
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
-    ]);
+    // SystemChrome.setPreferredOrientations([
+    //   DeviceOrientation.landscapeRight,
+    //   DeviceOrientation.landscapeLeft,
+    // ]);
   }
 
   @override
   Widget build(BuildContext context) {
-    return
-        // GetBuilder<MatrizController>(
-        //     // id: 'matriz',
-        //     // init: MatrizController(),
-        //     builder: (_) =>
-        SingleChildScrollView(
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Column(
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    buttonSet(_startButtonSet, _pauseButtonSet, _stopButtonSet),
-                    switchMetronome(state, _changeSwitchMetronome),
-                    speedSlider(rating, _changeSpeedSlider)
-                  ],
-                ),
-                // instrumentMatrix(),
-                // instrumentMatrix(_.listResp)
-                instrumentMatrix(widget.matrix)
-              ],
-            ),
-            // pseudoSheetMusic(_.listResp[0].length,
-            //     MediaQuery.of(context).size.width, _.name)
-            pseudoSheetMusic(
-                widget.matrix[0].length,
-                MediaQuery.of(context).size.width,
-                widget.nameRhythms,
-                widget.nameExercio,
-                context)
-          ],
+    // return
+    // GetBuilder<MatrizController>(
+    //     // id: 'matriz',
+    //     // init: MatrizController(),
+    //     builder: (_) =>
+    if (widget.matrix.length == 0) {
+      return Center(
+        child: LinearProgressIndicator(),
+      );
+    } else {
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.landscapeRight,
+        DeviceOrientation.landscapeLeft,
+      ]);
+      return SingleChildScrollView(
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Column(
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      buttonSet(
+                          _startButtonSet, _pauseButtonSet, _stopButtonSet),
+                      switchMetronome(state, _changeSwitchMetronome),
+                      speedSlider(rating, _changeSpeedSlider)
+                    ],
+                  ),
+                  // instrumentMatrix(),
+                  // instrumentMatrix(_.listResp)
+                  instrumentMatrix(widget.matrix)
+                ],
+              ),
+              // pseudoSheetMusic(_.listResp[0].length,
+              //     MediaQuery.of(context).size.width, _.name)
+              pseudoSheetMusic(
+                  widget.matrix[0].length,
+                  MediaQuery.of(context).size.width,
+                  widget.nameRhythms,
+                  widget.nameExercio,
+                  context)
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    }
+
     // );
   }
 

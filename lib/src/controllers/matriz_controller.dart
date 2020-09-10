@@ -1,8 +1,8 @@
-
 // import 'package:drumsapp2/src/controllers/rhythms_controller.dart';
 import 'package:drumsapp2/src/models/RespRhythm.dart';
 // import 'package:drumsapp2/src/pages/principal/modules/Matriz/view_rhythms.dart';
 import 'package:drumsapp2/src/services/partiture_provider.dart';
+import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
 import 'package:get/state_manager.dart';
 
@@ -60,6 +60,10 @@ class MatrizController extends GetxController {
 
     super.onClose();
     print("onClose matriz");
+    SystemChrome.setPreferredOrientations([
+      // DeviceOrientation.landscapeRight,
+      // DeviceOrientation.landscapeLeft,
+    ]);
   }
 
   @override
