@@ -105,7 +105,7 @@ class _MatrixCollectionState extends State<MatrixCollection> {
     
     stopMetronome();
     _changeSwitchMetronome(state);
-    playMatrix(widget.nameRhythms);
+    playMatrix("sounds/${widget.nameRhythms}");
     // playMatrix("Balada");
   }
 

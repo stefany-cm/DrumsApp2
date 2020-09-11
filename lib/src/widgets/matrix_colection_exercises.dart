@@ -1,6 +1,6 @@
 import 'package:drumsapp2/src/utils/sounds_util.dart';
 // import 'package:drumsapp2/src/widgets/instrument_matrix.dart';
-import 'package:drumsapp2/src/widgets/instrument_matrixV1.dart';
+import 'package:drumsapp2/src/widgets/instrument_matrix_exercises.dart';
 
 import 'package:drumsapp2/src/widgets/tools_instrument_matrix.dart';
 import 'package:flutter/material.dart';
@@ -58,12 +58,12 @@ class _MatrixCollectionExercisesState extends State<MatrixCollectionExercises> {
                 ),
                 // instrumentMatrix(),
                 // instrumentMatrix(_.listResp)
-                instrumentMatrix(widget.matrix)
+                InstrumentMatrixExercises(matrix: widget.matrix)
               ],
             ),
             // pseudoSheetMusic(_.listResp[0].length,
             //     MediaQuery.of(context).size.width, _.name)
-            pseudoSheetMusic(
+            pseudoSheetMusicExercises(
                 widget.matrix[0].length,
                 MediaQuery.of(context).size.width,
                 widget.nameRhythms,
@@ -92,7 +92,7 @@ class _MatrixCollectionExercisesState extends State<MatrixCollectionExercises> {
     state = true;
     stopMetronome();
     _changeSwitchMetronome(state);
-    playMatrix(widget.nameExercio);
+    playMatrix("exercises/${widget.nameExercio}");
     // playMatrix("Balada");
   }
 

@@ -15,7 +15,7 @@ bool isSound = false;
 List sounds = ["platillos", "redoblante", "bombo", "metronomo"];
 
 playInstrument(int i) {
-  audioCacheInstrument.play("$url${sounds[i]}$ext");
+  audioCacheInstrument.play("sounds/${sounds[i]}$ext");
 }
 
 playMetronome(int m) async{
@@ -33,7 +33,7 @@ stopMetronome() async{
 
 playMatrix(String r) async{
   if (!isSound) {
-    player = await audioCacheMatrix.loop("$url$r$ext");
+    player = await audioCacheMatrix.loop("$r$ext");
   }
   if (isPaused){
     player.resume();
