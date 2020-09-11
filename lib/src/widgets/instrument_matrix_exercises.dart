@@ -1,23 +1,31 @@
+import 'package:flutter/foundation.dart';
 import 'package:drumsapp2/src/utils/sounds_util.dart';
 import 'package:flutter/material.dart';
 
 class InstrumentMatrixExercises extends StatefulWidget {
   final List<List<int>> matrix;
-  List<List<int>> compare;
-  InstrumentMatrixExercises({Key key, this.matrix}) : super(key: key);
+  InstrumentMatrixExercises({Key key, @required this.matrix}) : super(key: key);
 
   @override
   _InstrumentMatrixExercisesState createState() =>
-      _InstrumentMatrixExercisesState();
+      _InstrumentMatrixExercisesState();  
+
+  
+
+  List<List<int>> compare = List.generate(3, (i) => List.filled(8, 0), growable: false);
+  bool verification;
   get getCompare => compare;
   set setCompare(List<List<int>> value) {
     compare = value;
   }
 
-  bool verificationExercises() {
-    bool resp;
-    (compare == matrix) ? resp = false : resp = true;
-    return resp;
+  get getVerification => verification;
+  set setVerification(bool value) {
+    verification = value;
+  }
+
+  void verificationExercises() {
+    (compare == matrix) ? setVerification = true : setVerification = false;
   }
 }
 
@@ -27,7 +35,7 @@ class _InstrumentMatrixExercisesState extends State<InstrumentMatrixExercises> {
   @override
   void initState() {
     aux = List.generate(
-        widget.matrix.length, (i) => List(widget.matrix[0].length),
+        widget.matrix.length, (i) => List.filled(widget.matrix[0].length, 0),
         growable: false);
     widget.setCompare = aux;
     super.initState();
@@ -42,15 +50,15 @@ class _InstrumentMatrixExercisesState extends State<InstrumentMatrixExercises> {
     for (int i = 0; i < aux.length; i++) {
       for (int j = 0; j < aux[i].length; j++) {
         GestureDetectorButtonMatrix btn =
-            GestureDetectorButtonMatrix(i: i, j: j);
+            GestureDetectorButtonMatrix(i: i, j: j, instrumentMatrixExercises: widget);
         aux[i][j] = btn.getPress;
-        widget.setCompare = aux;
+        widget.verificationExercises();
+        print("${widget.getVerification} ***********************************************************************");
         columnInstruments.add(btn);
       }
       instruments.add(columnInstruments);
       columnInstruments = [];
     }
-
     myRowChildren = instruments
         .map(
           (columns) => Row(
@@ -136,8 +144,10 @@ Widget pseudoSheet(int time, double width, String pseudo) {
 
 class GestureDetectorButtonMatrix extends StatefulWidget {
   final int i, j;
+  List<List<int>> auxi = List.generate(3, (i) => List.filled(8, 0), growable: false);
+  InstrumentMatrixExercises instrumentMatrixExercises;
   int _press;
-  GestureDetectorButtonMatrix({Key key, this.i, this.j}) : super(key: key);
+  GestureDetectorButtonMatrix({Key key, this.i, this.j, this.instrumentMatrixExercises}) : super(key: key);
 
   @override
   _GestureDetectorButtonMatrixState createState() =>
@@ -172,11 +182,17 @@ class _GestureDetectorButtonMatrixState
         setState(() {
           playInstrument(widget.i);
           widget.setPress = 1;
+          widget.auxi = widget.instrumentMatrixExercises.getCompare;
+          widget.auxi[widget.i][widget.j] = 1;
+          widget.instrumentMatrixExercises.setCompare = widget.auxi;
           img = imgDownChange(widget.i);
         });
       },
       onTapDown: (tap) {
         setState(() {
+          widget.auxi = widget.instrumentMatrixExercises.getCompare;
+          widget.auxi[widget.i][widget.j] = 0;
+          widget.instrumentMatrixExercises.setCompare = widget.auxi;
           widget.setPress = 0;
           img = imgUp;
         });

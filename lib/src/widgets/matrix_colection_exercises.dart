@@ -10,14 +10,17 @@ class MatrixCollectionExercises extends StatefulWidget {
   final List<List<int>> matrix;
   final String nameRhythms;
   final String nameExercio;
-  const MatrixCollectionExercises(
-      {Key key, this.matrix, this.nameRhythms, this.nameExercio})
-      : super(key: key);
+  MatrixCollectionExercises({Key key, this.matrix, this.nameRhythms, this.nameExercio}): super(key: key);
 
   // const MatrixCollection({Key key}) : super(key: key);
-
   @override
   _MatrixCollectionExercisesState createState() => _MatrixCollectionExercisesState();
+
+  InstrumentMatrixExercises ins;
+  get getIns => ins;
+  set setIns(value) {
+    ins = value;
+  }
 }
 
 class _MatrixCollectionExercisesState extends State<MatrixCollectionExercises> {
@@ -26,6 +29,7 @@ class _MatrixCollectionExercisesState extends State<MatrixCollectionExercises> {
 
   @override
   void initState() {
+    widget.setIns = InstrumentMatrixExercises(matrix: widget.matrix);
     super.initState();
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeRight,
@@ -58,7 +62,7 @@ class _MatrixCollectionExercisesState extends State<MatrixCollectionExercises> {
                 ),
                 // instrumentMatrix(),
                 // instrumentMatrix(_.listResp)
-                InstrumentMatrixExercises(matrix: widget.matrix)
+                widget.ins
               ],
             ),
             // pseudoSheetMusic(_.listResp[0].length,
