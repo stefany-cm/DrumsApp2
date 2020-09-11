@@ -55,6 +55,21 @@ Widget linearAppBar(String text, Color colorL, BuildContext context) {
     backgroundColor: colorL,
   );
 }
+Widget linearAppBarListExercises(String text, Color colorL, BuildContext context) {
+  return AppBar(
+    automaticallyImplyLeading: false, // hides leading widget
+    title: Text(text, style: textStyleSemiBold),
+    leading: IconButton(
+        icon: Icon(Icons.arrow_back_ios),
+        onPressed: () => Navigator.push(
+            context,
+            new MaterialPageRoute(
+              builder: (context) => HomeNavigationPrincipal(),
+            ))),
+    centerTitle: true,
+    backgroundColor: colorL,
+  );
+}
 Widget linearAppBarTheory(String text, Color colorL, BuildContext context) {
   return AppBar(
     automaticallyImplyLeading: false, // hides leading widget

@@ -4,6 +4,7 @@ import 'package:drumsapp2/src/pages/principal/groups/group_principal.dart';
 import 'package:drumsapp2/src/pages/principal/modules/modules_principal.dart';
 import 'package:drumsapp2/src/widgets/gradientAppBar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/state_manager.dart';
 
 import '../../utils/colors_utils.dart';
@@ -29,11 +30,19 @@ class _HomeNavigationPrincipalState extends State<HomeNavigationPrincipal> {
 
   @override
   void initState() {
+    SystemChrome.setPreferredOrientations([
+                DeviceOrientation.portraitDown,
+                DeviceOrientation.portraitUp,
+              ]);
     _title = 'Módulos';
   }
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+                DeviceOrientation.portraitDown,
+                DeviceOrientation.portraitUp,
+              ]);
     return GetBuilder<HomeNavigationPrincipalController>(
         init: HomeNavigationPrincipalController(),
         builder: (_) => Scaffold(

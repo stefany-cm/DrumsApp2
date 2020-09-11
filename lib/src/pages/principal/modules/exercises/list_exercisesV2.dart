@@ -3,6 +3,7 @@ import 'package:drumsapp2/src/utils/colors_utils.dart';
 import 'package:drumsapp2/src/widgets/cards.dart';
 import 'package:drumsapp2/src/widgets/customAppBar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/state_manager.dart';
 
 class ListExercises2 extends StatefulWidget {
@@ -22,11 +23,25 @@ class _ListExercises2State extends State<ListExercises2> {
   // ];
 
   @override
+  void initState() {
+    // TODO: implement initState
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.portraitUp,
+    ]);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.portraitUp,
+    ]);
     return GetBuilder<ExercisesController>(
         init: ExercisesController(),
         builder: (_) => Scaffold(
-            appBar: linearAppBar('Ejercicios', greenColor, context),
+            appBar: linearAppBarListExercises('Ejercicios', greenColor, context),
             body: listCardExercisesv2(context)));
   }
 }

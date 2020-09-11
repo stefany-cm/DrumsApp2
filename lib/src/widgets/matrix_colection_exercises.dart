@@ -10,11 +10,14 @@ class MatrixCollectionExercises extends StatefulWidget {
   final List<List<int>> matrix;
   final String nameRhythms;
   final String nameExercio;
-  MatrixCollectionExercises({Key key, this.matrix, this.nameRhythms, this.nameExercio}): super(key: key);
+  MatrixCollectionExercises(
+      {Key key, this.matrix, this.nameRhythms, this.nameExercio})
+      : super(key: key);
 
   // const MatrixCollection({Key key}) : super(key: key);
   @override
-  _MatrixCollectionExercisesState createState() => _MatrixCollectionExercisesState();
+  _MatrixCollectionExercisesState createState() =>
+      _MatrixCollectionExercisesState();
 
   InstrumentMatrixExercises ins;
   get getIns => ins;
@@ -32,63 +35,77 @@ class _MatrixCollectionExercisesState extends State<MatrixCollectionExercises> {
     widget.setIns = InstrumentMatrixExercises(matrix: widget.matrix);
     super.initState();
     SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
-      DeviceOrientation.landscapeLeft,
-    ]);
+        DeviceOrientation.landscapeRight,
+        DeviceOrientation.landscapeLeft,
+      ]);
+    //SystemChrome.setPreferredOrientations([
+    //  DeviceOrientation.landscapeRight,
+    //  DeviceOrientation.landscapeLeft,
+    //]);
   }
 
   @override
   Widget build(BuildContext context) {
-    return
-        // GetBuilder<MatrizController>(
-        //     // id: 'matriz',
-        //     // init: MatrizController(),
-        //     builder: (_) =>
-        SingleChildScrollView(
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Column(
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    buttonSet(_startButtonSet, _pauseButtonSet, _stopButtonSet),
-                    switchMetronome(state, _changeSwitchMetronome),
-                    speedSlider(rating, _changeSpeedSlider)
-                  ],
-                ),
-                // instrumentMatrix(),
-                // instrumentMatrix(_.listResp)
-                widget.ins
-              ],
-            ),
-            // pseudoSheetMusic(_.listResp[0].length,
-            //     MediaQuery.of(context).size.width, _.name)
-            pseudoSheetMusicExercises(
-                widget.matrix[0].length,
-                MediaQuery.of(context).size.width,
-                widget.nameRhythms,
-                widget.nameExercio,
-                context)
-          ],
+    // GetBuilder<MatrizController>(
+    //     // id: 'matriz',
+    //     // init: MatrizController(),
+    //     builder: (_) =>
+    if (widget.matrix.length == 0) {
+      return Center(
+        child: LinearProgressIndicator(),
+      );
+    } else {
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.landscapeRight,
+        DeviceOrientation.landscapeLeft,
+      ]);
+      return SingleChildScrollView(
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Column(
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      buttonSet(
+                          _startButtonSet, _pauseButtonSet, _stopButtonSet),
+                      switchMetronome(state, _changeSwitchMetronome),
+                      speedSlider(rating, _changeSpeedSlider)
+                    ],
+                  ),
+                  // instrumentMatrix(),
+                  // instrumentMatrix(_.listResp)
+                  widget.ins
+                ],
+              ),
+              // pseudoSheetMusic(_.listResp[0].length,
+              //     MediaQuery.of(context).size.width, _.name)
+              pseudoSheetMusicExercises(
+                  widget.matrix[0].length,
+                  MediaQuery.of(context).size.width,
+                  widget.nameRhythms,
+                  widget.nameExercio,
+                  context)
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    }
     // );
   }
 
   @override
   dispose() {
-    state = false;
-    _stopButtonSet();
-    _changeSwitchMetronome(state);
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitDown,
       DeviceOrientation.portraitUp,
     ]);
+    state = false;
+    _stopButtonSet();
+    _changeSwitchMetronome(state);
     super.dispose();
   }
 

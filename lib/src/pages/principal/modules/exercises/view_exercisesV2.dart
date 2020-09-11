@@ -4,6 +4,7 @@ import 'package:drumsapp2/src/utils/textStyle_utils.dart';
 import 'package:drumsapp2/src/widgets/customAppBar.dart';
 import 'package:drumsapp2/src/widgets/matrix_colection_exercises.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class ViewExercisesV2 extends StatefulWidget {
@@ -134,12 +135,16 @@ class _ViewExercisesV2State extends State<ViewExercisesV2> {
                           topRight: Radius.circular(15),
                           bottomLeft: Radius.circular(15),
                           bottomRight: Radius.circular(15))),
-                  color: pinkColor,
+                  color: greenColor,
                   child: Text(
                     respu ? "Ver teoria" : "Aceptar",
                     style: TextStyle(color: Colors.white),
                   ),
                   onPressed: () {
+                    SystemChrome.setPreferredOrientations([
+        DeviceOrientation.landscapeRight,
+        DeviceOrientation.landscapeLeft,
+      ]);
                     respu
                         ? Navigator.of(context).pushNamed("/listTeory")
                         : Navigator.of(context).pushNamed("/listExercises2");
@@ -163,7 +168,7 @@ class _ViewExercisesV2State extends State<ViewExercisesV2> {
                   if (matrixColl.getIns.getCompare[i][j] == null) {
                     m[i][j] = 0;
                   }
-                  if (matrixColl.matrix[i][j] != m[i][j]){
+                  if (matrixColl.matrix[i][j] != m[i][j]) {
                     print("DIFERENTE EN $i $j");
                     verification = true;
                   }
@@ -178,7 +183,13 @@ class _ViewExercisesV2State extends State<ViewExercisesV2> {
         title: Text(text, style: textStyleSemiBold),
         leading: IconButton(
             icon: Icon(Icons.arrow_back_ios),
-            onPressed: () => Navigator.of(context).pop()),
+            onPressed: () {
+              SystemChrome.setPreferredOrientations([
+                DeviceOrientation.portraitDown,
+                DeviceOrientation.portraitUp,
+              ]);
+              Navigator.of(context).pushNamed("/listExercises2");
+            }),
         centerTitle: true,
         backgroundColor: colorL,
         actions: <Widget>[icnBtn]);
